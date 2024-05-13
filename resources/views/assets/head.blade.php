@@ -10,9 +10,4 @@
     <link rel="stylesheet" href="{{asset('template/css/styles.css')}}">
     <link rel="stylesheet" href="{{asset('../node_modules/swiper/swiper-bundle.css')}}">
     <link href="{{asset('template/css/custom.css')}}" rel="stylesheet">
-    <style>
-        /* Atur gaya untuk dropdown saat muncul */
-        .dropdown-group:hover .dropdown {
-            display: block;
-        }
-    </style>
+    @vite('resources/css/app.css')

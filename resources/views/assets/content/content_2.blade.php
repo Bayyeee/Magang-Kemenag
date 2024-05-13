@@ -3,7 +3,7 @@
         <!-- Left column: Image -->
         <div class="md:w-1/2 mb-8 md:mb-0">
             <img src="{{asset('images/2.png')}}" alt="Image" class="w-full md:mx-auto md:max-w-md" />
-        </div>
+        </div> 
 
         <!-- Right column: Title, description list, and button -->
         <div class="md:w-1/2">
@@ -33,5 +33,6 @@
             <button class="bg-secondary hover:bg-primary text-white font-semibold px-4 py-2 rounded">Get
                 Started</button>
         </div>
+
     </div>
 </section>
