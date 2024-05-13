@@ -2,12 +2,12 @@
     <div class="container mx-auto flex justify-between items-center py-4">
         <!-- Left section: Logo -->
         <div class="flex items-center">
-            <img src="{{ asset('images/kemenag_logo.png') }}" alt="Logo" class="h-14 w-auto mr-4">
+            <img src="{{ asset('images/kemenagBanjar_logo.png') }}" alt="Logo" class="h-14 w-auto mr-4">
         </div>
 
         <!-- Hamburger menu (for mobile) -->
         <div class="flex md:hidden">
-            <button id="hamburger" class="bg-gray-light focus:outline-none">
+            <button id="hamburger" class="bg-white focus:outline-none">
                 <svg class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7">
                     </path>
@@ -20,8 +20,8 @@
             <ul class="flex justify-center space-x-4 text-black">
                 <li><a href="#home" class="hover:text-secondary font-bold">Beranda</a></li>
                 <li><a href="#aboutus" class="hover:text-secondary font-bold">Profil</a></li>
-                <li><a href="#results" class="hover:text-secondary font-bold">Results</a></li>
-                <li><a href="#reviews" class="hover:text-secondary font-bold">Reviews</a></li>
+                <li><a href="#results" class="hover:text-secondary font-bold">Berita</a></li>
+                <li><a href="#reviews" class="hover:text-secondary font-bold">Kontak</a></li>
                 <li><a href="#portfolio" class="hover:text-secondary font-bold">Portfolio</a></li>
                 <li><a href="#team" class="hover:text-secondary font-bold">Team</a></li>
                 <li><a href="#contact" class="hover:text-secondary font-bold">Contact</a></li>
