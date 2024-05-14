@@ -2,15 +2,15 @@
     <div class="container mx-auto flex flex-col md:flex-row items-center justify-between">
         <!-- Left column: Image -->
         <div class="md:w-1/2 mb-8 md:mb-0">
-            <img src="{{asset('images/2.png')}}" alt="Image" class="w-full md:mx-auto md:max-w-md" />
-        </div> 
+            <img src="{{ asset('images/Kantor.png') }}" alt="Image" class="w-full md:mx-auto md:max-w-md" />
+        </div>
 
         <!-- Right column: Title, description list, and button -->
         <div class="md:w-1/2">
-            <h2 class="text-5xl font-bold mb-4 text-white">How We <span class="text-primary">Work</span></h2>
-            <p class="my-5 text-white">At Blue Star Landing Page, we pride ourselves on our meticulous approach to
-                every project. Our process is designed to ensure that we understand your unique needs and deliver
-                exceptional results every time.</p>
+            <h2 class="text-5xl font-bold mb-4 text-white">Profile Kami <span class="text-primary"></span></h2>
+            <p class="my-5 text-white">Lorem ipsum dolor sit amet consectetur, adipisicing elit. Officiis nemo,
+                excepturi ut molestiae magni esse, provident, minus accusamus asperiores vel quibusdam perspiciatis
+                harum doloribus ad reiciendis fugit eaque aliquam rerum.</p>
             <ol class="mb-10 list-outside">
                 <li class="flex items-center mb-4">
                     <strong

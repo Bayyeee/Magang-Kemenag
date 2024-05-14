@@ -1,4 +1,4 @@
-<section id="reviews" class="bg-white py-16 px-4">
+{{-- <section id="reviews" class="bg-white py-16 px-4">
     <div class="container mx-auto max-w-screen-xl px-4 testimonials">
         <div class="text-center mb-12 lg:mb-20">
             <h2 class="text-5xl font-bold mb-4 text-white">What Our Clients Say</h2>
@@ -33,4 +33,4 @@
             <div class="swiper-button-next"></div>
         </div>
     </div>
-</section>
+</section> --}}

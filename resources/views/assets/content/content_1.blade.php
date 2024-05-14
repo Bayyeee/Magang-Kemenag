@@ -1,10 +1,10 @@
-<section id="home" class="py-16 px-16" style="background-image: url({{ asset('images/kemenag_depan.png') }}) ;">
+<section id="home" class="py-60 px-16" style="background-image: url({{ asset('images/kemenag_depan.png') }}); background-size: cover; background-position: center center; background-repeat: no-repeat;">
     <div class="container mx-auto flex flex-col md:flex-row items-center justify-between">
         <!-- Left column: Description and buttons -->
         <div class="md:w-2/4 p-5 text-center md:text-left mb-8 md:mb-0 bg-opacity-50 bg-black rounded-lg">
             <p class="my-2 text-white px-3 text-xl">Selamat Datang Disitus Resmi</p>
             <h2 class="text-4xl font-bold mt-3 text-white px-3"> <span class="" style="color: greenyellow">Kementerian Agama</span> Kota Banjarmasin</h2>
-            <p class="my-7 mt-2 px-3 text-white text-justify">Lorem ipsum dolor sit amet consectetur, adipisicing elit. Animi pariatur molestias, expedita libero, deleniti quibusdam et sequi nobis sed dolore reiciendis inventore nostrum culpa. Dolore quo placeat nulla dolores natus?Lorem ipsum dolor sit amet consectetur adipisicing elit. Pariatur accusantium consequatur nemo modi ducimus voluptatibus repudiandae aliquam, fugiat facere atque eum laborum magnam quasi saepe perferendis neque a hic mollitia.</p>
+            <p class="my-7 mt-2 px-3 text-white">Bersih Melayani, Ikhlas Beramal</p>
         
             <form class="flex items-center max-w-xl mx-auto -mt-6 mb-2 p-3">
                 <label for="simple-search" class="sr-only">Search</label>
@@ -31,8 +31,5 @@
                 </button>
             </form>
         </div>
-
-        
-
     </div>
 </section>
