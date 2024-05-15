@@ -30,7 +30,7 @@
         <div class="hidden lg:flex items-center space-x-4 -mx-32">
             <a href="#"
                 class="bg-primary hover:bg-secondary text-white font-semibold px-4 py-2 rounded inline-block">Registrasi</a>
-            <a href="#"
+            <a href="{{url('login')}}"
                 class="bg-primary hover:bg-secondary text-white font-semibold px-4 py-2 rounded inline-block">Login</a>
         </div>
     </div>
