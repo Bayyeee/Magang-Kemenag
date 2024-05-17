@@ -1,18 +1,13 @@
 <!DOCTYPE html>
 <html lang="en">
 
+@include('components.headHtml')
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <!-- Favicon -->
-    <link rel="icon" type="icon" class="w-full h-full object-cover" href="{{ asset('images/kemenag_icon.png') }}" />
     <title>Login</title>
-    @vite('resources/css/app.css')
 </head>
 
 <body>
-    <section id="#" class="py-36 px-16"
+    <section id="#" class="py-28 px-16"
         style="background-image: url({{ asset('images/kemenag_depan.png') }}); background-size: cover; background-position: center center; background-repeat: no-repeat;">
         <div class="container mx-auto flex flex-col md:flex-row items-center justify-between">
             <!-- Left column: Description and buttons -->
@@ -20,7 +15,8 @@
                 <h2 class="text-4xl font-bold mt-3 text-white "> <span class=""
                         style="color: greenyellow">Kementerian Agama</span> Kota Banjarmasin</h2>
                 <p class="my-7 mt-2 text-white">Bersih Melayani, Ikhlas Beramal</p>
-                <form class="space-y-6" action="#">
+                <form class="space-y-6" action="{{ route('postlogin') }}" method="POST">
+                    {{ csrf_field() }}
                     <h5 class="text-2xl font-bold text-gray-900 dark:text-white -mb-5">Login</h5>
                     <div>
                         <label for="email" class="block mb-1 text-sm font-medium text-gray-900 dark:text-white">Email User</label>
@@ -50,6 +46,8 @@
                     </div>
                     <button type="submit"
                         class="w-full text-white bg-primary hover:bg-secondary focus:ring-4 focus:outline-none focus:ring-blue-300 font-bold rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">Login</button>
+                    <button type="submit"
+                        class="w-full text-white bg-primary hover:bg-secondary focus:ring-4 focus:outline-none focus:ring-blue-300 font-bold rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">Kembali</button>
                     <div class="text-sm font-medium text-gray-500 dark:text-white">
                         Belum Punya Akun? <a href="{{url('registrasi')}}"
                             class="hover:underline hover:text-primary ">Buat Akun</a>
