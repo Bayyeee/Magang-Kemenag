@@ -5,7 +5,9 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\User;
-use Auth;
+// use Auth;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Hash;
 
 class registrasiController extends Controller
 {
@@ -23,7 +25,7 @@ class registrasiController extends Controller
         User::create([
             'email' => $request->email,
             'level' => 'users',
-            'password' => bcrypt($request->password),
+            'password' => Hash::make($request->password),
         ]);
         return redirect('login')->with('success', 'Success Membuat Akun!!!');
     }

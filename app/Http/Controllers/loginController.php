@@ -3,7 +3,9 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use Auth;
+use Illuminate\Support\Facades\Auth;
+use RealRashid\SweetAlert\Facades\Alert;
+// use Alert;
 
 class loginController extends Controller
 {
@@ -13,6 +15,7 @@ class loginController extends Controller
     //     return view("login.login");
     // }
     public function postlogin(Request $request){
+        
 
         // ** TESTING DATA
         // dd($request->all());
@@ -21,7 +24,8 @@ class loginController extends Controller
         if (Auth::attempt($request->only("email","password"))) {
             return redirect("/home");
         }
-        return redirect("/");
+        Alert::error('Gagal Login', 'Email / Password Salah!!!');
+        return redirect("/login");
     }
 
     // ** UNTUK LOGOUT
@@ -32,10 +36,12 @@ class loginController extends Controller
 
     // ** CHECK USER AGAR TIDAK BISA KEMBALI LAGI KE HALAMAN /LOGIN JIKA TELAH BERADA DI HALAMAN /HOME SERTA INI UNTUK MENAMPILKAN HALAMAN LOGIN
     public function login() {
+        
         if (Auth::check()) {
-        return redirect('/home')->with('error', 'Not Found!');
+            Alert::error('Error', 'Halaman Tidak Ditemukan!!!');
+            return redirect('/home');
         }
-        return view('login.login')->with('error', 'Not Found!');
+        return view('login.login');
         }
 
 }

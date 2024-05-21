@@ -57,6 +57,27 @@
             </div>
         </div>
     </section>
+    @include('sweetalert::alert')
+    {{-- <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', (event) => {
+        @if (session('success'))
+                Swal.fire({
+                    title: 'Berhasil!',
+                    text: '{{ session('success') }}',
+                    icon: 'success',
+                    confirmButtonText: 'OK'
+                });
+            @elseif (session('warning'))
+                Swal.fire({
+                    title: 'Error!',
+                    text: '{{ session('warning') }}',
+                    icon: 'error',
+                    confirmButtonText: 'OK'
+                });
+            @endif
+        });
+    </script> --}}
 </body>
 
 </html>
