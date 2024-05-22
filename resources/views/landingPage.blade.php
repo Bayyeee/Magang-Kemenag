@@ -3,40 +3,37 @@
 
 <head>
     {{-- TODO HEADING HTML --}}
-    @include('assets.head')
+    <x-head-Landing></x-head-Landing>
     <title>Kementerian Agama Kota Banjarmasin</title>
 </head>
 
 <body>
     {{-- TODO HEADER --}}
-    @include('assets.header')
+    <x-header-Landing></x-header-Landing>
 
     {{-- TODO CONTENT 1 --}}
-    @include('assets.content.content_1')
+    <x-landing-Content></x-landing-Content>
 
     {{-- TODO CONTENT 2 --}}
-    @include('assets.content.content_2')
+    <x-landing-Profile></x-landing-Profile>
 
     {{-- TODO CONTENT 3 --}}
-    @include('assets.content.content_3')
+    <x-landing-Infrastruktur></x-landing-Infrastruktur>
 
     {{-- TODO CONTENT 4 --}}
-    @include('assets.content.content_4')
+    <x-landing-Berita></x-landing-Berita>
 
     {{-- TODO CONTENT 5 --}}
-    @include('assets.content.content_5')
+    <x-landing-Struktur></x-landing-Struktur>
 
     {{-- TODO CONTENT 6 --}}
-    @include('assets.content.content_6')
-
-    {{-- TODO CONTENT 7 --}}
-    @include('assets.content.content_7')
+    <x-landing-Maps></x-landing-Maps>
 
     {{-- TODO FOOTER --}}
-    @include('assets.footer')
+    <x-landing-Footer></x-landing-Footer>
 
     {{-- TODO SCRIPT.JS ANIMATION --}}
-    @include('assets.script')
+    <x-landing-Script></x-landing-Script>
 </body>
 
 </html>

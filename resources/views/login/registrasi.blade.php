@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 
-@include('components.headHtml')
+<x-headHtml></x-headHtml>
 <head>
     <title>Registrasi</title>
 </head>
