@@ -7,12 +7,13 @@
 
     <body class="py-5" style="background-color: #198754">
 
-        <x-nav-Home></x-nav-Home>
+        {{-- TODO side bar with desktop and mobile --}}
+        <x-side-Home></x-side-Home>
 
-        <!-- BEGIN: JS Assets-->
-        <script src="https://developers.google.com/maps/documentation/javascript/examples/markerclusterer/markerclusterer.js"></script>
-        <script src="https://maps.googleapis.com/maps/api/js?key=[]&libraries=places"></script>
-        <script src="{{ asset('dist/js/app.js') }}"></script>
-        <!-- END: JS Assets-->
+
+
+
+        {{-- TODO script.js --}}
+        <x-script-Home></x-script-Home>
     </body>
 </html>
