@@ -15,7 +15,7 @@ class loginController extends Controller
     //     return view("login.login");
     // }
     public function postlogin(Request $request){
-        
+
 
         // ** TESTING DATA
         // dd($request->all());
@@ -36,7 +36,7 @@ class loginController extends Controller
 
     // ** CHECK USER AGAR TIDAK BISA KEMBALI LAGI KE HALAMAN /LOGIN JIKA TELAH BERADA DI HALAMAN /HOME SERTA INI UNTUK MENAMPILKAN HALAMAN LOGIN
     public function login() {
-        
+
         if (Auth::check()) {
             Alert::error('Error', 'Halaman Tidak Ditemukan!!!');
             return redirect('/home');

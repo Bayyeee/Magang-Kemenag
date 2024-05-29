@@ -48,9 +48,9 @@
         <li><a href="#contact" class="hover:text-secondary font-bold">Contact</a></li>
     </ul>
     <div class="flex flex-col mt-6 space-y-2 items-center">
-        <a href="#"
+        <a href="{{ url('registrasi') }}"
             class="bg-secondary hover:bg-primary text-white font-semibold px-4 py-2 rounded inline-block items-center justify-center min-w-[110px]">Registrasi</a>
-        <a href="#"
+            <a href="{{url('login')}}"
             class="bg-primary hover:bg-secondary text-white font-semibold px-4 py-2 rounded inline-block items-center justify-center min-w-[80px]">Login</a>
     </div>
 </nav>

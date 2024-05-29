@@ -8,63 +8,6 @@ document.addEventListener("DOMContentLoaded", function () {
 });
 
 // Function to start counters when user scrolls to success-metrics section
-function startCountersOnScroll() {
-    // Get the success-metrics section
-    var successMetricsSection = document.querySelector(".success-metrics");
-
-    // Calculate the position of success-metrics section
-    var successMetricsSectionPosition =
-        successMetricsSection.offsetTop - window.innerHeight;
-
-    // Function to start counters
-    function startCounters() {
-        var counters = document.querySelectorAll(".counter");
-        var speed = 2000; // The lower the number, the faster the counter increases
-
-        counters.forEach((counter) => {
-            var target = +counter.getAttribute("data-target-value");
-            var count = 0;
-
-            var updateCounter = setInterval(() => {
-                count++;
-                counter.innerText = count;
-
-                if (count === target) {
-                    clearInterval(updateCounter);
-                }
-            }, speed / target);
-        });
-    }
-
-    // Check if user has scrolled to success-metrics section
-    function checkScroll() {
-        if (window.scrollY > successMetricsSectionPosition) {
-            startCounters();
-            window.removeEventListener("scroll", checkScroll);
-        }
-    }
-
-    // Event listener for scroll
-    window.addEventListener("scroll", checkScroll);
-}
-
-// Call the function to start counters when user scrolls to success-metrics section
-startCountersOnScroll();
-
-new Swiper(".swiper", {
-    slidesPerView: 1,
-    loop: true,
-    autoplay: {
-        delay: 3000,
-    },
-    pagination: {
-        el: ".swiper-pagination",
-    },
-    navigation: {
-        nextEl: ".swiper-button-next",
-        prevEl: ".swiper-button-prev",
-    },
-});
 
 document.addEventListener("DOMContentLoaded", function () {
     const filterButtons = document.querySelectorAll(".filter-button");

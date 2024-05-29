@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
-// use Auth;
+use RealRashid\SweetAlert\Facades\Alert;
 
 
 class landingController extends Controller
@@ -17,8 +17,9 @@ class landingController extends Controller
     // ** CHECK AUTH AGAR TIDAK BISA MENGAKSES LANDINGPAGE JIKA USER SUDAH DIDALAM /HOME
     public function checkLanding() {
         if (Auth::check()) {
-            return redirect('/home')->with('error', 'Error!!!');
+            Alert::error('error', 'Halaman tidak ditemukan!!!');
+            return redirect('/home');
         }
-        return view('landingPage')->with('error', 'Error!!!');
+        return view('landingPage');
     }
 }
