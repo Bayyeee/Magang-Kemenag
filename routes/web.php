@@ -1,21 +1,24 @@
 <?php
 
-use App\Http\Controllers\homeController;
+use App\Http\Controllers\homeadminController;
+use App\Http\Controllers\homeuserController;
 use App\Http\Controllers\landingController;
 use App\Http\Controllers\loginController;
+use App\Http\Controllers\profileController;
 use App\Http\Controllers\registrasiController;
+use App\Http\Controllers\editpengajuanController;
 use Illuminate\Support\Facades\Route;
-use RealRashid\SweetAlert\Facades\Alert;
 
 
-// Route::get('/', function () {
+
+// Route::get('/profile', function () {
 //     Alert::success('Success Title', 'Success Message');
-//     return view('landingPage');
+//     return view('profile.userProfile');
 // });
 
 Route::get("/", [landingController::class, 'checkLanding']) -> name('landingPage');
 
-Route::get('/login',[loginController::class,'login']) -> name('login');
+Route::get('/login',[loginController::class,'showLoginForm']) -> name('login');
 
 Route::post('/postlogin',[loginController::class,'postlogin']) -> name('postlogin');
 
@@ -26,7 +29,23 @@ Route::post('/postregistrasi',[registrasiController::class,'simpanregistrasi']) 
 Route::get('/logout',[loginController::class,'logout']) -> name('logout');
 
 Route::group(['middleware'=> ['auth']], function () {
-    
-    Route::get('/home', [homeController::class, 'index']) -> name('Home');
+
+    Route::middleware('level:users')->group(function(){
+
+        Route::get('/home', [homeuserController::class, 'index']) -> name('Home');
+
+        Route::get('/profile', [profileController::class, 'profile']) -> name('Profile');
+
+        Route::post('/simpan-profile', [profileController::class, 'store']) -> name('simpan-profile');
+
+        Route::get('/edit-pengajuan', [editpengajuanController::class, 'editpengajuan']) -> name('edit-pengajuan');
+    });
+
+    Route::middleware('level:admin')->group(function () {
+
+        Route::get('/homeAdmin', [homeadminController::class, 'homeAdmin']) -> name('homeAdmin');
+
+    });
+
 
 });

@@ -41,8 +41,8 @@
                             <label for=""
                                 class="ms-2 text-sm font-medium text-gray-900 text-white">Remember me</label>
                         </div>
-                        <a href="#" class="ms-auto text-sm text-white hover:underline text-white-500">Lupa
-                            Password?</a>
+                        {{-- <a href="#" class="ms-auto text-sm text-white hover:underline text-white-500">Lupa
+                            Password?</a> --}}
                     </div>
                     <button type="submit"
                         class="w-full text-white bg-primary hover:bg-secondary focus:ring-4 focus:outline-none focus:ring-blue-300 font-bold rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">Login</button>

@@ -20,27 +20,33 @@ class registrasiController extends Controller
     public function simpanregistrasi(Request $request){
         // ** Check Masuk Data
         // dd($request->all());
-    
+
+        // $request->validate([
+        //     'email' => 'required|email|unique:users,email,',
+        //     'password' => 'required|min:8|confirmed',
+        // ]);
+
         // ** Menyimpan Data User Registrasi
         $existingUser = User::where('email', $request->email)->first();
-    
+
         if ($existingUser) {
             // Jika email sudah terdaftar, beri tahu pengguna
-            Alert::error('Gagal','Email sudah terdaftar!!!');
-            return redirect()->back();
+            toast('Warning Toast','Email sudah terdaftar!!!');
+            return redirect('/registrasi');
         }
-    
+
         // Jika email belum terdaftar, simpan data pengguna baru
         User::create([
             'email' => $request->email,
             'level' => 'users',
             'password' => Hash::make($request->password),
         ]);
-    
-        Alert::success('Berhasil', 'Berhasil membuat akun!!!');
+
+        // Alert::success('Berhasil', 'Berhasil membuat akun!!!');
+        toast('Berhasil membuat akun','success');
         return redirect('login');
     }
-    
+
 
     // ** CHECK AUTH USER JIKA SUDAH BERADA DIHALAMAN /HOME TIDAK BISA KEMBALI KE HALAMAN REGISTRASI SERTA MENAMPILKAN HALAMAN REGISTRASI
     public function checkRegister() {
@@ -48,6 +54,6 @@ class registrasiController extends Controller
             Alert::error('Error','Halaman tidak ditemukan!!!');
             return redirect('/home');
         }
-        return view('login.registrasi');
+        return view('auth.registrasi');
     }
 }

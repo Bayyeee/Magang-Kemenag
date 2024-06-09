@@ -6,7 +6,7 @@ use Closure;
 use Illuminate\Contracts\View\View;
 use Illuminate\View\Component;
 
-class script-Home extends Component
+class homeAdmin extends Component
 {
     /**
      * Create a new component instance.
@@ -21,6 +21,6 @@ class script-Home extends Component
      */
     public function render(): View|Closure|string
     {
-        return view('components.script-Home');
+        return view('components.home-Admin');
     }
 }

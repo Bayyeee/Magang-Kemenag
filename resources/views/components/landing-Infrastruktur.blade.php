@@ -9,7 +9,7 @@
         <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
             <div
                 class="success-metric bg-white p-6 rounded-lg shadow-lg text-center group hover:bg-primary hover:text-white transition-all duration-300">
-                <h3 class="text-2xl font-bold text-primary counter" data-target-value="7">0</h3>
+                <h3 class="text-2xl font-bold text-primary counter" data-target-value="9"="7">0</h3>
                 <p class="text-lg -mx-10">SUB/SEKSI/PENYELENGGARA</p>
             </div>
             <div

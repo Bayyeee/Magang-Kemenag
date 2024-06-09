@@ -1,40 +1,39 @@
 /** @type {import('tailwindcss').Config} */
 export default {
-  content: [
-    "./resources/**/*.blade.php",
-    "./resources/**/*.js",
-    "./resources/**/*.vue",
-  ],
-  theme: {
-    container: {
-      center: true,
-      padding: "1rem",
+    content: [
+        "./resources/**/*.blade.php",
+        "./resources/**/*.js",
+        "./resources/**/*.vue",
+    ],
+    theme: {
+        container: {
+            center: true,
+            padding: "1rem",
+        },
+        screens: {
+            sm: "640px",
+            md: "768px",
+            lg: "1024px",
+            xl: "1280px",
+        },
+        fontFamily: {
+            manrope: ["Manrope", "sans-serif"],
+        },
+        colors: {
+            transparent: "transparent",
+            current: "currentColor",
+            white: "#ffffff",
+            black: "#08111F",
+            primary: "#006BFD",
+            secondary: "#ea47ed",
+            gray: {
+                lighter: "#FAF7F3",
+                light: "#323232",
+                dark: "#1C2C3C",
+                txt: "#252800",
+            },
+        },
+        extend: {},
     },
-    screens: {
-      sm: "640px",
-      md: "768px",
-      lg: "1024px",
-      xl: "1280px",
-    },
-    fontFamily: {
-      manrope: ["Manrope", "sans-serif"],
-    },
-    colors: {
-      transparent: "transparent",
-      current: "currentColor",
-      white: "#ffffff",
-      black: "#08111F",
-      primary: "#006BFD",
-      secondary: "#ea47ed",
-      gray: {
-        lighter: "#FAF7F3",
-        light: "#323232",
-        dark: "#1C2C3C",
-        txt: "#252800",
-      },
-    },
-    extend: {},
-  },
-  plugins: [],
-}
-
+    plugins: [],
+};
