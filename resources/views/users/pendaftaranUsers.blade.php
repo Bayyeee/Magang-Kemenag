@@ -2,13 +2,13 @@
 <html lang="en">
 
     <x-head-Home></x-head-Home>
-    <title>Edit Pengajuan</title>
+    <title>Pengajuan Pendaftaran</title>
 
 <body>
     {{-- TODO Content --}}
-    <x-editberkas-Users></x-editberkas-Users>
-    
-    {{-- TODO script --}}
+    <x-pendaftaran-Users></x-pendaftaran-Users>
+
+    {{-- TODO script Home --}}
     <x-script-Home></x-script-Home>
 </body>
 </html>

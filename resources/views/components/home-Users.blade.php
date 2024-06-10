@@ -112,7 +112,7 @@
                     </a>
                     <ul class="">
                         <li>
-                            <a href="index.html" class="side-menu">
+                            <a href="{{ route('pendaftaran-users') }}" class="side-menu">
                                 <div class="side-menu__icon"> <i data-lucide="book"></i> </div>
                                 <div class="side-menu__title"> Pendaftaran </div>
                             </a>
@@ -124,7 +124,7 @@
                             </a>
                         </li>
                         <li>
-                            <a href="top-menu-light-dashboard-overview-1.html" class="side-menu">
+                            <a href="{{ route('cek-verifikasi') }}" class="side-menu">
                                 <div class="side-menu__icon"> <i data-lucide="book"></i> </div>
                                 <div class="side-menu__title"> Cek Verifikasi </div>
                             </a>
