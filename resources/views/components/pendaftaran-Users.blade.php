@@ -89,11 +89,12 @@
     <div class="flex mt-[4.7rem] md:mt-0">
         <nav class="side-nav">
             {{-- TODO NAV USERS --}}
-                <a href="#" class="intro-x flex items-center pt-4">
-                    <img alt="Kementerian Agama Kota Banjarmasin" class="w-10 rounded-lg"
-                        src="{{ asset('images/kemenag_icon.png') }}">
-                    <span class="hidden xl:block text-white font-bold text-sm ml-3" style="font-size: 16px;"> Kementerian Agama Kota Banjarmasin </span>
-                </a>
+            <a href="#" class="intro-x flex items-center pt-4">
+                <img alt="Kementerian Agama Kota Banjarmasin" class="w-10 rounded-lg"
+                    src="{{ asset('images/kemenag_icon.png') }}">
+                <span class="hidden xl:block text-white font-bold text-sm ml-3" style="font-size: 16px;"> Kementerian
+                    Agama Kota Banjarmasin </span>
+            </a>
             <div class="side-nav__devider my-6"></div>
             <ul>
                 <li>
@@ -193,8 +194,8 @@
                                 <hr class="dropdown-divider border-white/[0.08]">
                             </li>
                             <li>
-                                <a href="{{ route('Profile') }}" class="dropdown-item hover:bg-white/5"> <i data-lucide="user"
-                                        class="w-4 h-4 mr-2"></i> Profile </a>
+                                <a href="{{ route('Profile') }}" class="dropdown-item hover:bg-white/5"> <i
+                                        data-lucide="user" class="w-4 h-4 mr-2"></i> Profile </a>
                             </li>
                             <li>
                                 <a href="" class="dropdown-item hover:bg-white/5"> <i data-lucide="lock"
@@ -216,21 +217,131 @@
                 </div>
                 <!-- END: Account Menu -->
             </div>
-            <!-- END: Top Bar -->
-            <div class="grid grid-cols-12 gap-6">
-                <div class="col-span-12 2xl:col-span-9">
-                    <div class="grid grid-cols-12 gap-6">
-                        {{-- ? CONTENT UTAMA --}}
+            <div class="intro-y flex items-center mt-3">
+                <h2 class="text-lg font-medium mr-auto">
+                    Unggah Berkas
+                </h2>
+            </div>
+            <div class="grid grid-cols-12 gap-6 mt-3">
+                <div class="intro-y lg:col-span-5">
+                    <!-- BEGIN: Form Layout -->
+                    <div class="intro-y box p-5">
+                        <form action="">
+                            <div>
+                                <label for="crud-form-1" class="form-label">Nama Berkas</label>
+                                <input id="crud-form-1" type="text" class="form-control w-full"
+                                    placeholder="Nama Berkas">
+                            </div>
+                            <div class="mt-3">
+                                <label for="crud-form-2" class="form-label">Jenis Berkas</label>
+                                <select data-placeholder="Cari berkas" class=" tom-select w-full">
+                                    <option value="1">Surat Permohonan TPQ</option>
+                                    <option value="2">Proposal pendirian TPQ</option>
+                                    <option value="3">SK Kepengurusan</option>
+                                    <option value="4">Daftar Santri</option>
+                                    <option value="5">Daftar Ustad/Ustadzah</option>
+                                    <option value="6">Surat Rekomendasi KUA</option>
+                                    <option value="5">Bukti Kegiatan</option>
+                                </select>
+                                <label for="" class="form-label text-xs font-manrope text-danger">*Wajib
+                                    diunggah</label>
+                            </div>
+                            <div class="mt-3">
+                                <label for="crud-form-3" class="form-label">Upload Berkas</label>
+                                <input id="crud-form-3" type="file" class="border form-control "
+                                    placeholder="Input text" accept=".pdf">
+                                <label for="" class="form-label text-xs font-manrope">Pilih berkas (hanya
+                                    menerima berkas PDF) maksimal 2Mb.</label>
+                            </div>
+                            <div class="text-right mt-33z">
+                                <button type="button" class="btn btn-success text-white font-semibold">
+                                    <i class="mr-1" data-lucide="save"></i>
+                                    Simpan Berkas</button>
+                            </div>
+                        </form>
                     </div>
+                    <!-- END: Form Layout -->
                 </div>
-                <div class="col-span-12 2xl:col-span-3">
-                    <div class="2xl:border-l -mb-10">
-                        <div class="2xl:pl-6 grid grid-cols-12 gap-x-6 2xl:gap-x-0 gap-y-6">
-                            {{-- ? CONTENT BEBAS BERGARIS --}}
+                <div class="intro-y col-span-12 lg:col-span-7">
+                    <div class="card box p-5">
+                        <div class="card-body">
+                            <div class="mb-3 text-xl font-bold text-success">
+                                <div class="side-menu__icon"><i data-lucide="hard-drive"></i> </div>
+                            <div class="side-menu__title ms-7 -mt-6">
+                                <h5>Daftar Berkas Terunggah</h5>
+                            </div>
+                        </div>
+                            <table class="table table-striped table-bordered">
+                                <tr>
+                                    <td>Nama TPA</td>
+                                    <td>Al-Wahidah</td>
+                                </tr>
+                                <tr>
+                                    <td>Jenjang LPQ</td>
+                                    <td>Taman Pendidikan Al-Qur`an (TPQ)</td>
+                                </tr>
+                            </table>
+                            <table id="dt-riwayat" class="table table-striped table-bordered mt-5">
+                                <thead>
+                                    <tr>
+                                        <th class="text-center">Jenis - Nama Berkas</th>
+                                        <th class="text-center">Tanggal Unggah</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td colspan='1'>1. Surat Permohonan Tanda Daftar</td>
+                                        <td colspan="2"></td>
+                                    </tr>
+                                    <tr>
+                                        <td colspan='1'>2. Profil LPQ</td>
+                                        <td colspan="2"></td>
+                                    </tr>
+                                    <tr>
+                                        <td colspan='1'>3. Susunan Pengurus</td>
+                                        <td colspan="2"></td>
+                                    </tr>
+                                    <tr>
+                                        <td colspan='1'>4. SK Kepala dan Tenaga Pengajar</td>
+                                        <td colspan="2"></td>
+                                    </tr>
+                                    <tr>
+                                        <td colspan='1'>5. Data Kepala dan Tenaga Pengajar</td>
+                                        <td colspan="2"></td>
+                                    </tr>
+                                    <tr>
+                                        <td colspan='1'>6. Foto Copy Ijazah Kepala dan Tenaga Pengajar</td>
+                                        <td colspan="2"></td>
+                                    </tr>
+                                    <tr>
+                                        <td colspan='1'>7. Foto Copy Syahadah Kepala atau Tenaga Pengajar</td>
+                                        <td colspan="2"></td>
+                                    </tr>
+                                    <tr>
+                                        <td colspan='1'>8. Data Santri</td>
+                                        <td colspan="2"></td>
+                                    </tr>
+                                    <tr>
+                                        <td colspan='1'>9. Surat Keterangan Tanah</td>
+                                        <td colspan="2"></td>
+                                    </tr>
+                                    <tr>
+                                        <td colspan='1'>10. Akta Notaris Yayasan</td>
+                                        <td colspan="2"></td>
+                                    </tr>
+                                    <tr>
+                                        <td colspan='1'>11. Surat Keterangan Domisili Lembaga dari Kelurahan</td>
+                                        <td colspan="2"></td>
+                                    </tr>
+                                    <tr>
+                                        <td colspan='1'>12. Denah Lokasi</td>
+                                        <td colspan="2"></td>
+                                    </tr>
+                                </tbody>
+                            </table>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
     </div>
-

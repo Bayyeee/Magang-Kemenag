@@ -110,7 +110,7 @@
                         <div class="side-menu__sub-icon "> <i data-lucide="chevron-down"></i> </div>
                     </div>
                 </a>
-                <ul class="">
+                <ul>
                     <li>
                         <a href="{{ route('pendaftaran-users') }}" class="side-menu">
                             <div class="side-menu__icon"> <i data-lucide="book"></i> </div>
@@ -171,6 +171,11 @@
     {{-- TODO Content --}}
     <div class="content">
         <div class="top-bar">
+            <!-- BEGIN: Breadcrumb -->
+            <nav aria-label="breadcrumb" class="-intro-x mr-auto hidden sm:flex">
+            </nav>
+            <!-- END: Breadcrumb -->
+            <!-- BEGIN: Account Menu -->
             <div class="intro-x dropdown w-8 h-8">
                 <div class="dropdown-toggle w-8 h-8 rounded-full overflow-hidden shadow-lg image-fit zoom-in"
                     role="button" aria-expanded="false" data-tw-toggle="dropdown">
@@ -208,9 +213,9 @@
                     </ul>
                 </div>
             </div>
+            <!-- END: Account Menu -->
         </div>
-        <h2 class="intro-y text-lg font-medium mt-3">
-        </h2>
+        <h2 class="intro-y text-lg font-medium mt-3">Cek Verifikasi</h2>
         <div class="grid grid-cols-12 gap-6 mt-5">
             {{-- TODO TOP CONTENT --}}
             <div class="intro-y col-span-12 overflow-auto lg:overflow-visible">
