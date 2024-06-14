@@ -38,7 +38,7 @@ class registrasiController extends Controller
         // Jika email belum terdaftar, simpan data pengguna baru
         User::create([
             'email' => $request->email,
-            'level' => 'users',
+            'role' => 'pengaju',
             'password' => Hash::make($request->password),
         ]);
 

@@ -11,11 +11,12 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('userstpa', function (Blueprint $table) {
-            $table->id();
-            $table->string("nama_tpa", 100);
-            $table->string("alamat", 100);
-            $table->string("logo", 100);
+        Schema::create('admin', function (Blueprint $table) {
+            $table->id("id_admin");
+            $table->string("nip", 16)->unique();
+            $table->string("nama_admin", 100);
+            $table->string("jenis_kelamin", 30);
+            $table->foreignId("id_users")->constrained("users")->OnDelete('cascade');
             $table->timestamps();
         });
     }

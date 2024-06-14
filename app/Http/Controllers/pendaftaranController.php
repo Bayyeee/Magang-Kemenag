@@ -9,4 +9,5 @@ class pendaftaranController extends Controller
     public function pendaftaran(){
         return view('users.pendaftaranUsers');
     }
+    
 }

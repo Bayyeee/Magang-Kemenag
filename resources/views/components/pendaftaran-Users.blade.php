@@ -223,9 +223,8 @@
                 </h2>
             </div>
             <div class="grid grid-cols-12 gap-6 mt-3">
-                <div class="intro-y lg:col-span-5">
-                    <!-- BEGIN: Form Layout -->
-                    <div class="intro-y box p-5">
+                <div class="intro-y col-span-12 lg:col-span-5">
+                    <div class="card box p-5">
                         <form action="">
                             <div>
                                 <label for="crud-form-1" class="form-label">Nama Berkas</label>
@@ -241,7 +240,7 @@
                                     <option value="4">Daftar Santri</option>
                                     <option value="5">Daftar Ustad/Ustadzah</option>
                                     <option value="6">Surat Rekomendasi KUA</option>
-                                    <option value="5">Bukti Kegiatan</option>
+                                    <option value="7">Bukti Kegiatan</option>
                                 </select>
                                 <label for="" class="form-label text-xs font-manrope text-danger">*Wajib
                                     diunggah</label>
@@ -253,31 +252,30 @@
                                 <label for="" class="form-label text-xs font-manrope">Pilih berkas (hanya
                                     menerima berkas PDF) maksimal 2Mb.</label>
                             </div>
-                            <div class="text-right mt-33z">
+                            <div class="text-left mt-3">
                                 <button type="button" class="btn btn-success text-white font-semibold">
                                     <i class="mr-1" data-lucide="save"></i>
                                     Simpan Berkas</button>
                             </div>
                         </form>
                     </div>
-                    <!-- END: Form Layout -->
                 </div>
                 <div class="intro-y col-span-12 lg:col-span-7">
                     <div class="card box p-5">
                         <div class="card-body">
                             <div class="mb-3 text-xl font-bold text-success">
                                 <div class="side-menu__icon"><i data-lucide="hard-drive"></i> </div>
-                            <div class="side-menu__title ms-7 -mt-6">
-                                <h5>Daftar Berkas Terunggah</h5>
+                                <div class="side-menu__title ms-7 -mt-6">
+                                    <h5>Daftar Berkas Terunggah</h5>
+                                </div>
                             </div>
-                        </div>
                             <table class="table table-striped table-bordered">
                                 <tr>
                                     <td>Nama TPA</td>
                                     <td>Al-Wahidah</td>
                                 </tr>
                                 <tr>
-                                    <td>Jenjang LPQ</td>
+                                    <td>Jenjang</td>
                                     <td>Taman Pendidikan Al-Qur`an (TPQ)</td>
                                 </tr>
                             </table>
@@ -290,51 +288,31 @@
                                 </thead>
                                 <tbody>
                                     <tr>
-                                        <td colspan='1'>1. Surat Permohonan Tanda Daftar</td>
+                                        <td colspan='1'>1. Surat Permohonan TPQ</td>
                                         <td colspan="2"></td>
                                     </tr>
                                     <tr>
-                                        <td colspan='1'>2. Profil LPQ</td>
+                                        <td colspan='1'>2. Proposal pendirian TPQ</td>
                                         <td colspan="2"></td>
                                     </tr>
                                     <tr>
-                                        <td colspan='1'>3. Susunan Pengurus</td>
+                                        <td colspan='1'>3. SK Kepengurusan</td>
                                         <td colspan="2"></td>
                                     </tr>
                                     <tr>
-                                        <td colspan='1'>4. SK Kepala dan Tenaga Pengajar</td>
+                                        <td colspan='1'>4. Daftar Santri</td>
                                         <td colspan="2"></td>
                                     </tr>
                                     <tr>
-                                        <td colspan='1'>5. Data Kepala dan Tenaga Pengajar</td>
+                                        <td colspan='1'>5. Daftar Ustad/Ustadzah</td>
                                         <td colspan="2"></td>
                                     </tr>
                                     <tr>
-                                        <td colspan='1'>6. Foto Copy Ijazah Kepala dan Tenaga Pengajar</td>
+                                        <td colspan='1'>6. Surat Rekomendasi KUA</td>
                                         <td colspan="2"></td>
                                     </tr>
                                     <tr>
-                                        <td colspan='1'>7. Foto Copy Syahadah Kepala atau Tenaga Pengajar</td>
-                                        <td colspan="2"></td>
-                                    </tr>
-                                    <tr>
-                                        <td colspan='1'>8. Data Santri</td>
-                                        <td colspan="2"></td>
-                                    </tr>
-                                    <tr>
-                                        <td colspan='1'>9. Surat Keterangan Tanah</td>
-                                        <td colspan="2"></td>
-                                    </tr>
-                                    <tr>
-                                        <td colspan='1'>10. Akta Notaris Yayasan</td>
-                                        <td colspan="2"></td>
-                                    </tr>
-                                    <tr>
-                                        <td colspan='1'>11. Surat Keterangan Domisili Lembaga dari Kelurahan</td>
-                                        <td colspan="2"></td>
-                                    </tr>
-                                    <tr>
-                                        <td colspan='1'>12. Denah Lokasi</td>
+                                        <td colspan='1'>7. Bukti Kegiatan</td>
                                         <td colspan="2"></td>
                                     </tr>
                                 </tbody>

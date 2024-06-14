@@ -16,13 +16,19 @@ class DatabaseSeeder extends Seeder
         // User::factory(10)->create();
 
         User::create([
-            'level' => 'admin',
+            'role' => 'admin',
             'email' => 'admin@gmail.com',
             'password' => Hash::make('12345'),
         ]);
 
         User::create([
-            'level' => 'users',
+            'role' => 'humas',
+            'email' => 'humas@gmail.com',
+            'password' => Hash::make('12345'),
+        ]);
+
+        User::create([
+            'role' => 'pengaju',
             'email' => 'hihi@gmail.com',
             'password' => Hash::make('12345'),
         ]);

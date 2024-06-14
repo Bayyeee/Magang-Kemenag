@@ -8,7 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class Usertpa extends Model
 {
-    protected $table = "userstpa";
+    protected $table = "tpa";
     protected $primaryKey = "id";
     protected $fillable = [
         'id',

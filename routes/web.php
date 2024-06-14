@@ -32,7 +32,7 @@ Route::get('/logout',[loginController::class,'logout']) -> name('logout');
 
 Route::group(['middleware'=> ['auth']], function () {
 
-    Route::middleware('level:users')->group(function(){
+    Route::middleware('checkRoles:pengaju')->group(function(){
 
         Route::get('/home', [homeuserController::class, 'index']) -> name('Home');
 
@@ -47,11 +47,10 @@ Route::group(['middleware'=> ['auth']], function () {
         Route::get('/pendaftaran-users',[pendaftaranController::class,'pendaftaran']) -> name('pendaftaran-users');
     });
 
-    Route::middleware('level:admin')->group(function () {
+    Route::middleware('checkRoles:admin,humas')->group(function () {
 
         Route::get('/homeAdmin', [homeadminController::class, 'homeAdmin']) -> name('homeAdmin');
 
     });
-
 
 });
