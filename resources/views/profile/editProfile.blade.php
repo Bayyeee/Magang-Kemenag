@@ -153,13 +153,13 @@
                 <!-- END: Account Menu -->
             </div>
             <div class="intro-y box p-4">
-                {{-- <div class="intro-y flex items-center">
+                <div class="intro-y flex items-center">
                     <h2 class="text-lg font-medium mr-auto">
                         Edit Profile
                     </h2>
-                </div> --}}
+                </div>
                 {{-- ?? BEGIN: Form Layout --}}
-                {{-- <form action="{{ route('simpan-profile') }}" method="POST" enctype="multipart/form-data">
+                <form action="{{ route('simpan-profile') }}" method="POST" enctype="multipart/form-data">
                     {{ csrf_field() }}
                     <div class="intro-y box p-5 mt-3">
                         <div>
@@ -191,8 +191,8 @@
                                 class="btn btn-outline-secondary w-24 mr-1">Kembali</button>
                             <button type="submit" class="btn btn-primary w-24">Save</button>
                         </div>
-                </form> --}}
-                <div class="intro-y flex items-center">
+                </form>
+                {{-- <div class="intro-y flex items-center">
                     <h2 class="text-lg font-medium mr-auto">
                         Profile Layout
                     </h2>
@@ -266,7 +266,7 @@
                         <button onclick="window.location.href = '/'" type="button" class="btn btn-secondary w-24"><i data-lucide="corner-up-left"
                             class="w-4 h-4 mr-2"></i> Kembali </button>
                     </div>
-                </div>
+                </div> --}}
             </div>
             {{-- ?? END: Top Bar  --}}
             <div class="grid grid-cols-12 gap-6">

@@ -38,6 +38,8 @@ Route::group(['middleware'=> ['auth']], function () {
 
         Route::get('/profile', [profileController::class, 'profile']) -> name('Profile');
 
+        Route::get('/edit-profile', [profileController::class, 'editprofile']) -> name('editProfile');
+
         Route::post('/simpan-profile', [profileController::class, 'store']) -> name('simpan-profile');
 
         Route::get('/edit-pengajuan', [editpengajuanController::class, 'editpengajuan']) -> name('edit-pengajuan');

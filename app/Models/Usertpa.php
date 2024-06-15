@@ -20,6 +20,6 @@ class Usertpa extends Model
     ];
 
     public function userstpa() : HasOne {
-        return $this->hasOne(Usertpa::class, 'id_users', 'id');
+        return $this->hasOne(User::class, 'id_users', 'id');
     }
 }

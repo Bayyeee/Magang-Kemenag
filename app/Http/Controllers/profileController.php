@@ -8,47 +8,58 @@ use RealRashid\SweetAlert\Facades\Alert;
 
 class profileController extends Controller
 {
-    // public function profile(Request $request){
-    //     return view("profile.userProfile");
-    // }
-
     public function profile()
     {
-        $users = auth()->user();
-        // $dataGambar = Usertpa::latest()->get();
-        return view('profile.userProfile');
+        $user = auth()->user();
+        $userProfile = Usertpa::where('id_users', $user->id)->first();
+        return view('profile.userProfile', compact('user', 'userProfile'));
+    }
+
+    public function editprofile()
+    {
+        $user = auth()->user();
+        $userProfile = Usertpa::where('id_users', $user->id)->first();
+        return view('profile.editProfile', compact('user', 'userProfile'));
     }
 
     public function store(Request $request)
     {
-        // dd($request->all());
-
-        // ** validasi request data mwehehe
+        // Validasi request data
         $request->validate([
             'name' => 'required|string|max:30',
             'alamat' => 'required|string|max:100',
-            'logo' => 'required|image|mimes:jpeg,png,jpg,svg|max:3048',
+            'logo' => 'nullable|image|mimes:jpeg,png,jpg,svg|max:3048',
         ]);
 
-        // ** pindah data ke public bro
+        // ** path gambar
         $filePath = public_path('images');
-        $insert = new Usertpa();
-        $insert->nama_tpa = $request->name;
-        $insert->alamat = $request->alamat;
-        $insert->id_users = auth()->id();
 
-        // ** get data upload foto bro
-        if ($request->hasfile('logo')) {
-            $file = $request->file('logo');
-            $file_name = time() . rand(100, 900) . "." . $file->getClientOriginalName();
-            // $file_name = $file->getClientOriginalName();
+        // ** cek profil pengguna yang sedang login
+        $userProfile = Usertpa::where('id_users', auth()->id())->first();
 
-            $file->move($filePath, $file_name);
-            $insert->logo = $file_name;
+        // ** buat objek Usertpa baru
+        if (!$userProfile) {
+            $userProfile = new Usertpa();
+            $userProfile->id_users = auth()->id();
         }
 
-        $insert->save();
-        Alert::success('Berhasil', 'Success Edit Profile');
+        // ** Update
+        $userProfile->nama_tpa = $request->name;
+        $userProfile->alamat = $request->alamat;
+
+        // ** upload logo
+        if ($request->hasFile('logo')) {
+            $file = $request->file('logo');
+            $file_name = time() . rand(100, 900) . "." . $file->getClientOriginalName();
+            $file->move($filePath, $file_name);
+            $userProfile->logo = $file_name;
+        }
+
+        // ** save
+        $userProfile->save();
+
+        // Tampilkan alert sukses
+        Alert::success('Berhasil', 'Profil berhasil diperbarui');
         return redirect()->route('Profile');
     }
 }
