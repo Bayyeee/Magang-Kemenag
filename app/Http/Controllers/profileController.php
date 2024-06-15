@@ -23,7 +23,7 @@ class profileController extends Controller
     {
         // dd($request->all());
 
-        // validasi request data mwehehe
+        // ** validasi request data mwehehe
         $request->validate([
             'name' => 'required|string|max:30',
             'alamat' => 'required|string|max:100',
@@ -35,6 +35,7 @@ class profileController extends Controller
         $insert = new Usertpa();
         $insert->nama_tpa = $request->name;
         $insert->alamat = $request->alamat;
+        $insert->id_users = auth()->id();
 
         // ** get data upload foto bro
         if ($request->hasfile('logo')) {

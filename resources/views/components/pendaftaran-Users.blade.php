@@ -181,14 +181,23 @@
                 <div class="intro-x dropdown w-8 h-8">
                     <div class="dropdown-toggle w-8 h-8 rounded-full overflow-hidden shadow-lg image-fit zoom-in"
                         role="button" aria-expanded="false" data-tw-toggle="dropdown">
-                        <img alt="" src="{{ asset('images/ismail.png') }}">
+                        @if (auth()->user()->usertpa && auth()->user()->usertpa->logo)
+                            <img alt="User Photo" src="{{ asset('images/' . auth()->user()->usertpa->logo) }}">
+                        @else
+                            <img alt="Default Photo" src="{{ asset('images/user.png') }}">
+                        @endif
                     </div>
                     <div class="dropdown-menu w-56">
                         <ul class="dropdown-content bg-primary text-white">
                             <li class="p-2">
-                                <div class="font-medium">{{ auth()->user()->email }}</div>
-                                <div class="text-xs text-white/70 mt-0.5 dark:text-slate-500">
-                                    {{ auth()->user()->level }}</div>
+                                <div class="font-medium">
+                                    @if (auth()->user()->usertpa)
+                                        {{ auth()->user()->usertpa->nama_tpa }}
+                                    @else
+                                        {{ auth()->user()->email }}
+                                    @endif
+                                </div>
+                                <div class="text-xs text-white/70 mt-0.5 dark:text-slate-500">user</div>
                             </li>
                             <li>
                                 <hr class="dropdown-divider border-white/[0.08]">
@@ -272,7 +281,13 @@
                             <table class="table table-striped table-bordered">
                                 <tr>
                                     <td>Nama TPA</td>
-                                    <td>Al-Wahidah</td>
+                                    <td>
+                                        @if (auth()->user()->usertpa)
+                                                {{ auth()->user()->usertpa->nama_tpa }}
+                                            @else
+                                                {{ auth()->user()->email }}
+                                            @endif
+                                    </td>
                                 </tr>
                                 <tr>
                                     <td>Jenjang</td>

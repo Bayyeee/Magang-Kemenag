@@ -30,7 +30,8 @@ class checkRoles
         }
 
         // Jika role tidak sesuai, redirect ke halaman lain atau berikan respons yang sesuai
-        Log::info('Role tidak sesuai, redirect');
-        return redirect('/home'); // Ganti '/home' dengan rute yang sesuai untuk kasus ini
+        Log::info('Role tidak sesuai, redirect 404');
+        return redirect(404); // Ganti '/unauthorized' dengan rute yang sesuai untuk kasus ini
     }
 }
+
