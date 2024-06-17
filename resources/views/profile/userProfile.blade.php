@@ -261,7 +261,11 @@
                             <div class="flex flex-col justify-center items-center lg:items-start mt-4">
                                 <div class="truncate sm:whitespace-normal flex items-center"> <i data-lucide="user"
                                         class="w-4 h-4 mr-2"></i>
-                                    {{ Auth::user()->nama_admin }}
+                                    @if (auth()->user()->nama_admin)
+                                        {{ auth()->user()->nama_admin }}
+                                    @else
+                                        <div>Perbarui Profile</div>
+                                    @endif
                                 </div>
                                 <div class="truncate sm:whitespace-normal flex items-center"> <i data-lucide="key"
                                         class="w-4 h-4 mr-2"></i>
@@ -273,7 +277,11 @@
                                 </div>
                                 <div class="truncate sm:whitespace-normal flex items-center"> <i data-lucide="shield"
                                         class="w-4 h-4 mr-2"></i>
-                                    {{ Auth::user()->jenis_kelamin }}
+                                    @if (auth()->user()->jenis_kelamin)
+                                        {{ auth()->user()->jenis_kelamin }}
+                                    @else
+                                        <div>Perbarui Profile</div>
+                                    @endif
                                 </div>
                             </div>
                         </div>

@@ -32,25 +32,22 @@ class registrasiController extends Controller
 
         if ($existingUser) {
             // Jika email sudah terdaftar, beri tahu pengguna
-            Alert::error('Gagal','Email terdaftar');
-            // toast('Warning Toast', 'Email sudah terdaftar!!!');
+            // Alert::error('Gagal','Email terdaftar');
+            toast('Warning Toast', 'Email sudah terdaftar!!!');
             return redirect('/registrasi');
         }
 
-        if ($request->filled('nip')) {
-            $existingNipUser = User::where('nip', $request->nip)->first();
-            if ($existingNipUser) {
-                Alert::error('Gagal','NIP terdaftar');
-                // toast('Warning Toast', 'Email sudah terdaftar!!!');
-                return redirect('/registrasi');
-            }
-        }
+        // if ($request->filled('nip')) {
+        //     $existingNipUser = User::where('nip', $request->nip)->first();
+        //     if ($existingNipUser) {
+        //         Alert::error('Gagal','NIP terdaftar');
+        //         // toast('Warning Toast', 'Email sudah terdaftar!!!');
+        //         return redirect('/registrasi');
+        //     }
+        // }
 
         // Jika email belum terdaftar, simpan data pengguna baru
         User::create([
-            'nip' => $request->nip,
-            'nama_admin' => $request->nama_admin,
-            'jenis_kelamin' => $request->jenis_kelamin,
             'email' => $request->email,
             'role' => 'pengaju',
             'password' => Hash::make($request->password),

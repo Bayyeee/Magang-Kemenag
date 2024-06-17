@@ -29,40 +29,6 @@
                     {{ csrf_field() }}
                     <h5 class="text-2xl font-bold text-gray-900 dark:text-white -mb-5">Registrasi</h5>
                     <div>
-                        <label for="nip"
-                            class="block mb-1 text-sm font-medium text-gray-900 dark:text-white">NIP</label>
-                        <input type="text" name="nip" id="nip"
-                            class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-black disabled"
-                            placeholder="Masukkan NIP" disabled maxlength="18"/>
-                        <div>
-                            <label class="block text-sm font-medium text-gray-900 dark:text-white">Apakah Anda
-                                memiliki NIP?</label>
-                            <input type="radio" id="has_nip_yes" name="has_nip" value="yes" class="mr-2">
-                            <label for="has_nip_yes"
-                                class="text-sm font-medium text-gray-900 dark:text-white">Ya</label>
-                            <input type="radio" id="has_nip_no" name="has_nip" value="no" class="ml-4 mr-2">
-                            <label for="has_nip_no"
-                                class="text-sm font-medium text-gray-900 dark:text-white">Tidak</label>
-                        </div>
-                    </div>
-                    <div>
-                        <label for="nama_admin" class="block mb-1 text-sm font-medium text-gray-900 dark:text-white">Nama
-                            Admin Operator</label>
-                        <input type="text" name="nama_admin" id="nama_admin"
-                            class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-black"
-                            placeholder="masukkan nama" required />
-                    </div>
-                    <div>
-                        <label for="jenis_kelamin"
-                            class="block mb-1 text-sm font-medium text-gray-900 dark:text-white">Jenis Kelamin</label>
-                        <select name="jenis_kelamin" id="jenis_kelamin"
-                            class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-black">
-                            <option value="">Pilih jenis kelamin</option>
-                            <option value="laki-laki">Laki-laki</option>
-                            <option value="perempuan">Perempuan</option>
-                        </select>
-                    </div>
-                    <div>
                         <label for="email" class="block mb-1 text-sm font-medium text-gray-900 dark:text-white">Email TPA</label>
                         <input type="email" name="email" id="email"
                             class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-black"
