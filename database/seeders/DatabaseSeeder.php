@@ -16,21 +16,30 @@ class DatabaseSeeder extends Seeder
         // User::factory(10)->create();
 
         User::create([
-            'role' => 'admin',
+            'nip' => '198001042014032014',
+            'nama_admin' => 'AbdulQodir',
+            'jenis_kelamin' => 'laki-laki',
             'email' => 'admin@gmail.com',
             'password' => Hash::make('12345'),
+            'role' => 'admin',
         ]);
 
         User::create([
-            'role' => 'humas',
+            'nip' => '198512032015012010',
+            'nama_admin' => 'Siti Markonah',
+            'jenis_kelamin' => 'perempuan',
             'email' => 'humas@gmail.com',
             'password' => Hash::make('12345'),
+            'role' => 'humas',
         ]);
 
         User::create([
-            'role' => 'pengaju',
+            'nip' => null,
+            'nama_admin' => 'Sukijat',
+            'jenis_kelamin' => 'perempuan',
             'email' => 'hihi@gmail.com',
             'password' => Hash::make('12345'),
+            'role' => 'pengaju',
         ]);
     }
 }

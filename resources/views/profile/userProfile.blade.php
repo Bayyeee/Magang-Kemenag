@@ -217,13 +217,28 @@
                             </div>
                             <div class="ml-5">
                                 <div class="w-24 sm:w-40 truncate sm:whitespace-normal font-medium text-lg">
-                                    @if (auth()->user()->usertpa)
+                                    {{ Auth::user()->email }}
+                                    {{-- @if (auth()->user()->usertpa)
                                         {{ auth()->user()->usertpa->nama_tpa }}
                                     @else
                                         {{ auth()->user()->email }}
-                                    @endif
+                                    @endif --}}
                                 </div>
                                 <div class="text-slate-500">User</div>
+                            </div>
+                        </div>
+                        <div
+                            class="mt-6 lg:mt-0 flex-1 px-5 border-l border-r border-slate-200/60 dark:border-darkmode-400 border-t lg:border-t-0 pt-5 lg:pt-0">
+                            <div class="font-medium text-center lg:text-left lg:mt-3">Nama Tpa</div>
+                            <div class="flex flex-col justify-center items-center lg:items-start mt-4">
+                                <div class="truncate sm:whitespace-normal flex items-center"> <i data-lucide="user"
+                                        class="w-4 h-4 mr-2"></i>
+                                    @if (auth()->user()->usertpa)
+                                        {{ auth()->user()->usertpa->nama_tpa }}
+                                    @else
+                                        <div>Silahkan Perbarui Profile</div>
+                                    @endif
+                                </div>
                             </div>
                         </div>
                         <div
@@ -240,31 +255,36 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="">
-                            <div class=""></div>
-                            <div class="">
-                                <div class=""><span class=""></span> </div>
-                                <div class="">
-                                    <div class="h-[55px]">
-                                        <canvas></canvas>
-                                    </div>
+                        <div
+                            class="mt-6 lg:mt-0 flex-1 px-5 border-l border-r border-slate-200/60 dark:border-darkmode-400 border-t lg:border-t-0 pt-5 lg:pt-0">
+                            <div class="font-medium text-center lg:text-left lg:mt-3">Admin Operator</div>
+                            <div class="flex flex-col justify-center items-center lg:items-start mt-4">
+                                <div class="truncate sm:whitespace-normal flex items-center"> <i data-lucide="user"
+                                        class="w-4 h-4 mr-2"></i>
+                                    {{ Auth::user()->nama_admin }}
                                 </div>
-                            </div>
-                            <div class="">
-                                <div class=""><span class=""></span> </div>
-                                <div class="">
-                                    <div class="h-[55px]">
-                                        <canvas></canvas>
-                                    </div>
+                                <div class="truncate sm:whitespace-normal flex items-center"> <i data-lucide="key"
+                                        class="w-4 h-4 mr-2"></i>
+                                    @if (auth()->user()->nip)
+                                        {{ auth()->user()->nip }}
+                                    @else
+                                        <div>Pegawai Honorer</div>
+                                    @endif
+                                </div>
+                                <div class="truncate sm:whitespace-normal flex items-center"> <i data-lucide="shield"
+                                        class="w-4 h-4 mr-2"></i>
+                                    {{ Auth::user()->jenis_kelamin }}
                                 </div>
                             </div>
                         </div>
                     </div>
                     <div class="mt-3">
-                        <button onclick="window.location.href = '{{ route('editProfile') }}'" type="button" class="btn btn-primary w-24 mr-2"> <i data-lucide="edit"
-                                class="w-4 h-4 mr-2"></i> Edit </button>
-                        <button onclick="window.location.href = '/'" type="button" class="btn btn-secondary w-24"><i data-lucide="corner-up-left"
-                            class="w-4 h-4 mr-2"></i> Kembali </button>
+                        <button onclick="window.location.href = '{{ route('editProfile') }}'" type="button"
+                            class="btn btn-primary w-24 mr-2"> <i data-lucide="edit" class="w-4 h-4 mr-2"></i> Edit
+                        </button>
+                        <button onclick="window.location.href = '/profile'" type="button"
+                            class="btn btn-secondary w-24"><i data-lucide="corner-up-left" class="w-4 h-4 mr-2"></i>
+                            Kembali </button>
                     </div>
                 </div>
             </div>

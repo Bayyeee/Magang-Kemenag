@@ -8,6 +8,5 @@
     <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@200..800&display=swap" rel="stylesheet">
 
     <link rel="stylesheet" href="{{asset('template/css/styles.css')}}">
-    <link rel="stylesheet" href="{{asset('../node_modules/swiper/swiper-bundle.css')}}">
     <link href="{{asset('template/css/custom.css')}}" rel="stylesheet">
     @vite('resources/css/app.css')

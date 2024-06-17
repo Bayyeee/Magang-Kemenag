@@ -17,7 +17,8 @@ class registrasiController extends Controller
     // }
 
     // * CREATE USER ATAU SIMPAN DATA REGISTRASI
-    public function simpanregistrasi(Request $request){
+    public function simpanregistrasi(Request $request)
+    {
         // ** Check Masuk Data
         // dd($request->all());
 
@@ -31,27 +32,41 @@ class registrasiController extends Controller
 
         if ($existingUser) {
             // Jika email sudah terdaftar, beri tahu pengguna
-            toast('Warning Toast','Email sudah terdaftar!!!');
+            Alert::error('Gagal','Email terdaftar');
+            // toast('Warning Toast', 'Email sudah terdaftar!!!');
             return redirect('/registrasi');
+        }
+
+        if ($request->filled('nip')) {
+            $existingNipUser = User::where('nip', $request->nip)->first();
+            if ($existingNipUser) {
+                Alert::error('Gagal','NIP terdaftar');
+                // toast('Warning Toast', 'Email sudah terdaftar!!!');
+                return redirect('/registrasi');
+            }
         }
 
         // Jika email belum terdaftar, simpan data pengguna baru
         User::create([
+            'nip' => $request->nip,
+            'nama_admin' => $request->nama_admin,
+            'jenis_kelamin' => $request->jenis_kelamin,
             'email' => $request->email,
             'role' => 'pengaju',
             'password' => Hash::make($request->password),
         ]);
 
         // Alert::success('Berhasil', 'Berhasil membuat akun!!!');
-        toast('Berhasil membuat akun','success');
+        toast('Berhasil membuat akun', 'success');
         return redirect('login');
     }
 
 
     // ** CHECK AUTH USER JIKA SUDAH BERADA DIHALAMAN /HOME TIDAK BISA KEMBALI KE HALAMAN REGISTRASI SERTA MENAMPILKAN HALAMAN REGISTRASI
-    public function checkRegister() {
+    public function checkRegister()
+    {
         if (Auth::check()) {
-            Alert::error('Error','Halaman tidak ditemukan!!!');
+            Alert::error('Error', 'Halaman tidak ditemukan!!!');
             return redirect('/home');
         }
         return view('auth.registrasi');

@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Usertpa;
+use App\Models\User;
 use Illuminate\Http\Request;
 use RealRashid\SweetAlert\Facades\Alert;
 
@@ -29,6 +30,9 @@ class profileController extends Controller
             'name' => 'required|string|max:30',
             'alamat' => 'required|string|max:100',
             'logo' => 'nullable|image|mimes:jpeg,png,jpg,svg|max:3048',
+            'nama_admin' => 'required|string|max:30',
+            'nip' => 'nullable|string|max:18',
+            'jenis_kelamin' => 'required|string|max:10',
         ]);
 
         // ** path gambar
@@ -36,6 +40,7 @@ class profileController extends Controller
 
         // ** cek profil pengguna yang sedang login
         $userProfile = Usertpa::where('id_users', auth()->id())->first();
+        $users = User::find(auth()->id());
 
         // ** buat objek Usertpa baru
         if (!$userProfile) {
@@ -43,9 +48,14 @@ class profileController extends Controller
             $userProfile->id_users = auth()->id();
         }
 
-        // ** Update
+        // ** Update usertpa
         $userProfile->nama_tpa = $request->name;
         $userProfile->alamat = $request->alamat;
+
+        // ** update users
+        $users->nama_admin = $request->nama_admin;
+        $users->nip = $request->nip;
+        $users->jenis_kelamin = $request->jenis_kelamin;
 
         // ** upload logo
         if ($request->hasFile('logo')) {
@@ -57,6 +67,7 @@ class profileController extends Controller
 
         // ** save
         $userProfile->save();
+        $users->save();
 
         // Tampilkan alert sukses
         Alert::success('Berhasil', 'Profil berhasil diperbarui');

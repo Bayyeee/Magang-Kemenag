@@ -3,6 +3,15 @@
 
 <x-head-Home></x-head-Home>
 
+<head>
+    <style>
+        .disabled {
+            background-color: #e9ecef;
+            cursor: not-allowed;
+        }
+    </style>
+</head>
+
 
 <body class="py-5">
     <div class="flex mt-[4.7rem] md:mt-0">
@@ -177,6 +186,47 @@
                         </div>
 
                         <div class="mt-3">
+                            <label for="crud-form-3" class="form-label">Nama Admin Operator</label>
+                            <div class="input-group">
+                                <input id="nama_admin" type="text" class="form-control"
+                                    placeholder="{{ Auth::user()->nama_admin }}" aria-describedby="input-group-1"
+                                    name="nama_admin">
+                            </div>
+                        </div>
+
+                        <div class="mt-3">
+                            <label for="nip" class="block mb-1 text-sm text-gray-900 dark:text-dark">NIP</label>
+                            <input type="text" name="nip" id="nip"
+                                class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-black disabled"
+                                placeholder="{{ Auth::user()->nip }}"
+                                disabled maxlength="18" />
+                            <div>
+                                <label class="block text-sm text-gray-900 dark:text-dark">Apakah Anda
+                                    memiliki NIP?</label>
+                                <input type="radio" id="has_nip_yes" name="has_nip" value="yes"
+                                    class="mr-2">
+                                <label for="has_nip_yes"
+                                    class="text-sm text-gray-900 dark:text-black">Ya</label>
+                                <input type="radio" id="has_nip_no" name="has_nip" value="no"
+                                    class="ml-4 mr-2">
+                                <label for="has_nip_no"
+                                    class="text-sm text-gray-900 dark:text-dark">Tidak</label>
+                            </div>
+                        </div>
+
+                        <div>
+                            <label for="jenis_kelamin"
+                                class="block mb-1 text-sm font-medium text-gray-900 dark:text-white">Jenis
+                                Kelamin</label>
+                            <select name="jenis_kelamin" id="jenis_kelamin"
+                                class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-black">
+                                <option value="">Pilih jenis kelamin</option>
+                                <option value="laki-laki">Laki-laki</option>
+                                <option value="perempuan">Perempuan</option>
+                            </select>
+                        </div>
+
+                        <div class="mt-3">
                             <label for="crud-form-3" class="form-label" for="file_input">Upload logo</label>
                             <div class="input-group rounded-lg">
                                 <input
@@ -286,6 +336,25 @@
         </div>
     </div>
     <x-script-Home></x-script-Home>
+
+    <script>
+        document.querySelectorAll('input[name="has_nip"]').forEach(function(radio) {
+            radio.addEventListener('change', function() {
+                var nipInput = document.getElementById('nip');
+                if (document.getElementById('has_nip_yes').checked) {
+                    nipInput.disabled = false;
+                    nipInput.classList.remove('disabled');
+                } else {
+                    nipInput.disabled = true;
+                    nipInput.value = ''; // Clear the input field if disabled
+                    nipInput.classList.add('disabled');
+                }
+            });
+        });
+        document.getElementById('nip').addEventListener('input', function() {
+            this.value = this.value.replace(/[^0-9]/g, '');
+        });
+    </script>
 
 </body>
 
