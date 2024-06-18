@@ -47,6 +47,9 @@ Route::group(['middleware'=> ['auth']], function () {
         Route::get('/cek-verifikasi', [cekverifikasiController::class, 'cekverifikasi']) -> name('cek-verifikasi');
 
         Route::get('/pendaftaran-users',[pendaftaranController::class,'pendaftaran']) -> name('pendaftaran-users');
+
+        Route::post('/post-pendaftaran', [pendaftaranController::class, 'uploadBerkas']) -> name('post-pendaftaran');
+        
     });
 
     Route::middleware('checkRoles:admin,humas')->group(function () {

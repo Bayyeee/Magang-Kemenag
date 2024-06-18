@@ -234,37 +234,35 @@
             <div class="grid grid-cols-12 gap-6 mt-3">
                 <div class="intro-y col-span-12 lg:col-span-5">
                     <div class="card box p-5">
-                        <form action="">
+                        <form action="{{ route('post-pendaftaran') }}" method="POST" enctype="multipart/form-data">
+                            {{ csrf_field() }}
                             <div>
                                 <label for="crud-form-1" class="form-label">Nama Berkas</label>
-                                <input id="crud-form-1" type="text" class="form-control w-full"
-                                    placeholder="Nama Berkas">
+                                <input id="crud-form-1" type="text" name="nama_berkas" class="form-control w-full" placeholder="Nama Berkas" required>
                             </div>
                             <div class="mt-3">
                                 <label for="crud-form-2" class="form-label">Jenis Berkas</label>
-                                <select data-placeholder="Cari berkas" class=" tom-select w-full">
-                                    <option value="1">Surat Permohonan TPQ</option>
-                                    <option value="2">Proposal pendirian TPQ</option>
-                                    <option value="3">SK Kepengurusan</option>
-                                    <option value="4">Daftar Santri</option>
-                                    <option value="5">Daftar Ustad/Ustadzah</option>
-                                    <option value="6">Surat Rekomendasi KUA</option>
-                                    <option value="7">Bukti Kegiatan</option>
+                                <select id="crud-form-2" name="tipe_berkas" class="tom-select w-full" required>
+                                    <option value="Surat Permohonan TPQ">Surat Permohonan TPQ</option>
+                                    <option value="Proposal pendirian TPQ">Proposal pendirian TPQ</option>
+                                    <option value="SK Kepengurusan">SK Kepengurusan</option>
+                                    <option value="Daftar Santri">Daftar Santri</option>
+                                    <option value="Daftar Ustad/Ustadzah">Daftar Ustad/Ustadzah</option>
+                                    <option value="Surat Rekomendasi KUA">Surat Rekomendasi KUA</option>
+                                    <option value="Bukti Kegiatan">Bukti Kegiatan</option>
                                 </select>
-                                <label for="" class="form-label text-xs font-manrope text-danger">*Wajib
-                                    diunggah</label>
+                                <label for="" class="form-label text-xs font-manrope text-danger">*Wajib diunggah</label>
                             </div>
                             <div class="mt-3">
                                 <label for="crud-form-3" class="form-label">Upload Berkas</label>
-                                <input id="crud-form-3" type="file" class="border form-control "
-                                    placeholder="Input text" accept=".pdf">
-                                <label for="" class="form-label text-xs font-manrope">Pilih berkas (hanya
-                                    menerima berkas PDF) maksimal 2Mb.</label>
+                                <input id="crud-form-3" type="file" name="file" class="border form-control" placeholder="Input text" accept=".pdf" required>
+                                <label for="" class="form-label text-xs font-manrope">Pilih berkas (hanya menerima berkas PDF) maksimal 2Mb.</label>
                             </div>
                             <div class="text-left mt-3">
-                                <button type="button" class="btn btn-success text-white font-semibold">
+                                <button type="submit" class="btn btn-success text-white font-semibold">
                                     <i class="mr-1" data-lucide="save"></i>
-                                    Simpan Berkas</button>
+                                    Simpan Berkas
+                                </button>
                             </div>
                         </form>
                     </div>

@@ -14,11 +14,14 @@ return new class extends Migration
     {
         Schema::create('pendaftaran', function (Blueprint $table) {
             $table->id('id_pendaftaran');
-            $table->foreignId('id_tpa')->constrained('tpa')->onDelete('cascade');
-            $table->enum('status_verifikasi', ['proses', 'diverifikasi', 'ditolak'])->default('proses');
-            $table->timestamp('waktu_pendaftaran')->default(DB::raw('CURRENT_TIMESTAMP'));
+            $table->unsignedBigInteger('id_tpa');
+            // $table->enum('status_verifikasi', ['proses', 'diverifikasi', 'ditolak'])->default('proses');
+            $table->timestamp('waktu_pendaftaran')->useCurrent();
             $table->timestamps();
+
+            $table->foreign('id_tpa')->references('id')->on('tpa')->onDelete('cascade');
         });
+
 
     }
 
