@@ -33,7 +33,7 @@ class Usertpa extends Model
     // }
 
     public function getPendaftarans(){
-        return $this->hasMany(pendaftaranTpa::class, 'id_tpa', 'id');
+        return $this->hasOne(pendaftaranTpa::class, 'id_tpa', 'id');
     }
 
     public function getpendaftaran() {

@@ -238,7 +238,8 @@
                             {{ csrf_field() }}
                             <div>
                                 <label for="crud-form-1" class="form-label">Nama Berkas</label>
-                                <input id="crud-form-1" type="text" name="nama_berkas" class="form-control w-full" placeholder="Nama Berkas" required>
+                                <input id="crud-form-1" type="text" name="nama_berkas"
+                                    class="form-control w-full" placeholder="Nama Berkas" required>
                             </div>
                             <div class="mt-3">
                                 <label for="crud-form-2" class="form-label">Jenis Berkas</label>
@@ -251,12 +252,15 @@
                                     <option value="Surat Rekomendasi KUA">Surat Rekomendasi KUA</option>
                                     <option value="Bukti Kegiatan">Bukti Kegiatan</option>
                                 </select>
-                                <label for="" class="form-label text-xs font-manrope text-danger">*Wajib diunggah</label>
+                                <label for="" class="form-label text-xs font-manrope text-danger">*Wajib
+                                    diunggah</label>
                             </div>
                             <div class="mt-3">
                                 <label for="crud-form-3" class="form-label">Upload Berkas</label>
-                                <input id="crud-form-3" type="file" name="file" class="border form-control" placeholder="Input text" accept=".pdf" required>
-                                <label for="" class="form-label text-xs font-manrope">Pilih berkas (hanya menerima berkas PDF) maksimal 2Mb.</label>
+                                <input id="crud-form-3" type="file" name="file" class="border form-control"
+                                    placeholder="Input text" accept=".pdf" required>
+                                <label for="" class="form-label text-xs font-manrope">Pilih berkas (hanya
+                                    menerima berkas PDF) maksimal 2Mb.</label>
                             </div>
                             <div class="text-left mt-3">
                                 <button type="submit" class="btn btn-success text-white font-semibold">
@@ -281,10 +285,10 @@
                                     <td>Nama TPA</td>
                                     <td>
                                         @if (auth()->user()->usertpa)
-                                                {{ auth()->user()->usertpa->nama_tpa }}
-                                            @else
-                                                {{ auth()->user()->email }}
-                                            @endif
+                                            {{ auth()->user()->usertpa->nama_tpa }}
+                                        @else
+                                            {{ auth()->user()->email }}
+                                        @endif
                                     </td>
                                 </tr>
                                 <tr>

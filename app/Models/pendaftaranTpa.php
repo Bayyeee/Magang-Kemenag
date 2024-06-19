@@ -26,7 +26,7 @@ class pendaftaranTpa extends Model
     }
 
     public function userTpa() {
-        return $this->hasMany(Usertpa::class);
+        return $this->hasOne(Usertpa::class);
     }
 
     public function tipeBerkas() {
