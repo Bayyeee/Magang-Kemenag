@@ -15,11 +15,13 @@ class pendaftaranTpa extends Model
     protected $primaryKey = "id_pendaftaran";
     protected $fillable = [
         'id_tpa',
+        'status_verifikasi',
+
     ];
 
-    // public function berkasPendaftaran(){
-    //     return $this->hasMany(berkasPendaftaran::class, 'id_pendaftaran', 'id_pendaftaran');
-    // }
+    public function berkasPendaftaran(){
+        return $this->hasMany(berkasPendaftaran::class, 'id_pendaftaran', 'id_pendaftaran');
+    }
 
     public function usersTpa() : BelongsTo{
         return $this->belongsTo(Usertpa::class, 'id_tpa', 'id');
@@ -29,7 +31,7 @@ class pendaftaranTpa extends Model
         return $this->hasOne(Usertpa::class);
     }
 
-    public function tipeBerkas() {
-        return $this->hasMany(tipeBerkas::class, 'id_pendaftaran', 'id_pendaftaran');
-    }
+    // public function tipeBerkas() {
+    //     return $this->hasMany(tipeBerkas::class, 'id_pendaftaran', 'id_pendaftaran');
+    // }
 }

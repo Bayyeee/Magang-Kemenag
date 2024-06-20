@@ -245,11 +245,6 @@
                     <div class="card box p-5">
                         <form action="{{ route('post-pendaftaran') }}" method="POST" enctype="multipart/form-data">
                             {{ csrf_field() }}
-                            <div>
-                                <label for="crud-form-1" class="form-label">Nama Berkas</label>
-                                <input id="crud-form-1" type="text" name="nama_berkas"
-                                    class="form-control w-full" placeholder="Nama Berkas" required>
-                            </div>
                             <div class="mt-3">
                                 <label for="crud-form-2" class="form-label">Jenis Berkas</label>
                                 <select id="crud-form-2" name="tipe_berkas" class="tom-select w-full" required>
@@ -313,23 +308,17 @@
                                         <th class="text-center">Tanggal Unggah</th>
                                     </tr>
                                 </thead>
-                                <tbody>
-                                    @foreach ($berkas as $berkasItem)
-                                        <tr>
-                                            <td align="center">{{ $loop->iteration }}</td>
-                                            <td>{{ $berkasItem->tipe_berkas }}</td>
-                                            <td align="center">
-                                                {{ \Carbon\Carbon::parse($berkasItem->waktu_upload)->format('d/m/Y H:i:s') }}
-                                            </td>
-                                        </tr>
-                                    @endforeach
-                                    {{-- @foreach ($berkas as $berkasItem)
-                                        <tr>
-                                            <td>{{ $berkasItem->tipe_berkas }}</td>
-                                            <td align="center">{{ $berkasItem->waktu_upload }}</td>
-                                        </tr>
-                                    @endforeach --}}
-                                </tbody>
+                                    <tbody>
+                                        @foreach ($berkas as $berkasItem)
+                                            <tr>
+                                                <td align="center">{{ $loop->iteration }}</td>
+                                                <td>{{ $berkasItem->tipeBerkas->tipe_berkas }}</td>
+                                                <td align="center">
+                                                    {{ \Carbon\Carbon::parse($berkasItem->tipeBerkas->waktu_upload)->format('d/m/Y') }}
+                                                </td>
+                                            </tr>
+                                        @endforeach
+                                    </tbody>
                             </table>
                         </div>
                     </div>

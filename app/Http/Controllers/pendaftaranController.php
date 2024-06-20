@@ -2,17 +2,17 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\berkasPendaftaran;
 use App\Models\tipeBerkas;
 use App\Models\pendaftaranTpa;
-use App\Models\Tpa;
 use App\Models\Usertpa;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use RealRashid\SweetAlert\Facades\Alert;
 
+
 class pendaftaranController extends Controller
 {
-
     public function pendaftaran()
     {
         $user = Auth::user();
@@ -27,9 +27,8 @@ class pendaftaranController extends Controller
 
         $berkas = [];
         if ($pendaftaran) {
-            // Sertakan waktu_upload dengan data tipeBerkas
-            $berkas = tipeBerkas::where('id_pendaftaran', $pendaftaran->id_pendaftaran)
-                ->select('id_berkas', 'nama_berkas', 'tipe_berkas', 'upload_berkas', 'status_verifikasi', 'waktu_upload')
+            $berkas = berkasPendaftaran::with('tipeBerkas')
+                ->where('id_pendaftaran', $pendaftaran->id_pendaftaran)
                 ->get();
         }
 
@@ -38,28 +37,27 @@ class pendaftaranController extends Controller
 
     public function uploadBerkas(Request $request)
     {
+        // dd($request->all());
+
         // Validasi request data
         $request->validate([
-            'nama_berkas' => 'required|string|max:100',
             'tipe_berkas' => 'required|string|max:100',
             'file' => 'required|mimes:pdf|max:2048'
         ]);
 
-        // Mengambil file dan menyimpannya
+        //  path menyimpannya file
         $file = $request->file('file');
         $fileName = time() . rand(100, 900) . '_' . $file->getClientOriginalName();
         $filePath = 'berkas';
-        // dd($fileName);
 
         if (!file_exists($filePath)) {
             mkdir($filePath, 0777, true);
         }
 
         $storePath = "/" . $filePath . '/' . $fileName;
-        // $fullPath = "./public" . $storePath;
         $file->move($filePath, $fileName);
 
-        // Mengambil user yang sedang login
+        // ** user yang sedang login
         $user = Auth::user();
         $tpa = Usertpa::where('id_users', $user->id)->first();
 
@@ -74,27 +72,19 @@ class pendaftaranController extends Controller
             ['id_tpa' => $tpa->id]
         );
 
-        // Check if the same tipe_berkas already exists
-        $existingTipeBerkas = tipeBerkas::where('id_pendaftaran', $pendaftaran->id_pendaftaran)
-            ->where('tipe_berkas', $request->tipe_berkas)
-            ->first();
+        // Menyimpan data tipe berkas baru
+        $tipeBerkas = new tipeBerkas();
+        $tipeBerkas->tipe_berkas = $request->tipe_berkas;
+        $tipeBerkas->upload_berkas = $storePath;
+        $tipeBerkas->waktu_upload = now();
+        $tipeBerkas->save();
 
-        if ($existingTipeBerkas) {
-            // Update existing record
-            $existingTipeBerkas->nama_berkas = $request->nama_berkas;
-            $existingTipeBerkas->upload_berkas = $storePath;
-            $existingTipeBerkas->status_verifikasi = 'proses';
-            $existingTipeBerkas->save();
-        } else {
-            // Menyimpan data tipe berkas baru
-            $tipeBerkas = new tipeBerkas();
-            $tipeBerkas->nama_berkas = $request->nama_berkas;
-            $tipeBerkas->tipe_berkas = $request->tipe_berkas;
-            $tipeBerkas->upload_berkas = $storePath;
-            $tipeBerkas->status_verifikasi = 'proses';
-            $tipeBerkas->id_pendaftaran = $pendaftaran->id_pendaftaran;
-            $tipeBerkas->save();
-        }
+        // Menyimpan data ke berkas_pendaftaran
+        $berkasPendaftaran = new berkasPendaftaran();
+        $berkasPendaftaran->id_tipeberkas = $tipeBerkas->id_berkas;
+        $berkasPendaftaran->id_pendaftaran = $pendaftaran->id_pendaftaran;
+        $berkasPendaftaran->path = $storePath;
+        $berkasPendaftaran->save();
 
         // Tampilkan alert sukses
         Alert::success('Berhasil', 'Berkas berhasil diunggah.');

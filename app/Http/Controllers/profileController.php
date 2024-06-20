@@ -30,7 +30,7 @@ class profileController extends Controller
             'name' => 'required|string|max:30',
             'alamat' => 'required|string|max:100',
             'logo' => 'nullable|image|mimes:jpeg,png,jpg,svg|max:3048',
-            'nama_admin' => 'required|string|max:30',
+            'nama' => 'required|string|max:30',
             'nip' => 'nullable|string|max:18',
             'jenis_kelamin' => 'required|string|max:10',
         ]);
@@ -53,7 +53,7 @@ class profileController extends Controller
         $userProfile->alamat = $request->alamat;
 
         // ** update users
-        $users->nama_admin = $request->nama_admin;
+        $users->nama = $request->nama;
         $users->nip = $request->nip;
         $users->jenis_kelamin = $request->jenis_kelamin;
 

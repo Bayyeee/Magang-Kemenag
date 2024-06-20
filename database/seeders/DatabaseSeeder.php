@@ -17,7 +17,7 @@ class DatabaseSeeder extends Seeder
 
         User::create([
             'nip' => '198001042014032014',
-            'nama_admin' => 'AbdulQodir',
+            'nama' => 'AbdulQodir',
             'jenis_kelamin' => 'laki-laki',
             'email' => 'admin@gmail.com',
             'password' => Hash::make('12345'),
@@ -26,20 +26,20 @@ class DatabaseSeeder extends Seeder
 
         User::create([
             'nip' => '198512032015012010',
-            'nama_admin' => 'Siti Markonah',
+            'nama' => 'Siti Markonah',
             'jenis_kelamin' => 'perempuan',
             'email' => 'humas@gmail.com',
             'password' => Hash::make('12345'),
             'role' => 'humas',
         ]);
 
-        User::create([
-            'nip' => null,
-            'nama_admin' => 'Sukijat',
-            'jenis_kelamin' => 'perempuan',
-            'email' => 'hihi@gmail.com',
-            'password' => Hash::make('12345'),
-            'role' => 'pengaju',
-        ]);
+        // User::create([
+        //     'nip' => null,
+        //     'nama_admin' => 'Sukijat',
+        //     'jenis_kelamin' => 'perempuan',
+        //     'email' => 'hihi@gmail.com',
+        //     'password' => Hash::make('12345'),
+        //     'role' => 'pengaju',
+        // ]);
     }
 }

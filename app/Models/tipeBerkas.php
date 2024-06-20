@@ -13,20 +13,18 @@ class tipeBerkas extends Model
     protected $primaryKey = 'id_berkas';
 
     protected $fillable = [
-        'nama_berkas',
         'tipe_berkas',
         'upload_berkas',
-        'status_verifikasi',
-        'id_pendaftaran'
+        'id_pendaftaran',
     ];
 
-    // public function berkasPendaftaran(){
-    //     return $this->hasMany(berkasPendaftaran::class, 'id_tipeberkas', 'id_berkas');
-    // }
-
-    public function pendaftaranTpa() {
-        return $this->belongsTo(pendaftaranTpa::class, 'id_pendaftaran', 'id_pendaftaran');
+    public function berkasPendaftaran(){
+        return $this->hasMany(berkasPendaftaran::class, 'id_tipeberkas', 'id_berkas');
     }
+
+    // public function pendaftaranTpa() {
+    //     return $this->belongsTo(pendaftaranTpa::class, 'id_pendaftaran', 'id_pendaftaran');
+    // }
 
     public function user(){
         return $this->belongsTo(User::class);
