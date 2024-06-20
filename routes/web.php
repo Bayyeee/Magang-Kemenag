@@ -42,14 +42,16 @@ Route::group(['middleware'=> ['auth']], function () {
 
         Route::post('/simpan-profile', [profileController::class, 'store']) -> name('simpan-profile');
 
-        Route::get('/edit-pengajuan', [editpengajuanController::class, 'editpengajuan']) -> name('edit-pengajuan');
-
-        Route::get('/cek-verifikasi', [cekverifikasiController::class, 'cekverifikasi']) -> name('cek-verifikasi');
-
         Route::get('/pendaftaran-users',[pendaftaranController::class,'pendaftaran']) -> name('pendaftaran-users');
 
         Route::post('/post-pendaftaran', [pendaftaranController::class, 'uploadBerkas']) -> name('post-pendaftaran');
-        
+
+        Route::get('/edit-pengajuan', [editpengajuanController::class, 'editpengajuan']) -> name('edit-pengajuan');
+
+        Route::post('/delete-pengajuan', [editpengajuanController::class, 'deleteBerkas']) -> name('delete-pengajuan');
+
+        Route::get('/cek-verifikasi', [cekverifikasiController::class, 'cekverifikasi']) -> name('cek-verifikasi');
+
     });
 
     Route::middleware('checkRoles:admin,humas')->group(function () {

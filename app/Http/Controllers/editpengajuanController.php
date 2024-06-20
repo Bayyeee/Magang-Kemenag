@@ -6,6 +6,7 @@ use App\Models\berkasPendaftaran;
 use App\Models\pendaftaranTpa;
 use Illuminate\Support\Facades\Auth;
 use App\Models\Usertpa;
+use Illuminate\Support\Facades\File;
 use RealRashid\SweetAlert\Facades\Alert;
 
 class editpengajuanController extends Controller
@@ -30,5 +31,23 @@ class editpengajuanController extends Controller
         }
 
         return view('users.editpengajuanUsers', compact('berkas'));
+    }
+
+    public function deleteBerkas($id)
+    {
+        $berkasPendaftaran = BerkasPendaftaran::findOrFail($id);
+
+        // Hapus file dari penyimpanan
+        $filePath = public_path($berkasPendaftaran->path);
+        if (File::exists($filePath)) {
+            File::delete($filePath);
+        }
+
+        // Hapus data dari database
+        $berkasPendaftaran->delete();
+
+        // Tampilkan alert sukses
+        Alert::success('Berhasil', 'Berkas berhasil dihapus.');
+        return redirect()->back();
     }
 }

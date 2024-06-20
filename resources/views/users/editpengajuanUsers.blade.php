@@ -286,9 +286,15 @@
                                         <a class="flex items-center mr-3" href="javascript:;">
                                             <i data-lucide="check-square" class="w-4 h-4 mr-1"></i> Edit
                                         </a>
-                                        <a class="flex items-center text-danger" href="javascript:;" data-tw-toggle="modal" data-tw-target="#delete-confirmation-modal">
+                                        <form action="{{ route('delete-pengajuan', $berkasItem->id) }}" method="POST" class="inline">
+                                            {{ csrf_field() }}
+                                            <button type="submit" class="flex items-center text-danger" data-tw-toggle="modal" data-tw-target="#delete-confirmation-modal">
+                                                <i data-lucide="trash-2" class="w-4 h-4 mr-1"></i> Delete
+                                            </button>
+                                        </form>
+                                        {{-- <a class="flex items-center text-danger" href="javascript:;" data-tw-toggle="modal" data-tw-target="#delete-confirmation-modal">
                                             <i data-lucide="trash-2" class="w-4 h-4 mr-1"></i> Delete
-                                        </a>
+                                        </a> --}}
                                     </div>
                                 </td>
                             </tr>

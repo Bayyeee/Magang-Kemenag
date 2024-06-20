@@ -15,7 +15,7 @@ class tipeBerkas extends Model
     protected $fillable = [
         'tipe_berkas',
         'upload_berkas',
-        'id_pendaftaran',
+        'verifikator',
     ];
 
     public function berkasPendaftaran(){

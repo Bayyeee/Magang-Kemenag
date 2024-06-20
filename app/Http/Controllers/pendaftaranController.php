@@ -18,7 +18,7 @@ class PendaftaranController extends Controller
         $tpa = Usertpa::where('id_users', $user->id)->first();
 
         if (!$tpa) {
-            Alert::error('error', 'TPA tidak ditemukan untuk pengguna yang sedang login.');
+            Alert::error('error', 'Silahkan perbarui halaman profile dulu untuk melakukan pendaftaran tindak lanjut!!');
             return redirect()->back();
         }
 
