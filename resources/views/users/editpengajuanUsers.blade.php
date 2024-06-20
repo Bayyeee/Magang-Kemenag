@@ -262,18 +262,18 @@
                         @forelse($berkas as $berkasItem)
                             <tr class="intro-x">
                                 <td>
-                                    <a href="{{ asset($berkasItem->upload_berkas) }}" class="font-medium whitespace-nowrap">{{ $berkasItem->nama_berkas }}</a>
-                                    <div class="text-slate-500 text-xs whitespace-nowrap mt-0.5">{{ $berkasItem->tipe_berkas }}</div>
+                                    <a href="{{ asset($berkasItem->path) }}" class="font-medium whitespace-nowrap">{{ $berkasItem->tipeBerkas->tipe_berkas }}</a>
+                                    <div class="text-slate-500 text-xs whitespace-nowrap mt-0.5">{{ $berkasItem->tipeBerkas->tipe_berkas }}</div>
                                 </td>
-                                <td class="text-center">1</td> <!-- Asumsikan selalu ada satu berkas per tipe -->
+                                <td class="text-center">1</td>
                                 <td class="w-40">
-                                    @if ($berkasItem->status_verifikasi == 'diverifikasi')
+                                    @if ($berkasItem->pendaftaran->status_verifikasi == 'diverifikasi')
                                         <div class="flex items-center justify-center text-success">
                                             <i data-lucide="check-square" class="w-4 h-4 mr-2"></i> Diverifikasi
                                         </div>
-                                    @elseif ($berkasItem->status_verifikasi == 'proses')
+                                    @elseif ($berkasItem->pendaftaran->status_verifikasi == 'proses')
                                         <div class="flex items-center justify-center text-primary">
-                                            <i data-lucide="square" class="w-4 h-4 mr-2"></i> Proses
+                                            <i data-lucide="loader" class="w-4 h-4 mr-2"></i> Proses
                                         </div>
                                     @else
                                         <div class="flex items-center justify-center text-danger">

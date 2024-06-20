@@ -31,7 +31,4 @@ class pendaftaranTpa extends Model
         return $this->hasOne(Usertpa::class);
     }
 
-    // public function tipeBerkas() {
-    //     return $this->hasMany(tipeBerkas::class, 'id_pendaftaran', 'id_pendaftaran');
-    // }
 }

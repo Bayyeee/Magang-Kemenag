@@ -2,24 +2,32 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
+use App\Models\berkasPendaftaran;
+use App\Models\pendaftaranTpa;
 use Illuminate\Support\Facades\Auth;
-use App\Models\tipeBerkas;
 use App\Models\Usertpa;
+use RealRashid\SweetAlert\Facades\Alert;
 
 class editpengajuanController extends Controller
 {
-    public function editpengajuan() {
+    public function editpengajuan()
+    {
         $user = Auth::user();
         $tpa = Usertpa::where('id_users', $user->id)->first();
 
         if (!$tpa) {
-            return redirect()->back()->with('error', 'TPA tidak ditemukan untuk pengguna yang sedang login.');
+            Alert::error('error', 'TPA tidak ditemukan untuk pengguna yang sedang login.');
+            return redirect()->back();
         }
 
-        $berkas = tipeBerkas::whereHas('pendaftaranTpa', function ($query) use ($tpa) {
-            $query->where('id_tpa', $tpa->id);
-        })->get();
+        $pendaftaran = pendaftaranTpa::where('id_tpa', $tpa->id)->first();
+
+        $berkas = [];
+        if ($pendaftaran) {
+            $berkas = berkasPendaftaran::with('tipeBerkas')
+                ->where('id_pendaftaran', $pendaftaran->id_pendaftaran)
+                ->get();
+        }
 
         return view('users.editpengajuanUsers', compact('berkas'));
     }

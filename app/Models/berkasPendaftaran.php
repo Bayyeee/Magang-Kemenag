@@ -26,6 +26,5 @@ class berkasPendaftaran extends Model
     public function pendaftaran()
     {
         return $this->belongsTo(pendaftaranTpa::class, 'id_pendaftaran', 'id_pendaftaran');
-        // }
     }
 }
