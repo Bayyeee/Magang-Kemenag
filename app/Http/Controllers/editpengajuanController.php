@@ -35,19 +35,23 @@ class editpengajuanController extends Controller
 
     public function deleteBerkas($id)
     {
-        $berkasPendaftaran = BerkasPendaftaran::findOrFail($id);
+        $berkas = berkasPendaftaran::findOrFail($id);
 
-        // Hapus file dari penyimpanan
-        $filePath = public_path($berkasPendaftaran->path);
-        if (File::exists($filePath)) {
-            File::delete($filePath);
+        if (!$berkas) {
+            Alert::error('error', 'Berkas tidak ditemukan.');
+            return redirect()->back();
         }
 
-        // Hapus data dari database
-        $berkasPendaftaran->delete();
+        // Menghapus file dari penyimpanan
+        $filePath = public_path($berkas->path);
+        if (file_exists($filePath)) {
+            unlink($filePath);
+        }
 
-        // Tampilkan alert sukses
-        Alert::success('Berhasil', 'Berkas berhasil dihapus.');
+        // Menghapus catatan dari database
+        $berkas->delete();
+
+        Alert::success('success', 'Berkas berhasil dihapus.');
         return redirect()->back();
     }
 }

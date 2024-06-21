@@ -306,6 +306,7 @@
                                         <th class="text-center w-1">No</th>
                                         <th class="text-center">Jenis - Nama Berkas</th>
                                         <th class="text-center">Tanggal Unggah</th>
+                                        <th class="text-center">Aksi</th>
                                     </tr>
                                 </thead>
                                     <tbody>
@@ -315,6 +316,11 @@
                                                 <td>{{ $berkasItem->tipeBerkas->tipe_berkas }}</td>
                                                 <td align="center">
                                                     {{ \Carbon\Carbon::parse($berkasItem->tipeBerkas->waktu_upload)->format('d/m/Y') }}
+                                                </td>
+                                                <td align="center" class="text-center">
+                                                    <a class="flex items-center text-danger ml-14" href="javascript:;" data-tw-toggle="modal" data-tw-target="#delete-confirmation-modal">
+                                                        <i data-lucide="trash-2" class="w-4 h-4 mr-1"></i> Delete
+                                                    </a>
                                                 </td>
                                             </tr>
                                         @endforeach

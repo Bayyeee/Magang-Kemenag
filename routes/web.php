@@ -48,7 +48,9 @@ Route::group(['middleware'=> ['auth']], function () {
 
         Route::get('/edit-pengajuan', [editpengajuanController::class, 'editpengajuan']) -> name('edit-pengajuan');
 
-        Route::post('/delete-pengajuan', [editpengajuanController::class, 'deleteBerkas']) -> name('delete-pengajuan');
+        Route::post('/delete-pengajuan/{id}', [editpengajuanController::class, 'deleteBerkas']) -> name('delete-pengajuan');
+
+        Route::post('/delete-pengajuan', [editpengajuanController::class, 'deleteBerkas'])->name('delete-pengajuan');
 
         Route::get('/cek-verifikasi', [cekverifikasiController::class, 'cekverifikasi']) -> name('cek-verifikasi');
 
