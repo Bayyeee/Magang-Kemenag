@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\berkasPendaftaran;
 use App\Models\pendaftaranTpa;
+use App\Models\tipeBerkas;
 use Illuminate\Support\Facades\Auth;
 use App\Models\Usertpa;
 use Illuminate\Support\Facades\File;
@@ -50,6 +51,12 @@ class editpengajuanController extends Controller
 
         // Menghapus catatan dari database
         $berkas->delete();
+
+        // ** dari chatGPT Opsional: hapus record tipeBerkas jika tidak ada berkasPendaftaran lain yang menggunakannya
+        // $tipeBerkas = tipeBerkas::findOrFail($berkas->id_tipeberkas);
+        // if ($tipeBerkas->berkasPendaftaran->isEmpty()) {
+        //     $tipeBerkas->delete();
+        // }
 
         Alert::success('success', 'Berkas berhasil dihapus.');
         return redirect()->back();

@@ -290,7 +290,9 @@
                                                 data-tw-toggle="modal" data-tw-target="#edit-confirmation-modal">
                                                 <i data-lucide="check-square" class="w-4 h-4 mr-1"></i> Edit
                                             </a>
-                                            <form id="delete-form-{{ $berkasItem->id }}" action="{{ route('delete-pengajuan', $berkasItem->id) }}" method="POST">
+                                            <form
+                                                action="{{ route('delete-pengajuan', ['id' => $berkasItem->id_berkaspendaftaran]) }}"
+                                                method="POST">
                                                 @csrf
                                                 @method('DELETE')
                                                 <button type="submit" class="flex items-center text-danger"

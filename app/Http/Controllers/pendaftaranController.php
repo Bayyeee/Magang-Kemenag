@@ -10,7 +10,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use RealRashid\SweetAlert\Facades\Alert;
 
-class PendaftaranController extends Controller
+class pendaftaranController extends Controller
 {
     public function pendaftaran()
     {
@@ -31,8 +31,11 @@ class PendaftaranController extends Controller
                 ->get();
         }
 
+        // dd($berkas);
+
         return view('users.pendaftaranUsers', compact('berkas'));
     }
+
 
     public function uploadBerkas(Request $request)
     {
@@ -103,6 +106,32 @@ class PendaftaranController extends Controller
         }
 
         Alert::success('Berhasil', 'Berkas berhasil diunggah.');
+        return redirect()->back();
+    }
+
+    public function deleteBerkas($id)
+    {
+        // ** ambil id
+        $berkasPendaftaran = berkasPendaftaran::findOrFail($id);
+
+        // ** get path berkas pendaftaran
+        $filePath = public_path($berkasPendaftaran->path);
+
+        // ** hapus file
+        if (file_exists($filePath)) {
+            unlink($filePath);
+        }
+
+        // ** Hapus record database
+        $berkasPendaftaran->delete();
+
+        // ** dari chatGPT Opsional: hapus record tipeBerkas jika tidak ada berkasPendaftaran lain yang menggunakannya
+        $tipeBerkas = tipeBerkas::findOrFail($berkasPendaftaran->id_tipeberkas);
+        if ($tipeBerkas->berkasPendaftaran->isEmpty()) {
+            $tipeBerkas->delete();
+        }
+
+        Alert::success('Berhasil', 'Berkas berhasil dihapus.');
         return redirect()->back();
     }
 }

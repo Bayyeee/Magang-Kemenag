@@ -309,22 +309,29 @@
                                         <th class="text-center">Aksi</th>
                                     </tr>
                                 </thead>
-                                    <tbody>
-                                        @foreach ($berkas as $berkasItem)
-                                            <tr>
-                                                <td align="center">{{ $loop->iteration }}</td>
-                                                <td>{{ $berkasItem->tipeBerkas->tipe_berkas }}</td>
-                                                <td align="center">
-                                                    {{ \Carbon\Carbon::parse($berkasItem->tipeBerkas->waktu_upload)->format('d/m/Y') }}
-                                                </td>
-                                                <td align="center" class="text-center">
-                                                    <a class="flex items-center text-danger ml-14" href="javascript:;" data-tw-toggle="modal" data-tw-target="#delete-confirmation-modal">
+                                <tbody>
+                                    @foreach ($berkas as $berkasItem)
+                                        <tr>
+                                            <td align="center">{{ $loop->iteration }}</td>
+                                            <td>{{ $berkasItem->tipeBerkas->tipe_berkas }}</td>
+                                            <td align="center">
+                                                {{ \Carbon\Carbon::parse($berkasItem->tipeBerkas->waktu_upload)->format('d/m/Y') }}
+                                            </td>
+                                            <td align="center" class="text-center">
+                                                <form
+                                                    action="{{ route('pendaftaran-delete', ['id' => $berkasItem->id_berkaspendaftaran]) }}"
+                                                    method="POST"
+                                                    onsubmit="return confirm('Apakah Anda yakin ingin menghapus berkas ini?');">
+                                                    @csrf
+                                                    @method('DELETE')
+                                                    <button type="submit" class="btn btn-danger btn-sm">
                                                         <i data-lucide="trash-2" class="w-4 h-4 mr-1"></i> Delete
-                                                    </a>
-                                                </td>
-                                            </tr>
-                                        @endforeach
-                                    </tbody>
+                                                    </button>
+                                                </form>
+                                            </td>
+                                        </tr>
+                                    @endforeach
+                                </tbody>
                             </table>
                         </div>
                     </div>
