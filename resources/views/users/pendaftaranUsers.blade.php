@@ -5,8 +5,6 @@
 <title>Pengajuan Pendaftaran</title>
 
 <body>
-    {{-- TODO Content --}}
-    {{-- <x-pendaftaran-Users></x-pendaftaran-Users> --}}
     {{-- TODO FOR MOBILE USERS --}}
     <div class="mobile-menu md:hidden">
         <div class="mobile-menu-bar">
@@ -277,69 +275,53 @@
                 </div>
                 <div class="intro-y col-span-12 lg:col-span-7">
                     <div class="card box p-5">
-                        <div class="card-body">
-                            <div class="mb-3 text-xl font-bold text-success">
-                                <div class="side-menu__icon"><i data-lucide="hard-drive"></i> </div>
-                                <div class="side-menu__title ms-7 -mt-6">
-                                    <h5>Daftar Berkas Terunggah</h5>
-                                </div>
+                        <div class="mb-3 text-xl font-bold text-success">
+                            <div class="side-menu__icon"><i data-lucide="hard-drive"></i> </div>
+                            <div class="side-menu__title ms-7 -mt-6">
+                                <h5>Daftar Berkas Terunggah</h5>
                             </div>
-                            <table class="table table-striped table-bordered">
-                                <tr>
-                                    <td>Nama TPA</td>
-                                    <td>
-                                        @if (auth()->user()->usertpa)
-                                            {{ auth()->user()->usertpa->nama_tpa }}
-                                        @else
-                                            {{ auth()->user()->email }}
-                                        @endif
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>Jenjang</td>
-                                    <td>Taman Pendidikan Al-Qur`an (TPQ)</td>
-                                </tr>
-                            </table>
-                            <table id="dt-riwayat" class="table table-striped table-bordered mt-5">
-                                <thead>
-                                    <tr>
-                                        <th class="text-center w-1">No</th>
-                                        <th class="text-center">Jenis - Nama Berkas</th>
-                                        <th class="text-center">Tanggal Unggah</th>
-                                        <th class="text-center">Aksi</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    @foreach ($berkas as $berkasItem)
-                                        <tr>
-                                            <td align="center">{{ $loop->iteration }}</td>
-                                            <td>{{ $berkasItem->tipeBerkas->tipe_berkas }}</td>
-                                            <td align="center">
-                                                {{ \Carbon\Carbon::parse($berkasItem->tipeBerkas->waktu_upload)->format('d/m/Y') }}
-                                            </td>
-                                            <td align="center" class="text-center">
-                                                <form
-                                                    action="{{ route('pendaftaran-delete', ['id' => $berkasItem->id_berkaspendaftaran]) }}"
-                                                    method="POST"
-                                                    onsubmit="return confirm('Apakah Anda yakin ingin menghapus berkas ini?');">
-                                                    @csrf
-                                                    @method('DELETE')
-                                                    <button type="submit" class="btn btn-danger btn-sm">
-                                                        <i data-lucide="trash-2" class="w-4 h-4 mr-1"></i> Delete
-                                                    </button>
-                                                </form>
-                                            </td>
-                                        </tr>
-                                    @endforeach
-                                </tbody>
-                            </table>
                         </div>
+                        <table class="table table-striped table-bordered">
+                            <tr>
+                                <td>Nama TPA</td>
+                                <td>
+                                    @if (auth()->user()->usertpa)
+                                        {{ auth()->user()->usertpa->nama_tpa }}
+                                    @else
+                                        {{ auth()->user()->email }}
+                                    @endif
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>Jenjang</td>
+                                <td>Taman Pendidikan Al-Qur`an (TPQ)</td>
+                            </tr>
+                        </table>
+                        <table id="dt-riwayat" class="table table-striped table-bordered mt-5">
+                            <thead>
+                                <tr>
+                                    <th class="text-center w-1">No</th>
+                                    <th class="text-center">Jenis - Nama Berkas</th>
+                                    <th class="text-center">Tanggal Unggah</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @foreach ($berkas as $berkasItem)
+                                    <tr>
+                                        <td align="center">{{ $loop->iteration }}</td>
+                                        <td>{{ $berkasItem->tipeBerkas->tipe_berkas }}</td>
+                                        <td align="center">
+                                            {{ \Carbon\Carbon::parse($berkasItem->tipeBerkas->waktu_upload)->format('d/m/Y') }}
+                                        </td>
+                                    </tr>
+                                @endforeach
+                            </tbody>
+                        </table>
                     </div>
                 </div>
             </div>
         </div>
     </div>
-
 
     {{-- TODO script Home --}}
     <x-script-Home></x-script-Home>

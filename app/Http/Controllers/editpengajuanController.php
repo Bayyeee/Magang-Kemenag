@@ -7,7 +7,6 @@ use App\Models\pendaftaranTpa;
 use App\Models\tipeBerkas;
 use Illuminate\Support\Facades\Auth;
 use App\Models\Usertpa;
-use Illuminate\Support\Facades\File;
 use RealRashid\SweetAlert\Facades\Alert;
 
 class editpengajuanController extends Controller
@@ -43,20 +42,20 @@ class editpengajuanController extends Controller
             return redirect()->back();
         }
 
-        // Menghapus file dari penyimpanan
+        // ** Menghapus file dari penyimpanan
         $filePath = public_path($berkas->path);
         if (file_exists($filePath)) {
             unlink($filePath);
         }
 
-        // Menghapus catatan dari database
+        // ** Menghapus catatan dari database
         $berkas->delete();
 
         // ** dari chatGPT Opsional: hapus record tipeBerkas jika tidak ada berkasPendaftaran lain yang menggunakannya
-        // $tipeBerkas = tipeBerkas::findOrFail($berkas->id_tipeberkas);
-        // if ($tipeBerkas->berkasPendaftaran->isEmpty()) {
-        //     $tipeBerkas->delete();
-        // }
+        $tipeBerkas = tipeBerkas::findOrFail($berkas->id_tipeberkas);
+        if ($tipeBerkas->berkasPendaftaran->isEmpty()) {
+            $tipeBerkas->delete();
+        }
 
         Alert::success('success', 'Berkas berhasil dihapus.');
         return redirect()->back();

@@ -48,11 +48,9 @@ Route::group(['middleware' => ['auth']], function () {
 
         Route::get('/edit-pengajuan', [editpengajuanController::class, 'editpengajuan'])->name('edit-pengajuan');
 
-        Route::delete('/pendaftaran/delete/{id}', [pendaftaranController::class, 'deleteBerkas'])->name('pendaftaran-delete');
+        // Route::delete('/pendaftaran/delete/{id}', [pendaftaranController::class, 'deleteBerkas'])->name('pendaftaran-delete');
 
         Route::delete('/delete-pengajuan/{id}', [editpengajuanController::class, 'deleteBerkas']) -> name('delete-pengajuan');
-
-        // Route::post('/delete-pengajuan', [editpengajuanController::class, 'deleteBerkas'])->name('delete-pengajuan');
 
         Route::get('/cek-verifikasi', [cekverifikasiController::class, 'cekverifikasi'])->name('cek-verifikasi');
     });
@@ -60,5 +58,7 @@ Route::group(['middleware' => ['auth']], function () {
     Route::middleware('checkRoles:admin,humas')->group(function () {
 
         Route::get('/homeAdmin', [homeadminController::class, 'homeAdmin'])->name('homeAdmin');
+
+        Route::get('/cek-berkas', [homeadminController::class, 'cekBerkas'])->name('cekBerkas');
     });
 });
