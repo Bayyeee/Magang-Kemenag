@@ -16,6 +16,7 @@ return new class extends Migration
             $table->string('tipe_berkas', 100);
             $table->string('upload_berkas', 100);
             $table->string('verifikator')->nullable();
+            $table->text('pesan')->nullable();
             $table->timestamp('waktu_upload')->useCurrent();
             $table->timestamps();
         });

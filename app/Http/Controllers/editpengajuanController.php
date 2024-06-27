@@ -24,13 +24,19 @@ class editpengajuanController extends Controller
         $pendaftaran = pendaftaranTpa::where('id_tpa', $tpa->id)->first();
 
         $berkas = [];
+        $allVerified = false;
         if ($pendaftaran) {
             $berkas = berkasPendaftaran::with('tipeBerkas')
                 ->where('id_pendaftaran', $pendaftaran->id_pendaftaran)
                 ->get();
+
+            // Periksa apakah semua berkas telah diverifikasi
+            $allVerified = $berkas->every(function ($item) {
+                return $item->status_verifikasi === 'diverifikasi';
+            });
         }
 
-        return view('users.editpengajuanUsers', compact('berkas'));
+        return view('users.editpengajuanUsers', compact('berkas', 'allVerified'));
     }
 
     public function deleteBerkas($id)
@@ -42,16 +48,16 @@ class editpengajuanController extends Controller
             return redirect()->back();
         }
 
-        // ** Menghapus file dari penyimpanan
+        // Menghapus file dari penyimpanan
         $filePath = public_path($berkas->path);
         if (file_exists($filePath)) {
             unlink($filePath);
         }
 
-        // ** Menghapus catatan dari database
+        // Menghapus catatan dari database
         $berkas->delete();
 
-        // ** dari chatGPT Opsional: hapus record tipeBerkas jika tidak ada berkasPendaftaran lain yang menggunakannya
+        // Opsional: hapus record tipeBerkas jika tidak ada berkasPendaftaran lain yang menggunakannya
         $tipeBerkas = tipeBerkas::findOrFail($berkas->id_tipeberkas);
         if ($tipeBerkas->berkasPendaftaran->isEmpty()) {
             $tipeBerkas->delete();

@@ -15,6 +15,7 @@ class berkasPendaftaran extends Model
     protected $fillable = [
         'id_tipeberkas',
         'id_pendaftaran',
+        'status_verifikasi',
         'path',
     ];
 

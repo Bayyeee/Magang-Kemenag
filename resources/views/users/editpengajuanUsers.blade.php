@@ -100,10 +100,8 @@
         <nav class="side-nav">
             {{-- TODO NAV USERS --}}
             <a href="#" class="intro-x flex items-center pt-4">
-                <img alt="Kementerian Agama Kota Banjarmasin" class="w-10 rounded-lg"
-                    src="{{ asset('images/kemenag_icon.png') }}">
-                <span class="hidden xl:block text-white font-bold text-sm ml-3" style="font-size: 16px;"> Kementerian
-                    Agama Kota Banjarmasin </span>
+                <img alt="Kementerian Agama Kota Banjarmasin" class="w-10 rounded-lg" src="{{ asset('images/kemenag_icon.png') }}">
+                <span class="hidden xl:block text-white font-bold text-sm ml-3" style="font-size: 16px;"> Kementerian Agama Kota Banjarmasin </span>
             </a>
             <div class="side-nav__devider my-6"></div>
             <ul>
@@ -136,8 +134,14 @@
                         </li>
                         <li>
                             <a href="{{ route('cek-verifikasi') }}" class="side-menu ">
-                                <div class="side-menu__icon"> <i data-lucide="book"></i> </div>
+                                <div class="side-menu__icon"> <i data-lucide="file"></i> </div>
                                 <div class="side-menu__title"> Cek Verifikasi </div>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="" class="side-menu ">
+                                <div class="side-menu__icon"> <i data-lucide="printer"></i> </div>
+                                <div class="side-menu__title"> Cetak Berkas </div>
                             </a>
                         </li>
                     </ul>
@@ -148,45 +152,37 @@
                         <div class="side-menu__title"> File Manager </div>
                     </a>
                 </li>
-
                 <li>
                     <a href="side-menu-light-point-of-sale.html" class="side-menu">
                         <div class="side-menu__icon"> <i data-lucide="credit-card"></i> </div>
                         <div class="side-menu__title"> Point of Sale </div>
                     </a>
                 </li>
-
                 <li>
                     <a href="side-menu-light-chat.html" class="side-menu">
                         <div class="side-menu__icon"> <i data-lucide="message-square"></i> </div>
                         <div class="side-menu__title"> Chat </div>
                     </a>
                 </li>
-
                 <li>
                     <a href="side-menu-light-post.html" class="side-menu">
                         <div class="side-menu__icon"> <i data-lucide="file-text"></i> </div>
                         <div class="side-menu__title"> Post </div>
                     </a>
                 </li>
-
                 <li>
                     <a href="side-menu-light-calendar.html" class="side-menu">
                         <div class="side-menu__icon"> <i data-lucide="calendar"></i> </div>
                         <div class="side-menu__title"> Calendar </div>
                     </a>
                 </li>
-
             </ul>
         </nav>
-        {{-- TODO Content --}}
         <div class="content">
             <div class="top-bar">
-                <nav aria-label="breadcrumb" class="-intro-x mr-auto hidden sm:flex">
-                </nav>
+                <nav aria-label="breadcrumb" class="-intro-x mr-auto hidden sm:flex"></nav>
                 <div class="intro-x dropdown w-8 h-8">
-                    <div class="dropdown-toggle w-8 h-8 rounded-full overflow-hidden shadow-lg image-fit zoom-in"
-                        role="button" aria-expanded="false" data-tw-toggle="dropdown">
+                    <div class="dropdown-toggle w-8 h-8 rounded-full overflow-hidden shadow-lg image-fit zoom-in" role="button" aria-expanded="false" data-tw-toggle="dropdown">
                         @if (auth()->user()->usertpa && auth()->user()->usertpa->logo)
                             <img alt="User Photo" src="{{ asset('images/' . auth()->user()->usertpa->logo) }}">
                         @else
@@ -209,107 +205,111 @@
                                 <hr class="dropdown-divider border-white/[0.08]">
                             </li>
                             <li>
-                                <a href="{{ route('Profile') }}" class="dropdown-item hover:bg-white/5"> <i
-                                        data-lucide="user" class="w-4 h-4 mr-2"></i> Profile </a>
+                                <a href="{{ route('Profile') }}" class="dropdown-item hover:bg-white/5">
+                                    <i data-lucide="user" class="w-4 h-4 mr-2"></i> Profile
+                                </a>
                             </li>
                             <li>
-                                <a href="" class="dropdown-item hover:bg-white/5"> <i data-lucide="lock"
-                                        class="w-4 h-4 mr-2"></i> Reset Password </a>
+                                <a href="" class="dropdown-item hover:bg-white/5">
+                                    <i data-lucide="lock" class="w-4 h-4 mr-2"></i> Reset Password
+                                </a>
                             </li>
                             <li>
-                                <a href="" class="dropdown-item hover:bg-white/5"> <i
-                                        data-lucide="help-circle" class="w-4 h-4 mr-2"></i> Help </a>
+                                <a href="" class="dropdown-item hover:bg-white/5">
+                                    <i data-lucide="help-circle" class="w-4 h-4 mr-2"></i> Help
+                                </a>
                             </li>
                             <li>
                                 <hr class="dropdown-divider border-white/[0.08]">
                             </li>
                             <li>
-                                <a href="{{ route('logout') }}" class="dropdown-item hover:bg-white/5"> <i
-                                        data-lucide="log-out" class="w-4 h-4 mr-2"></i> Logout </a>
-                            </li>
-                        </ul>
+                                <a href="{{ route('logout') }}" class="dropdown-item hover:bg-white/5">
+                                    <i data-lucide="log-out" class="w-4 h-4 mr-2"></i> Logout
+                                </a>
+                            </ul>
+                        </div>
                     </div>
                 </div>
-            </div>
-            <h2 class="intro-y text-lg font-medium mt-3">
-            </h2>
-            <div class="grid grid-cols-12 gap-6 mt-5">
-                {{-- TODO TOP CONTENT --}}
-                <div class="intro-y col-span-12 overflow-auto lg:overflow-visible">
-                    <div class="flex w-full sm:w-auto">
-                        <select class="w-20 form-select box mt-3 sm:mt-0">
-                            <option>10</option>
-                            <option>25</option>
-                            <option>35</option>
-                            <option>50</option>
-                            <option>100</option>
-                        </select>
-                        <select class="w-48 xl:w-auto form-select box ml-2">
-                            <option>Status</option>
-                            <option>Active</option>
-                            <option>Proses</option>
-                        </select>
-                    </div>
-                    <table class="table table-report -mt-2">
-                        <thead>
-                            <tr>
-                                <th class="whitespace-nowrap">NAMA BERKAS</th>
-                                <th class="text-center whitespace-nowrap">JUMLAH</th>
-                                <th class="text-center whitespace-nowrap">STATUS</th>
-                                <th class="text-center whitespace-nowrap">ACTIONS</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            @forelse ($berkas as $berkasItem)
-                                <tr class="intro-x">
-                                    <td>
-                                        <a href="{{ asset($berkasItem->path) }}"
-                                            class="font-medium whitespace-nowrap">{{ $berkasItem->tipeBerkas->tipe_berkas }}</a>
-                                        <div class="text-slate-500 text-xs whitespace-nowrap mt-0.5">
-                                            {{ $berkasItem->tipeBerkas->tipe_berkas }}</div>
-                                    </td>
-                                    <td class="text-center">1</td>
-                                    <td class="w-40">
-                                        @if ($berkasItem->pendaftaran->status_verifikasi == 'diverifikasi')
-                                            <div class="flex items-center justify-center text-success">
-                                                <i data-lucide="check-square" class="w-4 h-4 mr-2"></i> Diverifikasi
-                                            </div>
-                                        @elseif ($berkasItem->pendaftaran->status_verifikasi == 'proses')
-                                            <div class="flex items-center justify-center text-primary">
-                                                <i data-lucide="loader" class="w-4 h-4 mr-2"></i> Proses
-                                            </div>
-                                        @else
-                                            <div class="flex items-center justify-center text-danger">
-                                                <i data-lucide="x-square" class="w-4 h-4 mr-2"></i> Ditolak
-                                            </div>
-                                        @endif
-                                    </td>
-                                    <td class="table-report__action w-56">
-                                        <div class="flex justify-center items-center">
-                                            <a class="flex items-center mr-3" href="{{ route('pendaftaran-users') }}">
-                                                <i data-lucide="check-square" class="w-4 h-4 mr-1"></i> Edit
-                                            </a>
-                                            <form
-                                                action="{{ route('delete-pengajuan', ['id' => $berkasItem->id_berkaspendaftaran]) }}"
-                                                method="POST">
-                                                @csrf
-                                                @method('DELETE')
-                                                <button type="submit" class="flex items-center text-danger"
-                                                    onclick="return confirm('Apakah Anda yakin ingin menghapus file ini?')">
-                                                    <i data-lucide="trash-2" class="w-4 h-4 mr-1"></i> Delete
-                                                </button>
-                                            </form>
-                                        </div>
-                                    </td>
-                                </tr>
-                            @empty
+                <h2 class="intro-y text-lg font-medium mt-3"></h2>
+                <div class="grid grid-cols-12 gap-6 mt-5">
+                    <div class="intro-y col-span-12 overflow-auto lg:overflow-visible">
+                        <div class="flex w-full sm:w-auto">
+                            <select class="w-20 form-select box mt-3 sm:mt-0">
+                                <option>10</option>
+                                <option>25</option>
+                                <option>35</option>
+                                <option>50</option>
+                                <option>100</option>
+                            </select>
+                            <select class="w-48 xl:w-auto form-select box ml-2">
+                                <option>Status</option>
+                                <option>Active</option>
+                                <option>Proses</option>
+                            </select>
+                        </div>
+                        <table class="table table-report -mt-2">
+                            <thead>
                                 <tr>
-                                    <td colspan="4" class="text-center">Tidak ada berkas yang diunggah</td>
+                                    <th class="whitespace-nowrap">NAMA BERKAS</th>
+                                    <th class="text-center whitespace-nowrap">JUMLAH</th>
+                                    <th class="text-center whitespace-nowrap">STATUS</th>
+                                    <th class="text-center whitespace-nowrap">ACTIONS</th>
                                 </tr>
-                            @endforelse
-                        </tbody>
-                    </table>
-
+                            </thead>
+                            <tbody>
+                                @forelse ($berkas as $berkasItem)
+                                    <tr class="intro-x">
+                                        <td>
+                                            <a href="{{ asset($berkasItem->path) }}" class="font-medium whitespace-nowrap">{{ $berkasItem->tipeBerkas->tipe_berkas }}</a>
+                                            <div class="text-slate-500 text-xs whitespace-nowrap mt-0.5">{{ $berkasItem->tipeBerkas->tipe_berkas }}</div>
+                                        </td>
+                                        <td class="text-center">1</td>
+                                        <td class="w-40">
+                                            @if ($berkasItem->status_verifikasi == 'diverifikasi')
+                                                <div class="flex items-center justify-center text-success">
+                                                    <i data-lucide="check-square" class="w-4 h-4 mr-2"></i> Diverifikasi
+                                                </div>
+                                            @elseif ($berkasItem->status_verifikasi == 'proses')
+                                                <div class="flex items-center justify-center text-primary">
+                                                    <i data-lucide="loader" class="w-4 h-4 mr-2"></i> Proses
+                                                </div>
+                                            @else
+                                                <div class="flex items-center justify-center text-danger">
+                                                    <i data-lucide="x-square" class="w-4 h-4 mr-2"></i> Ditolak
+                                                </div>
+                                                <div class="text-slate-500 text-xs whitespace-nowrap mt-0.5">{{ $berkasItem->tipeBerkas->pesan }}</div>
+                                            @endif
+                                        </td>
+                                        <td class="table-report__action w-56">
+                                            <div class="flex justify-center items-center">
+                                                @if (!$allVerified)
+                                                    <a class="flex items-center mr-3" href="{{ route('pendaftaran-users') }}">
+                                                        <i data-lucide="check-square" class="w-4 h-4 mr-1"></i> Edit
+                                                    </a>
+                                                    <form action="{{ route('delete-pengajuan', ['id' => $berkasItem->id_berkaspendaftaran]) }}" method="POST">
+                                                        @csrf
+                                                        @method('DELETE')
+                                                        <button type="submit" class="flex items-center text-danger" onclick="return confirm('Apakah Anda yakin ingin menghapus file ini?')">
+                                                            <i data-lucide="trash-2" class="w-4 h-4 mr-1"></i> Delete
+                                                        </button>
+                                                    </form>
+                                                @else
+                                                    <div class="flex items-center justify-center text-gray-400">
+                                                        <i data-lucide="check-square" class="w-4 h-4 mr-1"></i> Edit
+                                                        <i data-lucide="trash-2" class="w-4 h-4 mr-1 ml-3"></i> Delete
+                                                    </div>
+                                                @endif
+                                            </div>
+                                        </td>
+                                    </tr>
+                                @empty
+                                    <tr>
+                                        <td colspan="4" class="text-center">Tidak ada berkas yang diunggah</td>
+                                    </tr>
+                                @endforelse
+                            </tbody>
+                        </table>
+                    </div>
                 </div>
             </div>
         </div>

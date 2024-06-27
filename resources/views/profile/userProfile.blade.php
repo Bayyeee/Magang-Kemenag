@@ -290,7 +290,7 @@
                         <button onclick="window.location.href = '{{ route('editProfile') }}'" type="button"
                             class="btn btn-primary w-24 mr-2"> <i data-lucide="edit" class="w-4 h-4 mr-2"></i> Edit
                         </button>
-                        <button onclick="window.location.href = '/profile'" type="button"
+                        <button onclick="window.location.href = '/'" type="button"
                             class="btn btn-secondary w-24"><i data-lucide="corner-up-left" class="w-4 h-4 mr-2"></i>
                             Kembali </button>
                     </div>

@@ -15,6 +15,7 @@ return new class extends Migration
             $table->bigIncrements('id_berkaspendaftaran');
             $table->unsignedBigInteger('id_tipeberkas');
             $table->unsignedBigInteger('id_pendaftaran');
+            $table->enum('status_verifikasi', ['proses', 'diverifikasi', 'ditolak'])->default('proses');
             $table->string('path');
             $table->timestamps();
 

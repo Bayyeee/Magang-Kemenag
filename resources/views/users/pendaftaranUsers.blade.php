@@ -132,9 +132,15 @@
                             </a>
                         </li>
                         <li>
-                            <a href="{{ route('cek-verifikasi') }}" class="side-menu">
-                                <div class="side-menu__icon"> <i data-lucide="book"></i> </div>
+                            <a href="{{ route('cek-verifikasi') }}" class="side-menu ">
+                                <div class="side-menu__icon"> <i data-lucide="file"></i> </div>
                                 <div class="side-menu__title"> Cek Verifikasi </div>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="{{ route('cetak') }}" class="side-menu ">
+                                <div class="side-menu__icon"> <i data-lucide="printer"></i> </div>
+                                <div class="side-menu__title"> Cetak Berkas </div>
                             </a>
                         </li>
                     </ul>
@@ -239,40 +245,51 @@
                 </h2>
             </div>
             <div class="grid grid-cols-12 gap-6 mt-3">
-                <div class="intro-y col-span-12 lg:col-span-5">
-                    <div class="card box p-5">
-                        <form action="{{ route('post-pendaftaran') }}" method="POST" enctype="multipart/form-data">
-                            {{ csrf_field() }}
-                            <div class="mt-3">
-                                <label for="crud-form-2" class="form-label">Jenis Berkas</label>
-                                <select id="crud-form-2" name="tipe_berkas" class="tom-select w-full" required>
-                                    <option value="Surat Permohonan TPQ">Surat Permohonan TPQ</option>
-                                    <option value="Proposal pendirian TPQ">Proposal pendirian TPQ</option>
-                                    <option value="SK Kepengurusan">SK Kepengurusan</option>
-                                    <option value="Daftar Santri">Daftar Santri</option>
-                                    <option value="Daftar Ustad/Ustadzah">Daftar Ustad/Ustadzah</option>
-                                    <option value="Surat Rekomendasi KUA">Surat Rekomendasi KUA</option>
-                                    <option value="Bukti Kegiatan">Bukti Kegiatan</option>
-                                </select>
-                                <label for="" class="form-label text-xs font-manrope text-danger">*Wajib
-                                    diunggah</label>
-                            </div>
-                            <div class="mt-3">
-                                <label for="crud-form-3" class="form-label">Upload Berkas</label>
-                                <input id="crud-form-3" type="file" name="file" class="border form-control"
-                                    placeholder="Input text" accept=".pdf" required>
-                                <label for="" class="form-label text-xs font-manrope">Pilih berkas (hanya
-                                    menerima berkas PDF) maksimal 2Mb.</label>
-                            </div>
-                            <div class="text-left mt-3">
-                                <button type="submit" class="btn btn-success text-white font-semibold">
-                                    <i class="mr-1" data-lucide="save"></i>
-                                    Simpan Berkas
-                                </button>
-                            </div>
-                        </form>
+                @if (!$verifikasiBerkas)
+                    <div class="intro-y col-span-12 lg:col-span-5">
+                        <div class="card box p-5">
+                            <form action="{{ route('post-pendaftaran') }}" method="POST"
+                                enctype="multipart/form-data">
+                                {{ csrf_field() }}
+                                <div class="mt-3">
+                                    <label for="crud-form-2" class="form-label">Jenis Berkas</label>
+                                    <select id="crud-form-2" name="tipe_berkas" class="tom-select w-full" required>
+                                        <option value="Surat Permohonan TPQ">Surat Permohonan TPQ</option>
+                                        <option value="Proposal pendirian TPQ">Proposal pendirian TPQ</option>
+                                        <option value="SK Kepengurusan">SK Kepengurusan</option>
+                                        <option value="Daftar Santri">Daftar Santri</option>
+                                        <option value="Daftar Ustad/Ustadzah">Daftar Ustad/Ustadzah</option>
+                                        <option value="Surat Rekomendasi KUA">Surat Rekomendasi KUA</option>
+                                        <option value="Bukti Kegiatan">Bukti Kegiatan</option>
+                                    </select>
+                                    <label for="" class="form-label text-xs font-manrope text-danger">*Wajib
+                                        diunggah</label>
+                                </div>
+                                <div class="mt-3">
+                                    <label for="crud-form-3" class="form-label">Upload Berkas</label>
+                                    <input id="crud-form-3" type="file" name="file"
+                                        class="border form-control" placeholder="Input text" accept=".pdf" required>
+                                    <label for="" class="form-label text-xs font-manrope">Pilih berkas (hanya
+                                        menerima berkas PDF) maksimal 2Mb.</label>
+                                </div>
+                                <div class="text-left mt-3">
+                                    <button type="submit" class="btn btn-success text-white font-semibold">
+                                        <i class="mr-1" data-lucide="save"></i>
+                                        Simpan Berkas
+                                    </button>
+                                </div>
+                            </form>
+                        </div>
                     </div>
-                </div>
+                @else
+                    <div class="intro-y col-span-12 lg:col-span-5">
+                        <div class="card box p-5">
+                            <div class="alert alert-success">
+                                Semua berkas telah diverifikasi. Anda tidak dapat mengunggah berkas baru.
+                            </div>
+                        </div>
+                    </div>
+                @endif
                 <div class="intro-y col-span-12 lg:col-span-7">
                     <div class="card box p-5">
                         <div class="mb-3 text-xl font-bold text-success">

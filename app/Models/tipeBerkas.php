@@ -16,6 +16,7 @@ class tipeBerkas extends Model
         'tipe_berkas',
         'upload_berkas',
         'verifikator',
+        'pesan',
     ];
 
     public function berkasPendaftaran(){

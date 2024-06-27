@@ -9,6 +9,7 @@ use App\Http\Controllers\profileController;
 use App\Http\Controllers\registrasiController;
 use App\Http\Controllers\editpengajuanController;
 use App\Http\Controllers\pendaftaranController;
+use App\Http\Controllers\riwayatcetakController;
 use Illuminate\Support\Facades\Route;
 
 
@@ -50,9 +51,11 @@ Route::group(['middleware' => ['auth']], function () {
 
         // Route::delete('/pendaftaran/delete/{id}', [pendaftaranController::class, 'deleteBerkas'])->name('pendaftaran-delete');
 
-        Route::delete('/delete-pengajuan/{id}', [editpengajuanController::class, 'deleteBerkas']) -> name('delete-pengajuan');
+        Route::delete('/delete-pengajuan/{id}', [editpengajuanController::class, 'deleteBerkas'])->name('delete-pengajuan');
 
         Route::get('/cek-verifikasi', [cekverifikasiController::class, 'cekverifikasi'])->name('cek-verifikasi');
+
+        Route::get('/cetak', [riwayatcetakController::class, 'riwayatCetak'])->name('cetak');
     });
 
     Route::middleware('checkRoles:admin,humas')->group(function () {
@@ -60,5 +63,13 @@ Route::group(['middleware' => ['auth']], function () {
         Route::get('/homeAdmin', [homeadminController::class, 'homeAdmin'])->name('homeAdmin');
 
         Route::get('/cek-berkas', [homeadminController::class, 'cekBerkas'])->name('cekBerkas');
+
+        Route::get('/cek-berkas/{id_pendaftaran}', [homeadminController::class, 'showBerkas'])->name('showBerkas');
+
+        Route::get('/verifikasi/{id_berkaspendaftaran}/{id_pendaftaran}', [homeadminController::class, 'verifikasi'])->name('verifikasi');
+
+        Route::post('/tolak/{id_berkaspendaftaran}/{id_pendaftaran}', [homeadminController::class, 'tolak'])->name('tolak');
+
+        Route::post('editBerkas/{id_berkaspendaftaran}', [homeadminController::class, 'editBerkas'])->name('editBerkas');
     });
 });

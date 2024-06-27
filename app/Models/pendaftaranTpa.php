@@ -15,7 +15,7 @@ class pendaftaranTpa extends Model
     protected $primaryKey = "id_pendaftaran";
     protected $fillable = [
         'id_tpa',
-        'status_verifikasi',
+        // 'status_verifikasi',
 
     ];
 

@@ -15,7 +15,7 @@ return new class extends Migration
         Schema::create('pendaftaran', function (Blueprint $table) {
             $table->id('id_pendaftaran');
             $table->unsignedBigInteger('id_tpa');
-            $table->enum('status_verifikasi', ['proses', 'diverifikasi', 'ditolak'])->default('proses');
+            // $table->enum('status_verifikasi', ['proses', 'diverifikasi', 'ditolak'])->default('proses');
             $table->timestamp('waktu_pendaftaran')->useCurrent();
             $table->timestamps();
 
