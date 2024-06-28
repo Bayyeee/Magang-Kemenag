@@ -139,7 +139,7 @@
                             </a>
                         </li>
                         <li>
-                            <a href="" class="side-menu ">
+                            <a href="{{ route('cetak') }}" class="side-menu ">
                                 <div class="side-menu__icon"> <i data-lucide="printer"></i> </div>
                                 <div class="side-menu__title"> Cetak Berkas </div>
                             </a>
@@ -277,13 +277,13 @@
                                                 <div class="flex items-center justify-center text-danger">
                                                     <i data-lucide="x-square" class="w-4 h-4 mr-2"></i> Ditolak
                                                 </div>
-                                                <div class="text-slate-500 text-xs whitespace-nowrap mt-0.5">{{ $berkasItem->tipeBerkas->pesan }}</div>
+                                                <div class="text-slate-500 text-xs whitespace-nowrap mt-0.5 text-center">{{ $berkasItem->tipeBerkas->pesan }}</div>
                                             @endif
                                         </td>
                                         <td class="table-report__action w-56">
                                             <div class="flex justify-center items-center">
                                                 @if (!$allVerified)
-                                                    <a class="flex items-center mr-3" href="{{ route('pendaftaran-users') }}">
+                                                    <a class="flex items-center mr-3 text-primary hover:text-gray-light" href="{{ route('pendaftaran-users') }}">
                                                         <i data-lucide="check-square" class="w-4 h-4 mr-1"></i> Edit
                                                     </a>
                                                     <form action="{{ route('delete-pengajuan', ['id' => $berkasItem->id_berkaspendaftaran]) }}" method="POST">

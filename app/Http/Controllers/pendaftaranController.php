@@ -22,26 +22,30 @@ class pendaftaranController extends Controller
             return redirect()->back();
         }
 
+        // Periksa apakah sudah ada pendaftaran untuk TPA ini
         $pendaftaran = pendaftaranTpa::where('id_tpa', $tpa->id)->first();
 
-        $berkas = [];
-        $verifikasiBerkas = false;
-
-
-        if ($pendaftaran) {
-            $berkas = berkasPendaftaran::with('tipeBerkas')
-                ->where('id_pendaftaran', $pendaftaran->id_pendaftaran)
-                ->get();
+        // Jika belum ada pendaftaran, buat pendaftaran baru
+        if (!$pendaftaran) {
+            $pendaftaran = new pendaftaranTpa();
+            $pendaftaran->id_tpa = $tpa->id;
+            $pendaftaran->save();
         }
 
-        // dd($berkas);
+        // Ambil berkas-berkas yang terkait dengan pendaftaran ini
+        $berkas = berkasPendaftaran::with('tipeBerkas')
+            ->where('id_pendaftaran', $pendaftaran->id_pendaftaran)
+            ->get();
 
-        $verifikasiBerkas = $berkas->every(function($berkasItem){
+        // Periksa status verifikasi berkas
+        $verifikasiBerkas = $berkas->isEmpty() ? false : $berkas->every(function ($berkasItem) {
             return $berkasItem->status_verifikasi == 'diverifikasi';
         });
 
         return view('users.pendaftaranUsers', compact('berkas', 'verifikasiBerkas'));
     }
+
+
 
     public function uploadBerkas(Request $request)
     {

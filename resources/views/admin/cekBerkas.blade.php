@@ -840,9 +840,9 @@
                                                         </div>
                                                         <div class="px-5 pb-8 text-center">
                                                             <button type="button" data-tw-dismiss="modal"
-                                                                class="btn btn-danger text-white w-24 mr-1">Batal</button>
+                                                                class="btn btn-outline-danger w-24 mr-1">Batal</button>
                                                             <button type="submit"
-                                                                class="btn btn-success w-24">Ubah</button>
+                                                                class="btn btn-outline-success w-24">Ubah</button>
                                                         </div>
                                                     </div>
                                                 </form>

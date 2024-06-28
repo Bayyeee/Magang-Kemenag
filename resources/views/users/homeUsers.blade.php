@@ -135,6 +135,12 @@
                                     <div class="side-menu__title"> Cek Verifikasi </div>
                                 </a>
                             </li>
+                            <li>
+                                <a href="{{ route('cetak') }}" class="side-menu">
+                                    <div class="side-menu__icon"> <i data-lucide="printer"></i> </div>
+                                    <div class="side-menu__title"> Cetak Berkas </div>
+                                </a>
+                            </li>
                         </ul>
                     </li>
                     <li>
@@ -191,8 +197,6 @@
                             @else
                                 <img alt="Default Photo" src="{{ asset('images/user.png') }}">
                             @endif
-                            {{-- <img alt="User Photo" src="{{ asset('images/' . auth()->user()->usertpa->logo) }}"> --}}
-                            {{-- <img alt="" src="{{ auth()->user()->userstpa->logo ? asset('images' . auth()->user()->userstpa->logo) : asset('images/user.png') }}"> --}}
                         </div>
                         <div class="dropdown-menu w-56">
                             <ul class="dropdown-content bg-primary text-white">

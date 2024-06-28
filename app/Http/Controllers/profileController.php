@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Usertpa;
 use App\Models\User;
+use App\Models\pendaftaranTpa;
 use Illuminate\Http\Request;
 use RealRashid\SweetAlert\Facades\Alert;
 
@@ -35,29 +36,33 @@ class profileController extends Controller
             'jenis_kelamin' => 'required|string|max:10',
         ]);
 
-        // ** path gambar
+        // Path untuk menyimpan logo
         $filePath = public_path('images');
 
-        // ** cek profil pengguna yang sedang login
+        // Mengambil profil pengguna yang sedang login
         $userProfile = Usertpa::where('id_users', auth()->id())->first();
         $users = User::find(auth()->id());
 
-        // ** buat objek Usertpa baru
+        // Jika tidak ada profil Usertpa, buat profil baru
         if (!$userProfile) {
             $userProfile = new Usertpa();
             $userProfile->id_users = auth()->id();
+            $userProfile->save();
+
+            // Buat juga pendaftaran baru untuk TPA jika belum ada
+            $pendaftaran = pendaftaranTpa::firstOrCreate(['id_tpa' => $userProfile->id]);
         }
 
-        // ** Update usertpa
+        // Update data pada Usertpa
         $userProfile->nama_tpa = $request->name;
         $userProfile->alamat = $request->alamat;
 
-        // ** update users
+        // Update data pada Users
         $users->nama = $request->nama;
         $users->nip = $request->nip;
         $users->jenis_kelamin = $request->jenis_kelamin;
 
-        // ** upload logo
+        // Upload logo jika ada
         if ($request->hasFile('logo')) {
             $file = $request->file('logo');
             $file_name = time() . rand(100, 900) . "." . $file->getClientOriginalName();
@@ -65,7 +70,7 @@ class profileController extends Controller
             $userProfile->logo = $file_name;
         }
 
-        // ** save
+        // Simpan perubahan
         $userProfile->save();
         $users->save();
 

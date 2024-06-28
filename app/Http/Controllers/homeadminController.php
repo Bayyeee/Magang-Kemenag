@@ -51,6 +51,7 @@ class homeadminController extends Controller
 
         $tipeBerkas = $berkasPendaftaran->tipeBerkas;
         $tipeBerkas->verifikator = $user->role;
+        $tipeBerkas->pesan = null;
         $tipeBerkas->save();
 
         Alert::success('Berhasil', 'Status verifikasi telah diupdate.');
@@ -68,7 +69,6 @@ class homeadminController extends Controller
         $tipeBerkas = $berkasPendaftaran->tipeBerkas;
         $tipeBerkas->verifikator = $user->role;
 
-        // Gunakan pesan dari dropdown jika ada, jika tidak gunakan dari textarea
         $tipeBerkas->pesan = $request->input('alasan_penolakan') === 'Lainnya'
             ? $request->input('pesan')
             : $request->input('alasan_penolakan');
@@ -90,8 +90,7 @@ class homeadminController extends Controller
         $tipeBerkas = $berkasPendaftaran->tipeBerkas;
         $tipeBerkas->verifikator = $user->role;
 
-        // Mengosongkan pesan pada tipeBerkas
-        $tipeBerkas->pesan = null; // atau bisa juga $tipeBerkas->pesan = '';
+        $tipeBerkas->pesan = null; // bisa pakai ini jua $tipeBerkas->pesan = '';
 
         $tipeBerkas->save();
 

@@ -189,7 +189,7 @@
                             <label for="crud-form-3" class="form-label">Nama Admin Operator</label>
                             <div class="input-group">
                                 <input id="nama" type="text" class="form-control"
-                                    placeholder="{{ Auth::user()->nama_admin }}" aria-describedby="input-group-1"
+                                    placeholder="{{ Auth::user()->nama }}" aria-describedby="input-group-1"
                                     name="nama" maxlength="30">
                             </div>
                         </div>

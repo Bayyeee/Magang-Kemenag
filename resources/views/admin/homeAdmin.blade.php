@@ -695,14 +695,34 @@
                     </a>
                     <ul class="">
                         @foreach ($pendaftarans as $pendaftaran)
-                        <li>
-                            <a href="side-menu-light-users-layout-1.html" class="side-menu">
-                                <div class="side-menu__icon"> <i data-lucide="users"></i> </div>
-                                <div class="side-menu__title"> {{ $pendaftaran->usersTpa->nama_tpa }} </div>
-                            </a>
-                        </li>
+                            <li>
+                                <a href="side-menu-light-users-layout-1.html" class="side-menu">
+                                    <div class="side-menu__icon"> <i data-lucide="users"></i> </div>
+                                    <div class="side-menu__title"> {{ $pendaftaran->usersTpa->nama_tpa }} </div>
+                                </a>
+                            </li>
                         @endforeach
                     </ul>
+                </li>
+                <li>
+                    <a href="javascript:;" class="side-menu">
+                        <div class="side-menu__icon"> <i data-lucide="history"></i> </div>
+                        <div class="side-menu__title">
+                            Riwayat Cetak
+                            <div class="side-menu__sub-icon "> <i data-lucide="chevron-down"></i> </div>
+                        </div>
+                    </a>
+                    {{-- <ul class="">
+                        @foreach ($pendaftarans as $pendaftaran)
+                            <li>
+                                <a href="{{ route('cetakBerkas', ['id_pendaftaran' => $pendaftaran->id_pendaftaran]) }}"
+                                    class="side-menu">
+                                    <div class="side-menu__icon"> <i data-lucide="history"></i> </div>
+                                    <div class="side-menu__title"> {{ $pendaftaran->usersTpa->nama_tpa }} </div>
+                                </a>
+                            </li>
+                        @endforeach
+                    </ul> --}}
                 </li>
             </ul>
         </nav>

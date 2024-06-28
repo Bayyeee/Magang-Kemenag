@@ -56,6 +56,8 @@ Route::group(['middleware' => ['auth']], function () {
         Route::get('/cek-verifikasi', [cekverifikasiController::class, 'cekverifikasi'])->name('cek-verifikasi');
 
         Route::get('/cetak', [riwayatcetakController::class, 'riwayatCetak'])->name('cetak');
+
+        Route::get('/cetak-surat/{id_pendaftaran}/{action}', [riwayatcetakController::class, 'cetakSurat'])->name('cetak-surat');
     });
 
     Route::middleware('checkRoles:admin,humas')->group(function () {
@@ -71,5 +73,7 @@ Route::group(['middleware' => ['auth']], function () {
         Route::post('/tolak/{id_berkaspendaftaran}/{id_pendaftaran}', [homeadminController::class, 'tolak'])->name('tolak');
 
         Route::post('editBerkas/{id_berkaspendaftaran}', [homeadminController::class, 'editBerkas'])->name('editBerkas');
+
+        // Route::get('/cetak-berkas/{id_pendaftaran}', [homeadminController::class, 'cetakBerkas'])->name('cetakBerkas');
     });
 });
