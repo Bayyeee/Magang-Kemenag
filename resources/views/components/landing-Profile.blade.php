@@ -2,7 +2,7 @@
     <div class="container mx-auto flex flex-col md:flex-row items-center justify-between">
         <!-- Left column: Image -->
         <div class="md:w-1/2 mb-8 md:mb-0">
-            <img src="{{ asset('images/Kantor.png') }}" alt="Image" class="w-full md:mx-auto md:max-w-md" />
+            <img src="{{ asset('images/Kantor.png') }}" alt="Image" class="w-full md:mx-auto md:max-w-md rounded-lg" />
         </div>
 
         <!-- Right column: Title, description list, and button -->

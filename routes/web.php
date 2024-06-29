@@ -8,6 +8,7 @@ use App\Http\Controllers\loginController;
 use App\Http\Controllers\profileController;
 use App\Http\Controllers\registrasiController;
 use App\Http\Controllers\editpengajuanController;
+use App\Http\Controllers\inputPegawaiController;
 use App\Http\Controllers\pendaftaranController;
 use App\Http\Controllers\riwayatcetakController;
 use Illuminate\Support\Facades\Route;
@@ -58,6 +59,18 @@ Route::group(['middleware' => ['auth']], function () {
         Route::get('/cetak', [riwayatcetakController::class, 'riwayatCetak'])->name('cetak');
 
         Route::get('/cetak-surat/{id_pendaftaran}/{action}', [riwayatcetakController::class, 'cetakSurat'])->name('cetak-surat');
+
+        Route::get('/input-pegawai', [inputPegawaiController::class, 'showHalaman'])->name('input-pegawai');
+
+        Route::post('/simpan-pegawai', [inputPegawaiController::class, 'simpanPegawai'])->name('simpan-pegawai');
+
+        Route::get('/edit-pegawai/{id}', [inputPegawaiController::class, 'editPegawai'])->name('edit-pegawai');
+
+        Route::post('/update-pegawai/{id}', [inputPegawaiController::class, 'updatePegawai'])->name('update-pegawai');
+
+        Route::get('/pegawai/{id}', [inputPegawaiController::class, 'getPegawai'])->name('get-pegawai');
+
+        Route::delete('/hapus-pegawai/{id}', [inputPegawaiController::class, 'hapusPegawai'])->name('hapus-pegawai');
     });
 
     Route::middleware('checkRoles:admin,humas')->group(function () {

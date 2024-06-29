@@ -108,6 +108,7 @@
                             <div class="side-menu__title"> Dashboard </div>
                         </a>
                     </li>
+                    {{-- TODO PENDAFTARAN --}}
                     <li>
                         <a href="javascript:;" class="side-menu">
                             <div class="side-menu__icon"> <i data-lucide="hard-drive"></i> </div>
@@ -143,41 +144,60 @@
                             </li>
                         </ul>
                     </li>
+                    {{-- TODO DATA PEGAWAI --}}
                     <li>
-                        <a href="side-menu-light-file-manager.html" class="side-menu">
-                            <div class="side-menu__icon"> <i data-lucide="hard-drive"></i> </div>
-                            <div class="side-menu__title"> File Manager </div>
+                        <a href="javascript:;" class="side-menu">
+                            <div class="side-menu__icon"> <i data-lucide="folder"></i> </div>
+                            <div class="side-menu__title">
+                                Data Pegawai
+                                <div class="side-menu__sub-icon "> <i data-lucide="chevron-down"></i> </div>
+                            </div>
                         </a>
+                        <ul class="">
+                            <li>
+                                <a href="{{ route('input-pegawai') }}" class="side-menu">
+                                    <div class="side-menu__icon"> <i data-lucide="upload"></i> </div>
+                                    <div class="side-menu__title"> Input Data Pegawai </div>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="" class="side-menu">
+                                    <div class="side-menu__icon"> <i data-lucide="printer"></i> </div>
+                                    <div class="side-menu__title"> Cetak Data Pegawai </div>
+                                </a>
+                            </li>
+                        </ul>
                     </li>
-
+                    {{-- TODO DATA SISWA --}}
                     <li>
-                        <a href="side-menu-light-point-of-sale.html" class="side-menu">
-                            <div class="side-menu__icon"> <i data-lucide="credit-card"></i> </div>
-                            <div class="side-menu__title"> Point of Sale </div>
+                        <a href="javascript:;" class="side-menu">
+                            <div class="side-menu__icon"> <i data-lucide="folder"></i> </div>
+                            <div class="side-menu__title">
+                                Data Siswa
+                                <div class="side-menu__sub-icon "> <i data-lucide="chevron-down"></i> </div>
+                            </div>
                         </a>
+                        <ul class="">
+                            <li>
+                                <a href="" class="side-menu">
+                                    <div class="side-menu__icon"> <i data-lucide="upload"></i> </div>
+                                    <div class="side-menu__title"> Input Data Siswa </div>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="" class="side-menu">
+                                    <div class="side-menu__icon"> <i data-lucide="printer"></i> </div>
+                                    <div class="side-menu__title"> Kelas </div>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="" class="side-menu">
+                                    <div class="side-menu__icon"> <i data-lucide="printer"></i> </div>
+                                    <div class="side-menu__title"> Cetak Data Siswa </div>
+                                </a>
+                            </li>
+                        </ul>
                     </li>
-
-                    <li>
-                        <a href="side-menu-light-chat.html" class="side-menu">
-                            <div class="side-menu__icon"> <i data-lucide="message-square"></i> </div>
-                            <div class="side-menu__title"> Chat </div>
-                        </a>
-                    </li>
-
-                    <li>
-                        <a href="side-menu-light-post.html" class="side-menu">
-                            <div class="side-menu__icon"> <i data-lucide="file-text"></i> </div>
-                            <div class="side-menu__title"> Post </div>
-                        </a>
-                    </li>
-
-                    <li>
-                        <a href="side-menu-light-calendar.html" class="side-menu">
-                            <div class="side-menu__icon"> <i data-lucide="calendar"></i> </div>
-                            <div class="side-menu__title"> Calendar </div>
-                        </a>
-                    </li>
-
                 </ul>
             </nav>
             <!-- BEGIN: Content -->
