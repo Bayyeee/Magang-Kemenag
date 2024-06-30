@@ -175,11 +175,17 @@
                 Data Pegawai
             </h2>
             <div class="grid grid-cols-12 gap-6">
-                <div class="intro-y col-span-12 flex flex-wrap sm:flex-nowrap mt-5">
-                    <a href="javascript:;" class="btn btn-primary shadow-md" data-tw-toggle="modal"
+                <div class="intro-y col-span-12 flex flex-wrap sm:flex-nowrap items-center mt-2">
+                    <a href="javascript:;" class="btn btn-primary shadow-md mr-2" data-tw-toggle="modal"
                         data-tw-target="#tambah-confirmation-modal">
                         <i class="w-4 h-4 mr-2" data-lucide="plus"></i>Tambah Data
                     </a>
+                    <div>
+                        <a href="javascript:;" class="btn btn-primary shadow-md mr-2" data-tw-toggle="modal"
+                            data-tw-target="#uploadexcel-confirmation-modal">
+                            <i class="w-4 h-4 mr-2" data-lucide="plus"></i> Upload Excel
+                        </a>
+                    </div>
                 </div>
                 <!-- BEGIN: Data List -->
                 <div class="intro-y col-span-12 overflow-auto lg:overflow-visible">
@@ -193,7 +199,7 @@
                             </tr>
                         </thead>
                         <tbody>
-                            @foreach ($pegawais as $pegawai)
+                            @forelse ($pegawais as $pegawai)
                                 <tr class="intro-x">
                                     <td>
                                         <a href=""
@@ -225,12 +231,19 @@
                                         </div>
                                     </td>
                                 </tr>
-                            @endforeach
+                            @empty
+                                <tr class="intro-x">
+                                    <td colspan="4" class="text-center">
+                                        <div class="text-slate-500 text-xs whitespace-nowrap mt-0.5">
+                                            Data pegawai kosong
+                                        </div>
+                                    </td>
+                                </tr>
+                            @endforelse
                         </tbody>
                     </table>
                 </div>
             </div>
-
 
             {{-- TODO ALERT UNTUK DELETE --}}
             <div id="delete-confirmation-modal" class="modal" tabindex="-1" aria-hidden="true">
@@ -297,7 +310,16 @@
                                     </div>
                                     <div class="form-group mt-3">
                                         <label for="nama_kelas">Nama Kelas</label>
-                                        <input type="text" name="nama_kelas" class="form-control" required>
+                                        <select name="nama_kelas" class="tom-select w-full" id="nama_kelas"
+                                            data-placeholder="Pilih Kelas" required>
+                                            @foreach ($kelas as $k)
+                                                <option value="{{ $k->nama_kelas }}">{{ $k->nama_kelas }}</option>
+                                            @endforeach
+                                            <option value="lainnya">Lainnya</option>
+                                        </select>
+                                        <input type="text" name="kelas_lainnya" id="kelas_lainnya"
+                                            class="form-control mt-2" style="display: none;"
+                                            placeholder="Nama Kelas Lainnya">
                                     </div>
                                     <div class="form-group mt-3">
                                         <label for="tahun_ajar">Tahun Ajar</label>
@@ -338,13 +360,13 @@
                                     </div>
                                     <div class="form-group mt-3">
                                         <label for="jabatan">Jabatan</label>
-                                        <select name="jabatan" class="form-select" id="jabatan"
+                                        <select name="jabatan" class="form-select" id="tambah-jabatan"
                                             aria-placeholder="pilih" required>
-                                            <option value="ustad">Ustadz</option>
+                                            <option value="ustadz">Ustadz</option>
                                             <option value="ustadzah">Ustadzah</option>
                                             <option value="lainnya">Lainnya</option>
                                         </select>
-                                        <input type="text" name="jabatan_lainnya" id="jabatan_lainnya"
+                                        <input type="text" name="jabatan_lainnya" id="tambah-jabatan_lainnya"
                                             class="form-control mt-2" style="display: none;"
                                             placeholder="Jabatan Lainnya">
                                     </div>
@@ -357,8 +379,16 @@
                                     </div>
                                     <div class="form-group mt-3">
                                         <label for="nama_kelas">Nama Kelas</label>
-                                        <input type="text" name="nama_kelas" class="form-control"
-                                            placeholder="masukkan nama kelas" required>
+                                        <select name="nama_kelas" class="tom-select w-full" id="tambah-nama_kelas"
+                                            data-placeholder="Pilih Kelas" >
+                                            @foreach ($nama_kelas as $nk)
+                                                <option value="{{ $nk }}">{{ $nk }}</option>
+                                            @endforeach
+                                            <option value="lainnya">Lainnya</option>
+                                        </select>
+                                        <input type="text" name="kelas_lainnya" id="tambah-kelas_lainnya"
+                                            class="form-control mt-2" style="display: none;"
+                                            placeholder="Nama Kelas Lainnya">
                                     </div>
                                     <div class="form-group mt-3">
                                         <label for="tahun_ajar">Tahun Ajar</label>
@@ -378,25 +408,83 @@
                     </div>
                 </div>
             </div>
+
+            {{-- TODO ALERT UNTUK TAMBAH DATA EXCEL --}}
+            <div id="uploadexcel-confirmation-modal" class="modal" tabindex="-1" aria-hidden="true">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <form id="tambah-form" action="{{ route('simpan-pegawai') }}" method="POST">
+                            @csrf
+                            <div class="modal-body p-0">
+                                <div class="p-5 text-center">
+                                    <i data-lucide="upload" class="w-16 h-16 text-success mx-auto mt-3"></i>
+                                    <div class="text-3xl mt-5">TAMBAHKAN DATA MENGGUNAKAN EXCEL</div>
+                                    <div class="text-slate-500 mt-2"></div>
+                                </div>
+                                <div class="px-5 pb-8">
+                                    <div class="form-group">
+                                        <label for="nama_pegawai">Upload File Excel</label>
+                                        <input type="file" name="nama_pegawai" class="border form-control"
+                                            accept=".xlsx" placeholder="masukkan nama" required>
+                                    </div>
+                                    <div class="px-5 pb-8 text-center mt-3">
+                                        <button type="button" data-tw-dismiss="modal"
+                                            class="btn btn-outline-secondary w-24 mr-1">Cancel</button>
+                                        <button type="submit" class="btn btn-outline-primary w-24">Upload</button>
+                                    </div>
+                                </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
 
     <script>
-        document.getElementById('edit-jabatan').addEventListener('change', function() {
-            if (this.value === 'lainnya') {
-                document.getElementById('edit-jabatan_lainnya').style.display = 'block';
-            } else {
-                document.getElementById('edit-jabatan_lainnya').style.display = 'none';
-            }
-        });
+        document.addEventListener('DOMContentLoaded', function() {
+            const tambahJabatanSelect = document.getElementById('tambah-jabatan');
+            const tambahJabatanLainnyaInput = document.getElementById('tambah-jabatan_lainnya');
+            const tambahForm = document.getElementById('tambah-form');
 
-        // Display input field for "lainnya" if it was previously selected
-        if (document.getElementById('edit-jabatan').value === 'lainnya') {
-            document.getElementById('edit-jabatan_lainnya').style.display = 'block';
-        }
+            tambahJabatanSelect.addEventListener('change', function() {
+                if (tambahJabatanSelect.value === 'lainnya') {
+                    tambahJabatanLainnyaInput.style.display = 'block';
+                    tambahJabatanLainnyaInput.setAttribute('required', 'required');
+                } else {
+                    tambahJabatanLainnyaInput.style.display = 'none';
+                    tambahJabatanLainnyaInput.removeAttribute('required');
+                }
+            });
+
+            tambahForm.addEventListener('submit', function(event) {
+                if (tambahJabatanSelect.value === 'lainnya') {
+                    const jabatanLainnyaValue = tambahJabatanLainnyaInput.value;
+                    if (jabatanLainnyaValue) {
+                        const hiddenInput = document.createElement('input');
+                        hiddenInput.type = 'hidden';
+                        hiddenInput.name = 'jabatan';
+                        hiddenInput.value = jabatanLainnyaValue;
+                        tambahForm.appendChild(hiddenInput);
+                        tambahJabatanSelect.removeAttribute('name');
+                    }
+                }
+            });
+
+            const tambahKelasSelect = document.getElementById('tambah-nama_kelas');
+            const tambahKelasLainnyaInput = document.getElementById('tambah-kelas_lainnya');
+
+            tambahKelasSelect.addEventListener('change', function() {
+                if (tambahKelasSelect.value === 'lainnya') {
+                    tambahKelasLainnyaInput.style.display = 'block';
+                    tambahKelasLainnyaInput.setAttribute('required', 'required');
+                } else {
+                    tambahKelasLainnyaInput.style.display = 'none';
+                    tambahKelasLainnyaInput.removeAttribute('required');
+                }
+            });
+        });
     </script>
 
-    {{-- TODO PAKAI AJAX BINGUNG DAH --}}
     <script>
         document.addEventListener('DOMContentLoaded', function() {
             const editButtons = document.querySelectorAll('.edit-pegawai-btn');
@@ -419,7 +507,6 @@
                                 .kelas_tahun_ajar[0].kelas.nama_kelas;
                             document.querySelector('select[name="tahun_ajar"]').value = data
                                 .kelas_tahun_ajar[0].tahun_ajar;
-
                             if (data.jabatan === 'lainnya') {
                                 document.querySelector('input[name="jabatan_lainnya"]').style
                                     .display = 'block';
@@ -442,29 +529,36 @@
                 }
             });
 
-            // Display input field for "lainnya" if it was previously selected
             if (document.querySelector('#edit-jabatan').value === 'lainnya') {
                 document.querySelector('#edit-jabatan_lainnya').style.display = 'block';
             }
+
+            const kelasSelect = document.getElementById('nama_kelas');
+            const kelasLainnyaInput = document.getElementById('kelas_lainnya');
+
+            kelasSelect.addEventListener('change', function() {
+                if (kelasSelect.value === 'lainnya') {
+                    kelasLainnyaInput.style.display = 'block';
+                    kelasLainnyaInput.setAttribute('required', 'required');
+                } else {
+                    kelasLainnyaInput.style.display = 'none';
+                    kelasLainnyaInput.removeAttribute('required');
+                }
+            });
         });
     </script>
 
     <script>
         document.addEventListener('DOMContentLoaded', function() {
-            // Tangkap event klik pada tombol hapus pegawai
             document.querySelectorAll('.delete-pegawai-btn').forEach(item => {
                 item.addEventListener('click', function() {
-                    // Ambil data ID pegawai dari atribut data-id
                     let pegawaiId = this.getAttribute('data-id');
-
-                    // Set action pada form delete-confirmation-modal
                     let form = document.getElementById('delete-form');
                     form.action = '/hapus-pegawai/' + pegawaiId;
                 });
             });
         });
     </script>
-
 
     <x-script-Home></x-script-Home>
 </body>

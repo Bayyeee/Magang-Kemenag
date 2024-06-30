@@ -14,8 +14,32 @@ class inputPegawaiController extends Controller
 {
     public function showHalaman()
     {
-        $pegawais = pegawai::with('kelasTahunAjar.kelas')->get();
-        return view('users.inputPegawai', compact('pegawais'));
+        $user = Auth::user();
+        $tpa = $user->usertpa;
+
+        if (!$tpa) {
+            return redirect()->route('input-pegawai')->with('error', 'Anda tidak memiliki TPA terkait');
+        }
+
+        $pegawais = pegawai::with('kelasTahunAjar.kelas')
+            ->where('id_tpa', $tpa->id)
+            ->get();
+
+        $kelas = kelas::all();
+
+        $nama_kelas = [
+            "Abu Bakar Ash-Shiddiq", "Umar bin Khattab", "Utsman bin Affan",
+            "Ali bin Abi Talib", "Talhah bin Ubaidillah", "Zubair bin al-Awwam",
+            "Abdur Rahman bin Auf", "Sa'ad bin Abi Waqqas", "Sa'id bin Zaid",
+            "Abu Ubaidah bin al-Jarrah", "Bilal bin Rabah", "Khalid bin Walid",
+            "Mu'adh bin Jabal", "Abdullah bin Mas'ud", "Ammar bin Yasir",
+            "Salman al-Farisi", "Anas bin Malik", "Abu Hurairah", "Al-Khwarizmi",
+            "Ibn Sina", "Ibn Al-Haytham", "Al-Farabi", "Al-Biruni", "Al-Razi",
+            "Ibn Rushd", "Jabir ibn Hayyan", "Ibn Khaldun", "Al-Kindi",
+            "Ibn Tufail", "Al-Masudi", "Al-Zahrawi", "Ibn Battuta", "Ibn Jubayr",
+            "Ibn Bajjah", "Ibn Zuhr", "Ibn Nafis",
+        ];
+        return view('users.inputPegawai', compact('pegawais', 'kelas', 'nama_kelas'));
     }
 
     public function simpanPegawai(Request $request)
@@ -26,6 +50,8 @@ class inputPegawaiController extends Controller
             'jenis_kelamin' => 'required|string',
             'nama_kelas' => 'required|string|max:100',
             'tahun_ajar' => 'required|string',
+            'jabatan_lainnya' => 'nullable|string|max:100',
+            'kelas_lainnya' => 'nullable|string|max:100',
         ]);
 
         $user = Auth::user();
@@ -35,18 +61,18 @@ class inputPegawaiController extends Controller
             return redirect()->route('input-pegawai')->with('error', 'Anda tidak memiliki TPA terkait');
         }
 
-        // Simpan pegawai
+        $jabatan = $request->jabatan === 'lainnya' ? $request->jabatan_lainnya : $request->jabatan;
+        $nama_kelas = $request->nama_kelas === 'lainnya' ? $request->kelas_lainnya : $request->nama_kelas;
+
         $pegawai = pegawai::create([
             'id_tpa' => $tpa->id,
             'nama_pegawai' => $request->nama_pegawai,
-            'jabatan' => $request->jabatan,
+            'jabatan' => $jabatan,
             'jenis_kelamin' => $request->jenis_kelamin,
         ]);
 
-        // Simpan kelas
-        $kelas = kelas::firstOrCreate(['nama_kelas' => $request->nama_kelas]);
+        $kelas = kelas::firstOrCreate(['nama_kelas' => $nama_kelas]);
 
-        // Simpan ke tabel pivot
         kelasTahunAjar::create([
             'id_kelas' => $kelas->id_kelas,
             'id_pegawai' => $pegawai->id_pegawai,
@@ -54,6 +80,7 @@ class inputPegawaiController extends Controller
         ]);
 
         return redirect()->route('input-pegawai')->with('success', 'Data pegawai dan kelas berhasil disimpan');
+
     }
 
 
@@ -81,11 +108,11 @@ class inputPegawaiController extends Controller
             'nama_kelas' => 'required|string|max:100',
             'tahun_ajar' => 'required|string',
             'jabatan_lainnya' => 'nullable|string|max:100',
+            'kelas_lainnya' => 'nullable|string|max:100',
         ]);
 
         $pegawai = pegawai::findOrFail($id);
 
-        // Dapatkan TPA dari pengguna yang sedang login
         $user = Auth::user();
         $tpa = $user->usertpa;
 
@@ -93,7 +120,6 @@ class inputPegawaiController extends Controller
             return redirect()->route('input-pegawai')->with('error', 'Anda tidak memiliki TPA terkait');
         }
 
-        // Update pegawai
         $pegawai->update([
             'id_tpa' => $tpa->id,
             'nama_pegawai' => $request->nama_pegawai,
@@ -101,23 +127,33 @@ class inputPegawaiController extends Controller
             'jenis_kelamin' => $request->jenis_kelamin,
         ]);
 
-        // Update atau buat kelas baru
-        $kelas = kelas::firstOrCreate(['nama_kelas' => $request->nama_kelas]);
+        $nama_kelas = $request->nama_kelas === 'lainnya' ? $request->kelas_lainnya : $request->nama_kelas;
 
-        // Update tabel pivot
-        $pegawai->kelasTahunAjar()->updateOrCreate(
-            ['id_pegawai' => $pegawai->id_pegawai],
-            ['id_kelas' => $kelas->id_kelas, 'tahun_ajar' => $request->tahun_ajar]
-        );
+        $kelas = kelas::firstOrCreate(['nama_kelas' => $nama_kelas]);
 
-        return redirect()->route('input-pegawai')->with('success', 'Data pegawai dan kelas berhasil diubah');
+        kelasTahunAjar::where('id_pegawai', $pegawai->id_pegawai)->delete();
+
+        kelasTahunAjar::create([
+            'id_kelas' => $kelas->id_kelas,
+            'id_pegawai' => $pegawai->id_pegawai,
+            'tahun_ajar' => $request->tahun_ajar,
+        ]);
+
+        return redirect()->route('input-pegawai')->with('success', 'Data pegawai dan kelas berhasil diupdate');
     }
 
     public function hapusPegawai($id)
     {
         $pegawai = pegawai::findOrFail($id);
+
+        $pegawai->kelasTahunAjar()->delete();
+
+        foreach ($pegawai->kelasTahunAjar as $kelasTahunAjar) {
+            $kelasTahunAjar->kelas()->delete();
+        }
+
         $pegawai->delete();
 
-        return redirect()->route('input-pegawai')->with('success', 'Data pegawai berhasil dihapus');
+        return redirect()->route('input-pegawai')->with('success', 'Data pegawai dan kelas terkait berhasil dihapus');
     }
 }
