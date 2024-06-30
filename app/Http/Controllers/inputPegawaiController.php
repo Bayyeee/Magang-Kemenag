@@ -3,12 +3,15 @@
 // inputPegawaiController.php
 namespace App\Http\Controllers;
 
+use App\Exports\pegawaiExport;
+use App\Imports\pegawaiImport;
 use App\Models\kelas;
 use App\Models\kelasTahunAjar;
 use App\Models\pegawai;
 use App\Models\Usertpa;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Maatwebsite\Excel\Facades\Excel;
 
 class inputPegawaiController extends Controller
 {
@@ -80,7 +83,6 @@ class inputPegawaiController extends Controller
         ]);
 
         return redirect()->route('input-pegawai')->with('success', 'Data pegawai dan kelas berhasil disimpan');
-
     }
 
 
@@ -155,5 +157,22 @@ class inputPegawaiController extends Controller
         $pegawai->delete();
 
         return redirect()->route('input-pegawai')->with('success', 'Data pegawai dan kelas terkait berhasil dihapus');
+    }
+
+    public function imporPegawai(Request $request)
+    {
+        $request->validate([
+            'file' => 'required|mimes:xlsx',
+        ]);
+
+        Excel::import(new pegawaiImport, $request->file('file'));
+
+        return redirect()->route('input-pegawai')->with('success', 'Data pegawai berhasil diimport');
+    }
+
+    public function pegawaiExport() {
+
+        return Excel::download(new pegawaiExport, 'pegawai.xlsx');
+
     }
 }

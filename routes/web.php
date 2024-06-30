@@ -71,6 +71,10 @@ Route::group(['middleware' => ['auth']], function () {
         Route::get('/pegawai/{id}', [inputPegawaiController::class, 'getPegawai'])->name('get-pegawai');
 
         Route::delete('/hapus-pegawai/{id}', [inputPegawaiController::class, 'hapusPegawai'])->name('hapus-pegawai');
+
+        Route::post('/import-pegawai', [inputPegawaiController::class, 'imporPegawai'])->name('impor-pegawai');
+
+        Route::get('/export-pegawai', [inputPegawaiController::class, 'pegawaiExport'])->name('export-pegawai');
     });
 
     Route::middleware('checkRoles:admin,humas')->group(function () {

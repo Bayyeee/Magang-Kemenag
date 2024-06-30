@@ -183,7 +183,12 @@
                     <div>
                         <a href="javascript:;" class="btn btn-primary shadow-md mr-2" data-tw-toggle="modal"
                             data-tw-target="#uploadexcel-confirmation-modal">
-                            <i class="w-4 h-4 mr-2" data-lucide="plus"></i> Upload Excel
+                            <i class="w-4 h-4 mr-2" data-lucide="upload"></i> Upload Excel
+                        </a>
+                    </div>
+                    <div>
+                        <a href="{{ route('export-pegawai') }}" class="btn btn-primary shadow-md mr-2">
+                            <i class="w-4 h-4 mr-2" data-lucide="download"></i> Download Data Excel
                         </a>
                     </div>
                 </div>
@@ -255,17 +260,16 @@
                             <div class="modal-body p-0">
                                 <div class="p-5 text-center">
                                     <i data-lucide="x-circle" class="w-16 h-16 text-danger mx-auto mt-3"></i>
-                                    <div class="text-3xl mt-5">Are you sure?</div>
+                                    <div class="text-3xl mt-5">Yakin untuk hapus data?</div>
                                     <div class="text-slate-500 mt-2">
-                                        Do you really want to delete these records?
                                         <br>
-                                        This process cannot be undone.
+                                        Data yang dihapus tidak bisa di kembalikan.
                                     </div>
                                 </div>
                                 <div class="px-5 pb-8 text-center">
                                     <button type="button" data-tw-dismiss="modal"
-                                        class="btn btn-outline-secondary w-24 mr-1">Cancel</button>
-                                    <button type="submit" class="btn btn-danger w-24">Delete</button>
+                                        class="btn btn-outline-secondary w-24 mr-1">Kembali</button>
+                                    <button type="submit" class="btn btn-danger w-24">Hapus</button>
                                 </div>
                             </div>
                         </form>
@@ -331,7 +335,7 @@
                                 </div>
                                 <div class="px-5 pb-8 text-center">
                                     <button type="button" data-tw-dismiss="modal"
-                                        class="btn btn-outline-secondary w-24 mr-1">Cancel</button>
+                                        class="btn btn-outline-secondary w-24 mr-1">Kembali</button>
                                     <button type="submit" class="btn btn-outline-primary w-24">Ubah</button>
                                 </div>
                             </div>
@@ -400,7 +404,7 @@
                                 </div>
                                 <div class="px-5 pb-8 text-center">
                                     <button type="button" data-tw-dismiss="modal"
-                                        class="btn btn-outline-secondary w-24 mr-1">Cancel</button>
+                                        class="btn btn-outline-secondary w-24 mr-1">Kembali</button>
                                     <button type="submit" class="btn btn-outline-primary w-24">Save</button>
                                 </div>
                             </div>
@@ -413,7 +417,7 @@
             <div id="uploadexcel-confirmation-modal" class="modal" tabindex="-1" aria-hidden="true">
                 <div class="modal-dialog">
                     <div class="modal-content">
-                        <form id="tambah-form" action="{{ route('simpan-pegawai') }}" method="POST">
+                        <form id="upload-form" action="{{ route('impor-pegawai') }}" method="POST" enctype="multipart/form-data">
                             @csrf
                             <div class="modal-body p-0">
                                 <div class="p-5 text-center">
@@ -423,20 +427,20 @@
                                 </div>
                                 <div class="px-5 pb-8">
                                     <div class="form-group">
-                                        <label for="nama_pegawai">Upload File Excel</label>
-                                        <input type="file" name="nama_pegawai" class="border form-control"
-                                            accept=".xlsx" placeholder="masukkan nama" required>
+                                        <label for="file">Upload File Excel</label>
+                                        <input type="file" name="file" class="border form-control" accept=".xlsx" required>
                                     </div>
                                     <div class="px-5 pb-8 text-center mt-3">
-                                        <button type="button" data-tw-dismiss="modal"
-                                            class="btn btn-outline-secondary w-24 mr-1">Cancel</button>
+                                        <button type="button" data-tw-dismiss="modal" class="btn btn-outline-secondary w-24 mr-1">Kembali</button>
                                         <button type="submit" class="btn btn-outline-primary w-24">Upload</button>
                                     </div>
                                 </div>
+                            </div>
                         </form>
                     </div>
                 </div>
             </div>
+
         </div>
     </div>
 
