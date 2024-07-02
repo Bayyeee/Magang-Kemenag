@@ -23,68 +23,95 @@
                             <div class="menu__title"> Dashboard </div>
                         </a>
                     </li>
+                    {{-- TODO PENDAFTARAN --}}
                     <li>
                         <a href="javascript:;" class="menu">
-                            <div class="menu__icon"> <i data-lucide="box"></i> </div>
-                            <div class="menu__title"> Menu Layout <i data-lucide="chevron-down" class="menu__sub-icon "></i>
+                            <div class="menu__icon"> <i data-lucide="hard-drive"></i> </div>
+                            <div class="menu__title">
+                                Pengajuan
+                                <div class="menu__sub-icon "> <i data-lucide="chevron-down"></i> </div>
                             </div>
                         </a>
                         <ul class="">
                             <li>
-                                <a href="index.html" class="menu menu--active">
-                                    <div class="menu__icon"> <i data-lucide="activity"></i> </div>
-                                    <div class="menu__title"> Side Menu </div>
+                                <a href="{{ route('pendaftaran-users') }}" class="menu">
+                                    <div class="menu__icon"> <i data-lucide="book"></i> </div>
+                                    <div class="menu__title"> Pendaftaran </div>
                                 </a>
                             </li>
                             <li>
-                                <a href="simple-menu-light-dashboard-overview-1.html" class="menu menu--active">
-                                    <div class="menu__icon"> <i data-lucide="activity"></i> </div>
-                                    <div class="menu__title"> Simple Menu </div>
+                                <a href="{{ route('edit-pengajuan') }}" class="menu">
+                                    <div class="menu__icon"> <i data-lucide="edit-3"></i> </div>
+                                    <div class="menu__title"> Edit Pengajuan </div>
                                 </a>
                             </li>
                             <li>
-                                <a href="top-menu-light-dashboard-overview-1.html" class="menu menu--active">
-                                    <div class="menu__icon"> <i data-lucide="activity"></i> </div>
-                                    <div class="menu__title"> Top Menu </div>
+                                <a href="{{ route('cek-verifikasi') }}" class="menu">
+                                    <div class="menu__icon"> <i data-lucide="file"></i> </div>
+                                    <div class="menu__title"> Cek Verifikasi </div>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="{{ route('cetak') }}" class="menu">
+                                    <div class="menu__icon"> <i data-lucide="printer"></i> </div>
+                                    <div class="menu__title"> Cetak Berkas </div>
                                 </a>
                             </li>
                         </ul>
                     </li>
+                    {{-- TODO DATA PEGAWAI --}}
                     <li>
-                        <a href="side-menu-light-inbox.html" class="menu">
-                            <div class="menu__icon"> <i data-lucide="inbox"></i> </div>
-                            <div class="menu__title"> Inbox </div>
+                        <a href="javascript:;" class="menu">
+                            <div class="menu__icon"> <i data-lucide="folder"></i> </div>
+                            <div class="menu__title">
+                                Data Pegawai
+                                <div class="menu__sub-icon "> <i data-lucide="chevron-down"></i> </div>
+                            </div>
                         </a>
+                        <ul class="">
+                            <li>
+                                <a href="{{ route('input-pegawai') }}" class="menu">
+                                    <div class="menu__icon"> <i data-lucide="upload"></i> </div>
+                                    <div class="menu__title"> Input Data Pegawai </div>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="" class="menu">
+                                    <div class="menu__icon"> <i data-lucide="printer"></i> </div>
+                                    <div class="menu__title"> Cetak Data Pegawai </div>
+                                </a>
+                            </li>
+                        </ul>
                     </li>
+                    {{-- TODO DATA SISWA --}}
                     <li>
-                        <a href="side-menu-light-file-manager.html" class="menu">
-                            <div class="menu__icon"> <i data-lucide="hard-drive"></i> </div>
-                            <div class="menu__title"> File Manager </div>
+                        <a href="javascript:;" class="menu">
+                            <div class="menu__icon"> <i data-lucide="folder"></i> </div>
+                            <div class="menu__title">
+                                Data Siswa
+                                <div class="menu__sub-icon "> <i data-lucide="chevron-down"></i> </div>
+                            </div>
                         </a>
-                    </li>
-                    <li>
-                        <a href="side-menu-light-point-of-sale.html" class="menu">
-                            <div class="menu__icon"> <i data-lucide="credit-card"></i> </div>
-                            <div class="menu__title"> Point of Sale </div>
-                        </a>
-                    </li>
-                    <li>
-                        <a href="side-menu-light-chat.html" class="menu">
-                            <div class="menu__icon"> <i data-lucide="message-square"></i> </div>
-                            <div class="menu__title"> Chat </div>
-                        </a>
-                    </li>
-                    <li>
-                        <a href="side-menu-light-post.html" class="menu">
-                            <div class="menu__icon"> <i data-lucide="file-text"></i> </div>
-                            <div class="menu__title"> Post </div>
-                        </a>
-                    </li>
-                    <li>
-                        <a href="side-menu-light-calendar.html" class="menu">
-                            <div class="menu__icon"> <i data-lucide="calendar"></i> </div>
-                            <div class="menu__title"> Calendar </div>
-                        </a>
+                        <ul class="">
+                            <li>
+                                <a href="" class="menu">
+                                    <div class="menu__icon"> <i data-lucide="upload"></i> </div>
+                                    <div class="menu__title"> Input Data Siswa </div>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="" class="menu">
+                                    <div class="menu__icon"> <i data-lucide="printer"></i> </div>
+                                    <div class="menu__title"> Kelas </div>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="" class="menu">
+                                    <div class="menu__icon"> <i data-lucide="printer"></i> </div>
+                                    <div class="menu__title"> Cetak Data Siswa </div>
+                                </a>
+                            </li>
+                        </ul>
                     </li>
                 </ul>
             </div>
@@ -132,7 +159,7 @@
                             </li>
                             <li>
                                 <a href="{{ route('cek-verifikasi') }}" class="side-menu">
-                                    <div class="side-menu__icon"> <i data-lucide="book"></i> </div>
+                                    <div class="side-menu__icon"> <i data-lucide="file"></i> </div>
                                     <div class="side-menu__title"> Cek Verifikasi </div>
                                 </a>
                             </li>
@@ -179,7 +206,7 @@
                         </a>
                         <ul class="">
                             <li>
-                                <a href="" class="side-menu">
+                                <a href="{{ route('show-Siswa') }}" class="side-menu">
                                     <div class="side-menu__icon"> <i data-lucide="upload"></i> </div>
                                     <div class="side-menu__title"> Input Data Siswa </div>
                                 </a>
@@ -257,21 +284,7 @@
                     </div>
                     <!-- END: Account Menu -->
                 </div>
-                <!-- END: Top Bar -->
-                <div class="grid grid-cols-12 gap-6">
-                    <div class="col-span-12 2xl:col-span-9">
-                        <div class="grid grid-cols-12 gap-6">
-                            {{-- ? CONTENT UTAMA --}}
-                        </div>
-                    </div>
-                    <div class="col-span-12 2xl:col-span-3">
-                        <div class="2xl:border-l -mb-10">
-                            <div class="2xl:pl-6 grid grid-cols-12 gap-x-6 2xl:gap-x-0 gap-y-6">
-                                {{-- ? CONTENT BEBAS BERGARIS --}}
-                            </div>
-                        </div>
-                    </div>
-                </div>
+                {{-- TODO ISI CONTENT --}}
             </div>
         </div>
 

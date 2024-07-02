@@ -25,68 +25,95 @@
                         <div class="menu__title"> Dashboard </div>
                     </a>
                 </li>
+                {{-- TODO PENDAFTARAN --}}
                 <li>
                     <a href="javascript:;" class="menu">
-                        <div class="menu__icon"> <i data-lucide="box"></i> </div>
-                        <div class="menu__title"> Menu Layout <i data-lucide="chevron-down" class="menu__sub-icon "></i>
+                        <div class="menu__icon"> <i data-lucide="hard-drive"></i> </div>
+                        <div class="menu__title">
+                            Pengajuan
+                            <div class="menu__sub-icon "> <i data-lucide="chevron-down"></i> </div>
                         </div>
                     </a>
                     <ul class="">
                         <li>
-                            <a href="index.html" class="menu menu--active">
-                                <div class="menu__icon"> <i data-lucide="activity"></i> </div>
-                                <div class="menu__title"> Side Menu </div>
+                            <a href="{{ route('pendaftaran-users') }}" class="menu">
+                                <div class="menu__icon"> <i data-lucide="book"></i> </div>
+                                <div class="menu__title"> Pendaftaran </div>
                             </a>
                         </li>
                         <li>
-                            <a href="simple-menu-light-dashboard-overview-1.html" class="menu menu--active">
-                                <div class="menu__icon"> <i data-lucide="activity"></i> </div>
-                                <div class="menu__title"> Simple Menu </div>
+                            <a href="{{ route('edit-pengajuan') }}" class="menu">
+                                <div class="menu__icon"> <i data-lucide="edit-3"></i> </div>
+                                <div class="menu__title"> Edit Pengajuan </div>
                             </a>
                         </li>
                         <li>
-                            <a href="top-menu-light-dashboard-overview-1.html" class="menu menu--active">
-                                <div class="menu__icon"> <i data-lucide="activity"></i> </div>
-                                <div class="menu__title"> Top Menu </div>
+                            <a href="{{ route('cek-verifikasi') }}" class="menu">
+                                <div class="menu__icon"> <i data-lucide="file"></i> </div>
+                                <div class="menu__title"> Cek Verifikasi </div>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="{{ route('cetak') }}" class="menu">
+                                <div class="menu__icon"> <i data-lucide="printer"></i> </div>
+                                <div class="menu__title"> Cetak Berkas </div>
                             </a>
                         </li>
                     </ul>
                 </li>
+                {{-- TODO DATA PEGAWAI --}}
                 <li>
-                    <a href="side-menu-light-inbox.html" class="menu">
-                        <div class="menu__icon"> <i data-lucide="inbox"></i> </div>
-                        <div class="menu__title"> Inbox </div>
+                    <a href="javascript:;" class="menu">
+                        <div class="menu__icon"> <i data-lucide="folder"></i> </div>
+                        <div class="menu__title">
+                            Data Pegawai
+                            <div class="menu__sub-icon "> <i data-lucide="chevron-down"></i> </div>
+                        </div>
                     </a>
+                    <ul class="">
+                        <li>
+                            <a href="{{ route('input-pegawai') }}" class="menu">
+                                <div class="menu__icon"> <i data-lucide="upload"></i> </div>
+                                <div class="menu__title"> Input Data Pegawai </div>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="" class="menu">
+                                <div class="menu__icon"> <i data-lucide="printer"></i> </div>
+                                <div class="menu__title"> Cetak Data Pegawai </div>
+                            </a>
+                        </li>
+                    </ul>
                 </li>
+                {{-- TODO DATA SISWA --}}
                 <li>
-                    <a href="side-menu-light-file-manager.html" class="menu">
-                        <div class="menu__icon"> <i data-lucide="hard-drive"></i> </div>
-                        <div class="menu__title"> File Manager </div>
+                    <a href="javascript:;" class="menu">
+                        <div class="menu__icon"> <i data-lucide="folder"></i> </div>
+                        <div class="menu__title">
+                            Data Siswa
+                            <div class="menu__sub-icon "> <i data-lucide="chevron-down"></i> </div>
+                        </div>
                     </a>
-                </li>
-                <li>
-                    <a href="side-menu-light-point-of-sale.html" class="menu">
-                        <div class="menu__icon"> <i data-lucide="credit-card"></i> </div>
-                        <div class="menu__title"> Point of Sale </div>
-                    </a>
-                </li>
-                <li>
-                    <a href="side-menu-light-chat.html" class="menu">
-                        <div class="menu__icon"> <i data-lucide="message-square"></i> </div>
-                        <div class="menu__title"> Chat </div>
-                    </a>
-                </li>
-                <li>
-                    <a href="side-menu-light-post.html" class="menu">
-                        <div class="menu__icon"> <i data-lucide="file-text"></i> </div>
-                        <div class="menu__title"> Post </div>
-                    </a>
-                </li>
-                <li>
-                    <a href="side-menu-light-calendar.html" class="menu">
-                        <div class="menu__icon"> <i data-lucide="calendar"></i> </div>
-                        <div class="menu__title"> Calendar </div>
-                    </a>
+                    <ul class="">
+                        <li>
+                            <a href="" class="menu">
+                                <div class="menu__icon"> <i data-lucide="upload"></i> </div>
+                                <div class="menu__title"> Input Data Siswa </div>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="" class="menu">
+                                <div class="menu__icon"> <i data-lucide="printer"></i> </div>
+                                <div class="menu__title"> Kelas </div>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="" class="menu">
+                                <div class="menu__icon"> <i data-lucide="printer"></i> </div>
+                                <div class="menu__title"> Cetak Data Siswa </div>
+                            </a>
+                        </li>
+                    </ul>
                 </li>
             </ul>
         </div>
@@ -133,7 +160,7 @@
                         </li>
                         <li>
                             <a href="{{ route('cek-verifikasi') }}" class="side-menu">
-                                <div class="side-menu__icon"> <i data-lucide="book"></i> </div>
+                                <div class="side-menu__icon"> <i data-lucide="file"></i> </div>
                                 <div class="side-menu__title"> Cek Verifikasi </div>
                             </a>
                         </li>
@@ -145,39 +172,59 @@
                         </li>
                     </ul>
                 </li>
+                {{-- TODO DATA PEGAWAI --}}
                 <li>
-                    <a href="side-menu-light-file-manager.html" class="side-menu">
-                        <div class="side-menu__icon"> <i data-lucide="hard-drive"></i> </div>
-                        <div class="side-menu__title"> File Manager </div>
+                    <a href="javascript:;" class="side-menu">
+                        <div class="side-menu__icon"> <i data-lucide="folder"></i> </div>
+                        <div class="side-menu__title">
+                            Data Pegawai
+                            <div class="side-menu__sub-icon "> <i data-lucide="chevron-down"></i> </div>
+                        </div>
                     </a>
+                    <ul class="">
+                        <li>
+                            <a href="{{ route('input-pegawai') }}" class="side-menu">
+                                <div class="side-menu__icon"> <i data-lucide="upload"></i> </div>
+                                <div class="side-menu__title"> Input Data Pegawai </div>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="" class="side-menu">
+                                <div class="side-menu__icon"> <i data-lucide="printer"></i> </div>
+                                <div class="side-menu__title"> Cetak Data Pegawai </div>
+                            </a>
+                        </li>
+                    </ul>
                 </li>
-
+                {{-- TODO DATA SISWA --}}
                 <li>
-                    <a href="side-menu-light-point-of-sale.html" class="side-menu">
-                        <div class="side-menu__icon"> <i data-lucide="credit-card"></i> </div>
-                        <div class="side-menu__title"> Point of Sale </div>
+                    <a href="javascript:;" class="side-menu">
+                        <div class="side-menu__icon"> <i data-lucide="folder"></i> </div>
+                        <div class="side-menu__title">
+                            Data Siswa
+                            <div class="side-menu__sub-icon "> <i data-lucide="chevron-down"></i> </div>
+                        </div>
                     </a>
-                </li>
-
-                <li>
-                    <a href="side-menu-light-chat.html" class="side-menu">
-                        <div class="side-menu__icon"> <i data-lucide="message-square"></i> </div>
-                        <div class="side-menu__title"> Chat </div>
-                    </a>
-                </li>
-
-                <li>
-                    <a href="side-menu-light-post.html" class="side-menu">
-                        <div class="side-menu__icon"> <i data-lucide="file-text"></i> </div>
-                        <div class="side-menu__title"> Post </div>
-                    </a>
-                </li>
-
-                <li>
-                    <a href="side-menu-light-calendar.html" class="side-menu">
-                        <div class="side-menu__icon"> <i data-lucide="calendar"></i> </div>
-                        <div class="side-menu__title"> Calendar </div>
-                    </a>
+                    <ul class="">
+                        <li>
+                            <a href="" class="side-menu">
+                                <div class="side-menu__icon"> <i data-lucide="upload"></i> </div>
+                                <div class="side-menu__title"> Input Data Siswa </div>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="" class="side-menu">
+                                <div class="side-menu__icon"> <i data-lucide="printer"></i> </div>
+                                <div class="side-menu__title"> Kelas </div>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="" class="side-menu">
+                                <div class="side-menu__icon"> <i data-lucide="printer"></i> </div>
+                                <div class="side-menu__title"> Cetak Data Siswa </div>
+                            </a>
+                        </li>
+                    </ul>
                 </li>
 
             </ul>
@@ -298,7 +345,7 @@
                                 </div>
                             @else
                                 <span class="font-medium text-xl text-danger italic text-center -mr-24">
-                                        Silahkan upload berkas untuk mencetak surat keterangan.
+                                    Silahkan upload berkas untuk mencetak surat keterangan.
                                 </span>
                             @endif
                         @endif
@@ -319,7 +366,8 @@
                             <a href="" class="w-3/5 file__icon file__icon--file mx-auto">
                                 <div class="file__icon__file-name">Docx</div>
                             </a>
-                            <a href="" class="block font-medium mt-4 text-center truncate">preview-11.jpg</a>
+                            <a href="" class="block font-medium mt-4 text-center truncate">Surat Permohonan
+                                TPA</a>
                             <div class="text-slate-500 text-xs text-center mt-0.5">1.4 MB</div>
                             <div class="absolute top-0 right-0 mr-2 mt-3 dropdown ml-auto">
                                 <a class="dropdown-toggle w-5 h-5 block" href="javascript:;" aria-expanded="false"
@@ -331,10 +379,6 @@
                                             <a href="" class="dropdown-item"> <i data-lucide="download"
                                                     class="w-4 h-4 mr-2"></i> Download </a>
                                         </li>
-                                        <li>
-                                            <a href="" class="dropdown-item"> <i data-lucide="printer"
-                                                    class="w-4 h-4 mr-2"></i> Cetak </a>
-                                        </li>
                                     </ul>
                                 </div>
                             </div>
@@ -345,7 +389,8 @@
                             <a href="" class="w-3/5 file__icon file__icon--file mx-auto">
                                 <div class="file__icon__file-name">Docx</div>
                             </a>
-                            <a href="" class="block font-medium mt-4 text-center truncate">SK Kepengurusan</a>
+                            <a href="" class="block font-medium mt-4 text-center truncate">Proposal Pendirian
+                                TPA</a>
                             <div class="text-slate-500 text-xs text-center mt-0.5">1 MB</div>
                             <div class="absolute top-0 right-0 mr-2 mt-3 dropdown ml-auto">
                                 <a class="dropdown-toggle w-5 h-5 block" href="javascript:;" aria-expanded="false"
@@ -357,9 +402,28 @@
                                             <a href="" class="dropdown-item"> <i data-lucide="download"
                                                     class="w-4 h-4 mr-2"></i> Download </a>
                                         </li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="intro-y col-span-6 sm:col-span-4 md:col-span-3 2xl:col-span-2">
+                        <div class="file box rounded-md pt-8 pb-5 px-3 sm:px-5 relative zoom-in">
+                            <a href="" class="w-3/5 file__icon file__icon--file mx-auto">
+                                <div class="file__icon__file-name">Docx</div>
+                            </a>
+                            <a href="" class="block font-medium mt-4 text-center truncate">Susunan
+                                Kepengurusan</a>
+                            <div class="text-slate-500 text-xs text-center mt-0.5">1 MB</div>
+                            <div class="absolute top-0 right-0 mr-2 mt-3 dropdown ml-auto">
+                                <a class="dropdown-toggle w-5 h-5 block" href="javascript:;" aria-expanded="false"
+                                    data-tw-toggle="dropdown"> <i data-lucide="more-vertical"
+                                        class="w-5 h-5 text-slate-500"></i> </a>
+                                <div class="dropdown-menu w-40">
+                                    <ul class="dropdown-content">
                                         <li>
-                                            <a href="" class="dropdown-item"> <i data-lucide="printer"
-                                                    class="w-4 h-4 mr-2"></i> Cetak </a>
+                                            <a href="" class="dropdown-item"> <i data-lucide="download"
+                                                    class="w-4 h-4 mr-2"></i> Download </a>
                                         </li>
                                     </ul>
                                 </div>
@@ -371,8 +435,8 @@
                             <a href="" class="w-3/5 file__icon file__icon--file mx-auto">
                                 <div class="file__icon__file-name">Docx</div>
                             </a>
-                            <a href="" class="block font-medium mt-4 text-center truncate">Repository</a>
-                            <div class="text-slate-500 text-xs text-center mt-0.5">20 KB</div>
+                            <a href="" class="block font-medium mt-4 text-center truncate">Daftar Santri</a>
+                            <div class="text-slate-500 text-xs text-center mt-0.5">1 MB</div>
                             <div class="absolute top-0 right-0 mr-2 mt-3 dropdown ml-auto">
                                 <a class="dropdown-toggle w-5 h-5 block" href="javascript:;" aria-expanded="false"
                                     data-tw-toggle="dropdown"> <i data-lucide="more-vertical"
@@ -382,65 +446,6 @@
                                         <li>
                                             <a href="" class="dropdown-item"> <i data-lucide="download"
                                                     class="w-4 h-4 mr-2"></i> Download </a>
-                                        </li>
-                                        <li>
-                                            <a href="" class="dropdown-item"> <i data-lucide="printer"
-                                                    class="w-4 h-4 mr-2"></i> Cetak </a>
-                                        </li>
-                                    </ul>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="intro-y col-span-6 sm:col-span-4 md:col-span-3 2xl:col-span-2">
-                        <div class="file box rounded-md pt-8 pb-5 px-3 sm:px-5 relative zoom-in">
-
-                            <a href="" class="w-3/5 file__icon file__icon--file mx-auto">
-                                <div class="file__icon__file-name">PHP</div>
-                            </a>
-                            <a href="" class="block font-medium mt-4 text-center truncate">Routes.php</a>
-                            <div class="text-slate-500 text-xs text-center mt-0.5">1 KB</div>
-                            <div class="absolute top-0 right-0 mr-2 mt-3 dropdown ml-auto">
-                                <a class="dropdown-toggle w-5 h-5 block" href="javascript:;" aria-expanded="false"
-                                    data-tw-toggle="dropdown"> <i data-lucide="more-vertical"
-                                        class="w-5 h-5 text-slate-500"></i> </a>
-                                <div class="dropdown-menu w-40">
-                                    <ul class="dropdown-content">
-                                        <li>
-                                            <a href="" class="dropdown-item"> <i data-lucide="download"
-                                                    class="w-4 h-4 mr-2"></i> Download </a>
-                                        </li>
-                                        <li>
-                                            <a href="" class="dropdown-item"> <i data-lucide="printer"
-                                                    class="w-4 h-4 mr-2"></i> Cetak </a>
-                                        </li>
-                                    </ul>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="intro-y col-span-6 sm:col-span-4 md:col-span-3 2xl:col-span-2">
-                        <div class="file box rounded-md pt-8 pb-5 px-3 sm:px-5 relative zoom-in">
-
-                            <a href="" class="w-3/5 file__icon file__icon--file mx-auto">
-                                <div class="file__icon__file-name">MP4</div>
-                            </a>
-                            <a href="" class="block font-medium mt-4 text-center truncate">Celine Dion -
-                                Ashes.mp4</a>
-                            <div class="text-slate-500 text-xs text-center mt-0.5">20 MB</div>
-                            <div class="absolute top-0 right-0 mr-2 mt-3 dropdown ml-auto">
-                                <a class="dropdown-toggle w-5 h-5 block" href="javascript:;" aria-expanded="false"
-                                    data-tw-toggle="dropdown"> <i data-lucide="more-vertical"
-                                        class="w-5 h-5 text-slate-500"></i> </a>
-                                <div class="dropdown-menu w-40">
-                                    <ul class="dropdown-content">
-                                        <li>
-                                            <a href="" class="dropdown-item"> <i data-lucide="download"
-                                                    class="w-4 h-4 mr-2"></i> Download </a>
-                                        </li>
-                                        <li>
-                                            <a href="" class="dropdown-item"> <i data-lucide="printer"
-                                                    class="w-4 h-4 mr-2"></i> Cetak </a>
                                         </li>
                                     </ul>
                                 </div>
@@ -450,11 +455,11 @@
                     <div class="intro-y col-span-6 sm:col-span-4 md:col-span-3 2xl:col-span-2">
                         <div class="file box rounded-md pt-8 pb-5 px-3 sm:px-5 relative zoom-in">
                             <a href="" class="w-3/5 file__icon file__icon--file mx-auto">
-                                <div class="file__icon__file-name">MP4</div>
+                                <div class="file__icon__file-name">Docx</div>
                             </a>
-                            <a href="" class="block font-medium mt-4 text-center truncate">Celine Dion -
-                                Ashes.mp4</a>
-                            <div class="text-slate-500 text-xs text-center mt-0.5">20 MB</div>
+                            <a href="" class="block font-medium mt-4 text-center truncate">Daftar
+                                ustadz/ustadzah</a>
+                            <div class="text-slate-500 text-xs text-center mt-0.5">1 MB</div>
                             <div class="absolute top-0 right-0 mr-2 mt-3 dropdown ml-auto">
                                 <a class="dropdown-toggle w-5 h-5 block" href="javascript:;" aria-expanded="false"
                                     data-tw-toggle="dropdown"> <i data-lucide="more-vertical"
@@ -464,10 +469,6 @@
                                         <li>
                                             <a href="" class="dropdown-item"> <i data-lucide="download"
                                                     class="w-4 h-4 mr-2"></i> Download </a>
-                                        </li>
-                                        <li>
-                                            <a href="" class="dropdown-item"> <i data-lucide="printer"
-                                                    class="w-4 h-4 mr-2"></i> Cetak </a>
                                         </li>
                                     </ul>
                                 </div>
@@ -476,9 +477,12 @@
                     </div>
                     <div class="intro-y col-span-6 sm:col-span-4 md:col-span-3 2xl:col-span-2">
                         <div class="file box rounded-md pt-8 pb-5 px-3 sm:px-5 relative zoom-in">
-                            <a href="" class="w-3/5 file__icon file__icon--file mx-auto"></a> <a
-                                href="" class="block font-medium mt-4 text-center truncate">Repository</a>
-                            <div class="text-slate-500 text-xs text-center mt-0.5">20 KB</div>
+                            <a href="" class="w-3/5 file__icon file__icon--file mx-auto">
+                                <div class="file__icon__file-name">Docx</div>
+                            </a>
+                            <a href="" class="block font-medium mt-4 text-center truncate">Surat Rekomendasi
+                                Dari Kepala KUA Kecamatan</a>
+                            <div class="text-slate-500 text-xs text-center mt-0.5">1 MB</div>
                             <div class="absolute top-0 right-0 mr-2 mt-3 dropdown ml-auto">
                                 <a class="dropdown-toggle w-5 h-5 block" href="javascript:;" aria-expanded="false"
                                     data-tw-toggle="dropdown"> <i data-lucide="more-vertical"
@@ -489,9 +493,28 @@
                                             <a href="" class="dropdown-item"> <i data-lucide="download"
                                                     class="w-4 h-4 mr-2"></i> Download </a>
                                         </li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="intro-y col-span-6 sm:col-span-4 md:col-span-3 2xl:col-span-2">
+                        <div class="file box rounded-md pt-8 pb-5 px-3 sm:px-5 relative zoom-in">
+                            <a href="" class="w-3/5 file__icon file__icon--file mx-auto">
+                                <div class="file__icon__file-name">Docx</div>
+                            </a>
+                            <a href="" class="block font-medium mt-4 text-center truncate">Bukti Foto
+                                Kegiatan</a>
+                            <div class="text-slate-500 text-xs text-center mt-0.5">1 MB</div>
+                            <div class="absolute top-0 right-0 mr-2 mt-3 dropdown ml-auto">
+                                <a class="dropdown-toggle w-5 h-5 block" href="javascript:;" aria-expanded="false"
+                                    data-tw-toggle="dropdown"> <i data-lucide="more-vertical"
+                                        class="w-5 h-5 text-slate-500"></i> </a>
+                                <div class="dropdown-menu w-40">
+                                    <ul class="dropdown-content">
                                         <li>
-                                            <a href="" class="dropdown-item"> <i data-lucide="printer"
-                                                    class="w-4 h-4 mr-2"></i> Cetak </a>
+                                            <a href="" class="dropdown-item"> <i data-lucide="download"
+                                                    class="w-4 h-4 mr-2"></i> Download </a>
                                         </li>
                                     </ul>
                                 </div>

@@ -19,7 +19,7 @@ class kelasTahunAjar extends Model
 
     public function kelas()
     {
-        return $this->belongsTo(kelas::class, 'id_kelas', 'id_kelas');
+        return $this->belongsTo(kelas::class, 'id_kelas');
     }
 
     public function pegawai()

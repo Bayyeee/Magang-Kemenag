@@ -5,6 +5,121 @@
 
 <body>
 
+    {{-- TODO FOR MOBILE USERS --}}
+    <div class="mobile-menu md:hidden">
+        <div class="mobile-menu-bar">
+            <a href="#" class="flex mr-auto">
+                <img alt="Kementerian Agama Kota Banjarmasin" class="w-10 rounded-lg"
+                    src="{{ asset('images/kemenag_icon.png') }}">
+            </a>
+            <a href="javascript:;" class="mobile-menu-toggler"> <i data-lucide="bar-chart-2"
+                    class="w-8 h-8 text-white transform -rotate-90"></i> </a>
+        </div>
+        <div class="scrollable">
+            <a href="javascript:;" class="mobile-menu-toggler"> <i data-lucide="x-circle"
+                    class="w-8 h-8 text-white transform -rotate-90"></i> </a>
+            <ul class="scrollable__content py-2">
+                <li>
+                    <a href="/" class="menu menu--active">
+                        <div class="menu__icon"><i data-lucide="home"></i> </div>
+                        <div class="menu__title"> Dashboard </div>
+                    </a>
+                </li>
+                {{-- TODO PENDAFTARAN --}}
+                <li>
+                    <a href="javascript:;" class="menu">
+                        <div class="menu__icon"> <i data-lucide="hard-drive"></i> </div>
+                        <div class="menu__title">
+                            Pengajuan
+                            <div class="menu__sub-icon "> <i data-lucide="chevron-down"></i> </div>
+                        </div>
+                    </a>
+                    <ul class="">
+                        <li>
+                            <a href="{{ route('pendaftaran-users') }}" class="menu">
+                                <div class="menu__icon"> <i data-lucide="book"></i> </div>
+                                <div class="menu__title"> Pendaftaran </div>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="{{ route('edit-pengajuan') }}" class="menu">
+                                <div class="menu__icon"> <i data-lucide="edit-3"></i> </div>
+                                <div class="menu__title"> Edit Pengajuan </div>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="{{ route('cek-verifikasi') }}" class="menu">
+                                <div class="menu__icon"> <i data-lucide="file"></i> </div>
+                                <div class="menu__title"> Cek Verifikasi </div>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="{{ route('cetak') }}" class="menu">
+                                <div class="menu__icon"> <i data-lucide="printer"></i> </div>
+                                <div class="menu__title"> Cetak Berkas </div>
+                            </a>
+                        </li>
+                    </ul>
+                </li>
+                {{-- TODO DATA PEGAWAI --}}
+                <li>
+                    <a href="javascript:;" class="menu">
+                        <div class="menu__icon"> <i data-lucide="folder"></i> </div>
+                        <div class="menu__title">
+                            Data Pegawai
+                            <div class="menu__sub-icon "> <i data-lucide="chevron-down"></i> </div>
+                        </div>
+                    </a>
+                    <ul class="">
+                        <li>
+                            <a href="{{ route('input-pegawai') }}" class="menu">
+                                <div class="menu__icon"> <i data-lucide="upload"></i> </div>
+                                <div class="menu__title"> Input Data Pegawai </div>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="" class="menu">
+                                <div class="menu__icon"> <i data-lucide="printer"></i> </div>
+                                <div class="menu__title"> Cetak Data Pegawai </div>
+                            </a>
+                        </li>
+                    </ul>
+                </li>
+                {{-- TODO DATA SISWA --}}
+                <li>
+                    <a href="javascript:;" class="menu">
+                        <div class="menu__icon"> <i data-lucide="folder"></i> </div>
+                        <div class="menu__title">
+                            Data Siswa
+                            <div class="menu__sub-icon "> <i data-lucide="chevron-down"></i> </div>
+                        </div>
+                    </a>
+                    <ul class="">
+                        <li>
+                            <a href="" class="menu">
+                                <div class="menu__icon"> <i data-lucide="upload"></i> </div>
+                                <div class="menu__title"> Input Data Siswa </div>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="" class="menu">
+                                <div class="menu__icon"> <i data-lucide="printer"></i> </div>
+                                <div class="menu__title"> Kelas </div>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="" class="menu">
+                                <div class="menu__icon"> <i data-lucide="printer"></i> </div>
+                                <div class="menu__title"> Cetak Data Siswa </div>
+                            </a>
+                        </li>
+                    </ul>
+                </li>
+            </ul>
+        </div>
+    </div>
+
+    {{-- TODO UNTUK DESKTOP --}}
     <div class="flex mt-[4.7rem] md:mt-0">
         <nav class="side-nav">
             {{-- TODO NAV USERS --}}
@@ -46,7 +161,7 @@
                         </li>
                         <li>
                             <a href="{{ route('cek-verifikasi') }}" class="side-menu">
-                                <div class="side-menu__icon"> <i data-lucide="book"></i> </div>
+                                <div class="side-menu__icon"> <i data-lucide="file"></i> </div>
                                 <div class="side-menu__title"> Cek Verifikasi </div>
                             </a>
                         </li>
@@ -69,7 +184,7 @@
                     </a>
                     <ul class="">
                         <li>
-                            <a href="" class="side-menu side-menu--active">
+                            <a href="{{ route('input-pegawai') }}" class="side-menu side-menu--active">
                                 <div class="side-menu__icon"> <i data-lucide="upload"></i> </div>
                                 <div class="side-menu__title"> Input Data Pegawai </div>
                             </a>
@@ -93,7 +208,7 @@
                     </a>
                     <ul class="">
                         <li>
-                            <a href="" class="side-menu">
+                            <a href="{{ route('show-Siswa') }}" class="side-menu">
                                 <div class="side-menu__icon"> <i data-lucide="upload"></i> </div>
                                 <div class="side-menu__title"> Input Data Siswa </div>
                             </a>
@@ -118,10 +233,8 @@
         <div class="content">
             <!-- BEGIN: Top Bar -->
             <div class="top-bar">
-                <!-- BEGIN: Breadcrumb -->
                 <nav aria-label="breadcrumb" class="-intro-x mr-auto hidden sm:flex">
                 </nav>
-                <!-- END: Breadcrumb -->
                 <!-- BEGIN: Account Menu -->
                 <div class="intro-x dropdown w-8 h-8">
                     <div class="dropdown-toggle w-8 h-8 rounded-full overflow-hidden shadow-lg image-fit zoom-in"
@@ -384,7 +497,7 @@
                                     <div class="form-group mt-3">
                                         <label for="nama_kelas">Nama Kelas</label>
                                         <select name="nama_kelas" class="tom-select w-full" id="tambah-nama_kelas"
-                                            data-placeholder="Pilih Kelas" >
+                                            data-placeholder="Pilih Kelas">
                                             @foreach ($nama_kelas as $nk)
                                                 <option value="{{ $nk }}">{{ $nk }}</option>
                                             @endforeach
@@ -417,7 +530,8 @@
             <div id="uploadexcel-confirmation-modal" class="modal" tabindex="-1" aria-hidden="true">
                 <div class="modal-dialog">
                     <div class="modal-content">
-                        <form id="upload-form" action="{{ route('impor-pegawai') }}" method="POST" enctype="multipart/form-data">
+                        <form id="upload-form" action="{{ route('impor-pegawai') }}" method="POST"
+                            enctype="multipart/form-data">
                             @csrf
                             <div class="modal-body p-0">
                                 <div class="p-5 text-center">
@@ -428,10 +542,12 @@
                                 <div class="px-5 pb-8">
                                     <div class="form-group">
                                         <label for="file">Upload File Excel</label>
-                                        <input type="file" name="file" class="border form-control" accept=".xlsx" required>
+                                        <input type="file" name="file" class="border form-control"
+                                            accept=".xlsx" required>
                                     </div>
                                     <div class="px-5 pb-8 text-center mt-3">
-                                        <button type="button" data-tw-dismiss="modal" class="btn btn-outline-secondary w-24 mr-1">Kembali</button>
+                                        <button type="button" data-tw-dismiss="modal"
+                                            class="btn btn-outline-secondary w-24 mr-1">Kembali</button>
                                         <button type="submit" class="btn btn-outline-primary w-24">Upload</button>
                                     </div>
                                 </div>

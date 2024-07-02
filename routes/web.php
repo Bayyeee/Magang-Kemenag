@@ -9,6 +9,7 @@ use App\Http\Controllers\profileController;
 use App\Http\Controllers\registrasiController;
 use App\Http\Controllers\editpengajuanController;
 use App\Http\Controllers\inputPegawaiController;
+use App\Http\Controllers\inputSiswaController;
 use App\Http\Controllers\pendaftaranController;
 use App\Http\Controllers\riwayatcetakController;
 use Illuminate\Support\Facades\Route;
@@ -75,6 +76,10 @@ Route::group(['middleware' => ['auth']], function () {
         Route::post('/import-pegawai', [inputPegawaiController::class, 'imporPegawai'])->name('impor-pegawai');
 
         Route::get('/export-pegawai', [inputPegawaiController::class, 'pegawaiExport'])->name('export-pegawai');
+
+        Route::get('/input-siswa', [inputSiswaController::class, 'showSiswa'])->name('show-Siswa');
+
+        Route::post('/simpan-siswa', [inputSiswaController::class, 'simpanSiswa'])->name('simpan-siswa');
     });
 
     Route::middleware('checkRoles:admin,humas')->group(function () {
