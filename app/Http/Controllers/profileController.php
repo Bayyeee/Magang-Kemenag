@@ -76,6 +76,6 @@ class profileController extends Controller
 
         // Tampilkan alert sukses
         Alert::success('Berhasil', 'Profil berhasil diperbarui');
-        return redirect()->route('Profile');
+        return redirect()->route('Home');
     }
 }
