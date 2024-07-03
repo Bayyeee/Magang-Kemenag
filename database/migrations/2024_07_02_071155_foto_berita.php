@@ -15,6 +15,7 @@ return new class extends Migration
             $table->id('id_foto');
             $table->string('nama_foto', 100);
             $table->string('upload_foto', 100);
+            $table->string('path', 100);
             $table->timestamps();
         });
     }

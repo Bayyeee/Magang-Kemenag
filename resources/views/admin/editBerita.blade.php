@@ -666,55 +666,34 @@
                 </li>
                 <li class="side-nav__devider"></li>
                 <li>
-                    <a href="javascript:;" class="side-menu">
+                    <a href="{{ route('homeAdmin') }}" class="side-menu">
                         <div class="side-menu__icon"> <i data-lucide="edit"></i> </div>
                         <div class="side-menu__title">
                             Berkas
-                            <div class="side-menu__sub-icon "> <i data-lucide="chevron-down"></i> </div>
+                            {{-- <div class="side-menu__sub-icon "> <i data-lucide="chevron-down"></i> </div> --}}
                         </div>
                     </a>
-                    <ul class="">
-                        @foreach ($pendaftarans as $pendaftaran)
-                            <li>
-                                <a href="{{ route('showBerkas', ['id_pendaftaran' => $pendaftaran->id_pendaftaran]) }}"
-                                    class="side-menu">
-                                    <div class="side-menu__icon"> <i data-lucide="folder"></i> </div>
-                                    <div class="side-menu__title">Berkas {{ $pendaftaran->usersTpa->nama_tpa }} </div>
-                                </a>
-                            </li>
-                        @endforeach
-                    </ul>
                 </li>
                 <li>
-                    <a href="javascript:;" class="side-menu">
+                    <a href="{{ route('homeAdmin') }}" class="side-menu">
                         <div class="side-menu__icon"> <i data-lucide="users"></i> </div>
                         <div class="side-menu__title">
                             Users
-                            <div class="side-menu__sub-icon "> <i data-lucide="chevron-down"></i> </div>
+                            {{-- <div class="side-menu__sub-icon "> <i data-lucide="chevron-down"></i> </div> --}}
                         </div>
                     </a>
-                    <ul class="">
-                        @foreach ($pendaftarans as $pendaftaran)
-                            <li>
-                                <a href="side-menu-light-users-layout-1.html" class="side-menu">
-                                    <div class="side-menu__icon"> <i data-lucide="users"></i> </div>
-                                    <div class="side-menu__title"> {{ $pendaftaran->usersTpa->nama_tpa }} </div>
-                                </a>
-                            </li>
-                        @endforeach
-                    </ul>
                 </li>
                 <li>
-                    <a href="javascript:;" class="side-menu">
+                    <a href="{{ route('homeAdmin') }}" class="side-menu">
                         <div class="side-menu__icon"> <i data-lucide="history"></i> </div>
                         <div class="side-menu__title">
                             Riwayat Cetak
-                            <div class="side-menu__sub-icon "> <i data-lucide="chevron-down"></i> </div>
+                            {{-- <div class="side-menu__sub-icon "> <i data-lucide="chevron-down"></i> </div> --}}
                         </div>
                     </a>
                 </li>
                 <li>
-                    <a href="{{ route('show-Berita') }}" class="side-menu">
+                    <a href="{{ route('show-Berita') }}" class="side-menu side-menu--active">
                         <div class="side-menu__icon"> <i data-lucide="tv"></i> </div>
                         <div class="side-menu__title">
                             Edit Berita
@@ -723,7 +702,7 @@
                 </li>
             </ul>
         </nav>
-        <!-- BEGIN: Content -->
+        {{-- TODO PROFILE --}}
         <div class="content">
             <div class="top-bar">
                 <nav aria-label="breadcrumb" class="-intro-x mr-auto hidden sm:flex">
@@ -758,112 +737,230 @@
                     </div>
                 </div>
             </div>
-            <div
-                class="col-span-12 md:col-span-6 xl:col-span-12 xl:col-start-1 xl:row-start-1 2xl:col-start-auto 2xl:row-start-auto mt-3">
-                <div class="mt-5 intro-x">
-                    <div class="box zoom">
-                        <div class="tiny-slider" id="important-notes">
-                            <div class="h-64 px-2 p-2">
-                                <div class="h-full image-fit rounded-md overflow-hidden"><img
-                                        src="{{ asset('images/Kantor.png') }}" alt=""></div>
+            {{-- TODO CONTENT BERITA --}}
+            <div class="content">
+                <div class="intro-y flex flex-col sm:flex-row items-center">
+                    <h2 class="text-lg font-medium mr-auto">Daftar Berita</h2>
+                    <div class="w-full sm:w-auto flex sm:mt-0">
+                        <a href="javascript:;" class="btn btn-primary shadow-md mr-2 mt-10" data-tw-toggle="modal"
+                            data-tw-target="#tambah-confirmation-modal">
+                            <i class="w-4 h-4 mr-2" data-lucide="plus"></i>Tambah Berita
+                        </a>
+                    </div>
+                </div>
+                <div class="intro-y grid grid-cols-12 gap-6 mt-5">
+                    @foreach ($berita as $item)
+                        <div class="intro-y col-span-12 md:col-span-6 xl:col-span-4 box">
+                            <div
+                                class="flex items-center border-b border-slate-200/60 dark:border-darkmode-400 px-5 py-4">
+                                <div class="ml-3 mr-auto">
+                                    <a href="" class="font-medium"></a>
+                                    <div class="flex text-slate-500 truncate text-xs mt-0.5"></div>
+                                </div>
+                                <div class="dropdown ml-3">
+                                    <a href="javascript:;" class="dropdown-toggle w-5 h-5 text-slate-500"
+                                        aria-expanded="false" data-tw-toggle="dropdown"> <i
+                                            data-lucide="more-vertical" class="w-4 h-4"></i> </a>
+                                    <div class="dropdown-menu w-40">
+                                        <ul class="dropdown-content">
+                                            <li>
+                                                <!-- Add data-berita-id attribute to the edit button -->
+                                                <a href="javascript:;" class="dropdown-item" data-tw-toggle="modal"
+                                                    data-tw-target="#edit-confirmation-modal"
+                                                    data-berita-id="{{ $item->id_berita }}">
+                                                    <i data-lucide="edit-2" class="w-4 h-4 mr-2"></i> Edit Post
+                                                </a>
+                                            </li>
+                                            <li>
+                                                <form class="dropdown-item"
+                                                    action="{{ route('hapus-berita', ['id' => $item->id_berita]) }}"
+                                                    method="POST">
+                                                    @csrf
+                                                    @method('DELETE')
+                                                    <button type="submit" class="dropdown-item w-full">
+                                                        <i data-lucide="trash" class="w-4 h-4 mr-2"></i> Delete
+                                                    </button>
+                                                </form>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </div>
                             </div>
-                            <div class="h-64 px-2 p-2">
-                                <div class="h-full image-fit rounded-md overflow-hidden"><img
-                                        src="{{ asset('images/Kantor.png') }}" alt=""></div>
+                            <div class="p-5">
+                                <div class="h-40 2xl:h-56 image-fit">
+                                    <img alt="" data-action="zoom" class="rounded-md zoom-in"
+                                        src="{{ $item->fotoBerita->path }}">
+                                </div>
+                                <h2 class="block font-medium text-base mt-5">{{ $item->judul_berita }}</h2>
+                                <div class="text-slate-600 dark:text-slate-500 mt-2">
+                                    @if (strlen($item->isi_berita) > 50)
+                                        <span id="isi-berita-short-{{ $item->id_berita }}"
+                                            class="isi-berita-short">{{ substr($item->isi_berita, 0, 50) }}...</span>
+                                        <span id="isi-berita-full-{{ $item->id_berita }}" class="isi-berita-full"
+                                            style="display: none;">{{ $item->isi_berita }}</span>
+                                        <a href="#" class="toggle-isi-berita text-primary"
+                                            data-id="{{ $item->id_berita }}">Baca Selengkapnya</a>
+                                    @else
+                                        {{ $item->isi_berita }}
+                                    @endif
+                                </div>
                             </div>
-                            <div class="h-64 px-2 p-2">
-                                <div class="h-full image-fit rounded-md overflow-hidden"><img
-                                        src="{{ asset('images/Kantor.png') }}" alt=""></div>
+
+                            <div
+                                class="flex items-center px-5 py-3 border-t border-slate-200/60 dark:border-darkmode-400">
+                                <a href="#"
+                                    class="intro-x w-8 h-8 flex items-center justify-center rounded-full border border-slate-300 dark:border-darkmode-400 dark:bg-darkmode-300 dark:text-slate-300 text-slate-500 mr-2 tooltip"
+                                    title="{{ $item->user->nama }}"> <i data-lucide="users" class="w-3 h-3"></i>
+                                </a>
+                                <a href="#"
+                                    class="intro-x w-8 h-8 flex items-center justify-center rounded-full border border-slate-300 dark:border-darkmode-400 dark:bg-darkmode-300 dark:text-slate-300 text-slate-500 mr-2 tooltip"
+                                    title="{{ date('d M Y ', strtotime($item->waktu_upload)) }}">
+                                    <i data-lucide="calendar" class="w-3 h-3"></i>
+                                </a>
+                                <a href=""
+                                    class="intro-x w-8 h-8 flex items-center justify-center rounded-full text-primary bg-primary/10 dark:bg-darkmode-300 dark:text-slate-300 ml-auto tooltip"
+                                    title="Share"><i data-lucide="share-2" class="w-3 h-3"></i></a>
+                            </div>
+                        </div>
+                    @endforeach
+
+                    {{-- TODO MODAL EDIT --}}
+                    <div id="edit-confirmation-modal" class="modal" tabindex="-1" aria-hidden="true">
+                        <div class="modal-dialog">
+                            <div class="modal-content">
+                                <form id="editForm" action="" method="POST" enctype="multipart/form-data">
+                                    @csrf
+                                    <div class="modal-body p-0">
+                                        <div class="p-5 text-center">
+                                            <i data-lucide="edit" class="w-16 h-16 text-success mx-auto mt-3"></i>
+                                            <div class="text-3xl mt-5">Edit Berita</div>
+                                            <div class="text-slate-500 mt-2">Setiap Edit Akan di Record</div>
+                                        </div>
+                                        <div class="px-5 pb-8">
+                                            <div class="form-group">
+                                                <label for="edit_judul_berita">Judul Berita</label>
+                                                <input type="text" id="edit_judul_berita" name="judul_berita"
+                                                    class="form-control" placeholder="Judul berita" maxlength="30"
+                                                    value="" required>
+                                            </div>
+                                            <div class="form-group mt-3">
+                                                <label for="edit_isi_berita">Isi Berita</label>
+                                                <textarea id="edit_isi_berita" name="isi_berita"
+                                                    class="form-control w-full bg-white rounded border border-gray-300 focus:border-indigo-500 focus:ring-2 focus:ring-indigo-200 h-32 text-base outline-none text-gray-700 py-1 px-3 resize-none leading-6 transition-colors duration-200 ease-in-out"
+                                                    placeholder="Isi Berita" maxlength="300" required></textarea>
+                                            </div>
+                                            <div class="form-group mt-3">
+                                                <label for="edit_foto">Upload Foto</label>
+                                                <input type="file" id="edit_foto" name="foto"
+                                                    class="border form-control" accept="image/*">
+                                            </div>
+                                        </div>
+                                        <div class="px-5 pb-8 text-center">
+                                            <button type="button" data-tw-dismiss="modal"
+                                                class="btn btn-outline-secondary w-24 mr-1">Batal</button>
+                                            <button type="submit"
+                                                class="btn btn-outline-primary w-24">Simpan</button>
+                                        </div>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+
+                    {{-- TODO MODAL delete --}}
+                    {{-- <div id="delete-confirmation-modal" class="modal" tabindex="-1" aria-hidden="true">
+                        <div class="modal-dialog">
+                            <div class="modal-content">
+                                <form id="delete-form" action="" method="POST">
+                                    @csrf
+                                    @method('DELETE')
+                                    <div class="modal-body p-0">
+                                        <div class="p-5 text-center">
+                                            <i data-lucide="x-circle" class="w-16 h-16 text-danger mx-auto mt-3"></i>
+                                            <div class="text-3xl mt-5">Yakin untuk hapus berita?</div>
+                                            <div class="text-slate-500 mt-2">
+                                                Data yang dihapus tidak bisa dikembalikan.
+                                            </div>
+                                        </div>
+                                        <div class="px-5 pb-8 text-center">
+                                            <button type="button" data-tw-dismiss="modal"
+                                                class="btn btn-outline-secondary w-24 mr-1">Kembali</button>
+                                            <button type="submit" class="btn btn-danger w-24">Hapus</button>
+                                        </div>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div> --}}
+
+                    {{-- TODO MODAL TAMBAH BERITA --}}
+                    <div id="tambah-confirmation-modal" class="modal" tabindex="-1" aria-hidden="true">
+                        <div class="modal-dialog">
+                            <div class="modal-content">
+                                <form id="tambahForm" action="{{ route('tambah-berita') }}" method="POST"
+                                    enctype="multipart/form-data">
+                                    @csrf
+                                    <div class="modal-body p-0">
+                                        <div class="p-5 text-center">
+                                            <i data-lucide="upload" class="w-16 h-16 text-success mx-auto mt-3"></i>
+                                            <div class="text-3xl mt-5">Tambah Berita</div>
+                                            <div class="text-slate-500 mt-2">Setiap Tambah Berita Akan di Record</div>
+                                        </div>
+                                        <div class="px-5 pb-8">
+                                            <div class="form-group">
+                                                <label for="edit_judul_berita">Judul Berita</label>
+                                                <input type="text" id="edit_judul_berita" name="judul_berita"
+                                                    class="form-control" placeholder="Judul berita" maxlength="30"
+                                                    required>
+                                            </div>
+                                            <div class="form-group mt-3">
+                                                <label for="edit_isi_berita">Isi Berita</label>
+                                                <textarea id="edit_isi_berita" name="isi_berita"
+                                                    class="form-control w-full bg-white rounded border border-gray-300 focus:border-indigo-500 focus:ring-2 focus:ring-indigo-200 h-32 text-base outline-none text-gray-700 py-1 px-3 resize-none leading-6 transition-colors duration-200 ease-in-out"
+                                                    placeholder="Isi Berita" maxlength="300" required></textarea>
+                                            </div>
+                                            <div class="form-group mt-3">
+                                                <label for="edit_foto">Upload Foto</label>
+                                                <input type="file" id="edit_foto" name="foto"
+                                                    class="border form-control" accept="image/*" required>
+                                            </div>
+                                        </div>
+                                        <div class="px-5 pb-8 text-center">
+                                            <button type="button" data-tw-dismiss="modal"
+                                                class="btn btn-outline-secondary w-24 mr-1">Batal</button>
+                                            <button type="submit"
+                                                class="btn btn-outline-primary w-24">Simpan</button>
+                                        </div>
+                                    </div>
+                                </form>
+
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
-            <div class="grid grid-cols-12 gap-6 mt-5">
-                <a href="" class="intro-y col-span-12 lg:col-span-4 box py-10">
-                    <i data-lucide="graduation-cap" class="block w-12 h-12 text-primary mx-auto"></i>
-                    <div class="font-medium text-center text-base mt-3">Sekolah TPA Terdaftar</div>
-                    <div class="text-slate-500 mt-2 w-3/4 text-center mx-auto">
-                        <h3 class="text-2xl font-bold text-primary counter" data-target-value="100">0</h3>
-                    </div>
-                </a>
-                <a href="" class="intro-y col-span-12 lg:col-span-4 box py-10">
-                    <i data-lucide="send" class="block w-12 h-12 text-primary mx-auto"></i>
-                    <div class="font-medium text-center text-base mt-3">Data Ustadz/Ustadzah</div>
-                    <div class="text-slate-500 mt-2 w-3/4 text-center mx-auto">
-                        <h3 class="text-2xl font-bold text-primary counter" data-target-value="100">0</h3>
-                    </div>
-                </a>
-                <a href="" class="intro-y col-span-12 lg:col-span-4 box py-10">
-                    <i data-lucide="trending-up" class="block w-12 h-12 text-primary mx-auto"></i>
-                    <div class="font-medium text-center text-base mt-3">Data Santri</div>
-                    <div class="text-slate-500 mt-2 w-3/4 text-center mx-auto">
-                        <h3 class="text-2xl font-bold text-primary counter" data-target-value="100">0</h3>
-                    </div>
-                </a>
-                {{-- TODO BERITA --}}
-                @foreach ($berita as $item)
-                    <div class="intro-y col-span-12 md:col-span-6 xl:col-span-4 box">
-                        <div class="p-5">
-                            <div class="h-40 2xl:h-56 image-fit">
-                                <img alt="" data-action="zoom" class="rounded-md zoom-in"
-                                    src="{{ $item->fotoBerita->path }}">
-                            </div>
-                            <h2 class="block font-medium text-base mt-5">{{ $item->judul_berita }}</h2>
-                            <div class="text-slate-600 dark:text-slate-500 mt-2">
-                                @if (strlen($item->isi_berita) > 50)
-                                    <span id="isi-berita-short-{{ $item->id_berita }}"
-                                        class="isi-berita-short">{{ substr($item->isi_berita, 0, 50) }}...</span>
-                                    <span id="isi-berita-full-{{ $item->id_berita }}" class="isi-berita-full"
-                                        style="display: none;">{{ $item->isi_berita }}</span>
-                                    <a href="#" class="toggle-isi-berita text-primary"
-                                        data-id="{{ $item->id_berita }}">Baca Selengkapnya</a>
-                                @else
-                                    {{ $item->isi_berita }}
-                                @endif
-                            </div>
-                        </div>
-                        <div class="flex items-center px-5 py-3 border-t border-slate-200/60 dark:border-darkmode-400">
-                            <a href="#"
-                                class="intro-x w-8 h-8 flex items-center justify-center rounded-full border border-slate-300 dark:border-darkmode-400 dark:bg-darkmode-300 dark:text-slate-300 text-slate-500 mr-2 tooltip"
-                                title="{{ $item->user->nama }}"> <i data-lucide="users" class="w-3 h-3"></i>
-                            </a>
-                            <a href="#"
-                                class="intro-x w-8 h-8 flex items-center justify-center rounded-full border border-slate-300 dark:border-darkmode-400 dark:bg-darkmode-300 dark:text-slate-300 text-slate-500 mr-2 tooltip"
-                                title="{{ date('d M Y ', strtotime($item->waktu_upload)) }}">
-                                <i data-lucide="calendar" class="w-3 h-3"></i>
-                            </a>
-                            <a href=""
-                                class="intro-x w-8 h-8 flex items-center justify-center rounded-full text-primary bg-primary/10 dark:bg-darkmode-300 dark:text-slate-300 ml-auto tooltip"
-                                title="Share"><i data-lucide="share-2" class="w-3 h-3"></i></a>
-                        </div>
-                    </div>
-                @endforeach
-            </div>
         </div>
     </div>
 
-
-
     <script>
-        document.addEventListener("DOMContentLoaded", function() {
-            const counters = document.querySelectorAll(".counter");
+        document.addEventListener('DOMContentLoaded', function() {
+            const editButtons = document.querySelectorAll(
+                '.dropdown-item[data-tw-target="#edit-confirmation-modal"]');
 
-            counters.forEach((counter) => {
-                const updateCount = () => {
-                    const target = +counter.getAttribute("data-target-value");
-                    const count = +counter.innerText;
-                    const increment = target / 200;
+            editButtons.forEach(button => {
+                button.addEventListener('click', function() {
+                    const beritaId = button.getAttribute('data-berita-id');
+                    const form = document.getElementById('editForm');
+                    form.action = `/update-berita/${beritaId}`;
 
-                    if (count < target) {
-                        counter.innerText = Math.ceil(count + increment);
-                        setTimeout(updateCount, 50);
-                    } else {
-                        counter.innerText = target;
-                    }
-                };
-
-                updateCount();
+                    fetch(`/edit-berita/${beritaId}`)
+                        .then(response => response.json())
+                        .then(data => {
+                            document.getElementById('edit_judul_berita').value = data
+                                .judul_berita;
+                            document.getElementById('edit_isi_berita').value = data.isi_berita;
+                        });
+                });
             });
         });
     </script>
@@ -885,6 +982,8 @@
             });
         });
     </script>
+
+
 
     {{-- TODO Script --}}
     <x-script-Home></x-script-Home>

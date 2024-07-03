@@ -47,6 +47,8 @@ class profileController extends Controller
         if (!$userProfile) {
             $userProfile = new Usertpa();
             $userProfile->id_users = auth()->id();
+            $userProfile->nama_tpa = $request->name;
+            $userProfile->alamat = $request->alamat;
             $userProfile->save();
 
             // Buat juga pendaftaran baru untuk TPA jika belum ada

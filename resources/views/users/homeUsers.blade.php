@@ -330,31 +330,44 @@
                         <h3 class="text-2xl font-bold text-primary counter" data-target-value="100">0</h3>
                     </div>
                 </a>
-                {{-- TODO BERITA --}}
-                <div class="intro-y col-span-12 md:col-span-6 xl:col-span-4 box">
-                    <div class="p-5">
-                        <div class="h-40 2xl:h-56 image-fit">
-                            <img alt="Midone - HTML Admin Template" class="rounded-md box zoom-in" data-action="zoom"
-                                src="{{ asset('images/berita1.png') }}">
+                {{-- TODO UNTUTK BERITA --}}
+                @foreach ($berita as $item)
+                    <div class="intro-y col-span-12 md:col-span-6 xl:col-span-4 box">
+                        <div class="p-5">
+                            <div class="h-40 2xl:h-56 image-fit">
+                                <img alt="" data-action="zoom" class="rounded-md zoom-in"
+                                    src="{{ $item->fotoBerita->path }}">
+                            </div>
+                            <h2 class="block font-medium text-base mt-5">{{ $item->judul_berita }}</h2>
+                            <div class="text-slate-600 dark:text-slate-500 mt-2">
+                                @if (strlen($item->isi_berita) > 50)
+                                    <span id="isi-berita-short-{{ $item->id_berita }}"
+                                        class="isi-berita-short">{{ substr($item->isi_berita, 0, 50) }}...</span>
+                                    <span id="isi-berita-full-{{ $item->id_berita }}" class="isi-berita-full"
+                                        style="display: none;">{{ $item->isi_berita }}</span>
+                                    <a href="#" class="toggle-isi-berita text-primary"
+                                        data-id="{{ $item->id_berita }}">Baca Selengkapnya</a>
+                                @else
+                                    {{ $item->isi_berita }}
+                                @endif
+                            </div>
                         </div>
-                        <a href="" class="block font-medium text-base mt-5">ISI JUDUL KONTEN BERITA</a>
-                        <div class="text-slate-600 dark:text-slate-500 mt-2">Lorem ipsum dolor sit, amet consectetur
-                            adipisicing elit. Delectus quo placeat accusamus, velit dolore eaque dolorum maiores, quae
-                            eos magnam, asperiores modi ducimus facilis dignissimos maxime vitae? Totam, libero iusto.
+                        <div class="flex items-center px-5 py-3 border-t border-slate-200/60 dark:border-darkmode-400">
+                            <a href="#"
+                                class="intro-x w-8 h-8 flex items-center justify-center rounded-full border border-slate-300 dark:border-darkmode-400 dark:bg-darkmode-300 dark:text-slate-300 text-slate-500 mr-2 tooltip"
+                                title="{{ $item->user->nama }}"> <i data-lucide="users" class="w-3 h-3"></i>
+                            </a>
+                            <a href="#"
+                                class="intro-x w-8 h-8 flex items-center justify-center rounded-full border border-slate-300 dark:border-darkmode-400 dark:bg-darkmode-300 dark:text-slate-300 text-slate-500 mr-2 tooltip"
+                                title="{{ date('d M Y ', strtotime($item->waktu_upload)) }}">
+                                <i data-lucide="calendar" class="w-3 h-3"></i>
+                            </a>
+                            <a href=""
+                                class="intro-x w-8 h-8 flex items-center justify-center rounded-full text-primary bg-primary/10 dark:bg-darkmode-300 dark:text-slate-300 ml-auto tooltip"
+                                title="Share"><i data-lucide="share-2" class="w-3 h-3"></i></a>
                         </div>
                     </div>
-                    <div class="flex items-center px-5 py-3 border-t border-slate-200/60 dark:border-darkmode-400">
-                        <span
-                            class="intro-x w-8 h-8 flex items-center justify-center rounded-full border border-slate-300 dark:border-darkmode-400 dark:bg-darkmode-300 dark:text-slate-300 text-slate-500 mr-2 tooltip"
-                            title="Humas"> <i data-lucide="users" class="w-3 h-3"></i> </span>
-                        <span
-                            class="intro-x w-8 h-8 flex items-center justify-center rounded-full border border-slate-300 dark:border-darkmode-400 dark:bg-darkmode-300 dark:text-slate-300 text-slate-500 mr-2 tooltip"
-                            title="06/07/2024"> <i data-lucide="calendar" class="w-3 h-3"></i> </span>
-                        <a href=""
-                            class="intro-x w-8 h-8 flex items-center justify-center rounded-full text-primary bg-primary/10 dark:bg-darkmode-300 dark:text-slate-300 ml-auto tooltip"
-                            title="" class="w-3 h-3"></> <i data-lucide="share-2" class="w-3 h-3"></i></a>
-                    </div>
-                </div>
+                @endforeach
             </div>
         </div>
     </div>
@@ -384,6 +397,24 @@
 
     {{-- TODO Script --}}
     <x-script-Home></x-script-Home>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            document.querySelectorAll('.toggle-isi-berita').forEach(item => {
+                item.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    let beritaId = this.getAttribute('data-id');
+                    let shortContent = document.getElementById('isi-berita-short-' + beritaId);
+                    let fullContent = document.getElementById('isi-berita-full-' + beritaId);
+                    if (shortContent && fullContent) {
+                        shortContent.style.display = 'none';
+                        fullContent.style.display = 'inline';
+                        this.style.display = 'none';
+                    }
+                });
+            });
+        });
+    </script>
 </body>
 
 </html>

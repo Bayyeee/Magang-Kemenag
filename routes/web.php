@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\cekverifikasiController;
+use App\Http\Controllers\editBeritaController;
 use App\Http\Controllers\homeadminController;
 use App\Http\Controllers\homeuserController;
 use App\Http\Controllers\landingController;
@@ -96,6 +97,14 @@ Route::group(['middleware' => ['auth']], function () {
 
         Route::post('editBerkas/{id_berkaspendaftaran}', [homeadminController::class, 'editBerkas'])->name('editBerkas');
 
-        // Route::get('/cetak-berkas/{id_pendaftaran}', [homeadminController::class, 'cetakBerkas'])->name('cetakBerkas');
+        Route::get('/edit-berita', [editBeritaController::class, 'showBerita'])->name('show-Berita');
+
+        Route::post('/tambah-berita', [editBeritaController::class, 'tambahBerita'])->name('tambah-berita');
+
+        Route::post('/update-berita/{id}', [editBeritaController::class, 'updateBerita'])->name('update-berita');
+
+        Route::get('/edit-berita/{id}', [editBeritaController::class, 'editBerita'])->name('edit-berita');
+
+        Route::delete('/hapus-berita/{id}', [editBeritaController::class, 'hapusBerita'])->name('hapus-berita');
     });
 });

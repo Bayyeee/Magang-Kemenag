@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\berita;
 use App\Models\berkasPendaftaran;
 use App\Models\pendaftaranTpa;
 use Illuminate\Http\Request;
@@ -12,8 +13,9 @@ class homeadminController extends Controller
     public function homeAdmin(Request $request)
     {
         $pendaftarans = pendaftaranTpa::all();
+        $berita = berita::with('fotoBerita')->get();
 
-        return view("admin.homeAdmin", compact('pendaftarans'));
+        return view("admin.homeAdmin", compact('pendaftarans', 'berita'));
     }
 
     public function cekBerkas()
