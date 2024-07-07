@@ -373,6 +373,72 @@
                     </div>
                 </div>
 
+                {{-- TODO ALERT UNTUK EDIT --}}
+                @foreach ($siswas as $siswa)
+                    <div id="edit-confirmation-modal-{{ $siswa->id_siswa }}" class="modal" tabindex="-1"
+                        aria-hidden="true">
+                        <div class="modal-dialog">
+                            <div class="modal-content">
+                                <form id="edit-form" action="{{ route('edit-siswa', $siswa->id_siswa) }}"
+                                    method="POST">
+                                    @csrf
+                                    <div class="modal-body p-0">
+                                        <div class="p-5 text-center">
+                                            <i data-lucide="edit" class="w-16 h-16 text-warning mx-auto mt-3"></i>
+                                            <div class="text-3xl mt-5">Edit Data Siswa</div>
+                                            <div class="text-slate-500 mt-2">Ubah data sesuai dengan informasi</div>
+                                        </div>
+                                        <div class="px-5 pb-8">
+                                            <div class="form-group">
+                                                <label for="nama_pegawai">Nama Siswa</label>
+                                                <input type="text" name="nama_siswa" class="form-control"
+                                                    placeholder="Masukkan Nama" required>
+                                            </div>
+                                            <div class="form-group mt-3">
+                                                <label for="nomor_identitas">Nomor Identitas</label>
+                                                <input type="text" name="nomor_identitas" class="form-control"
+                                                    maxlength="8" placeholder="Masukkan Nomor" required>
+                                            </div>
+                                            <div class="form-group mt-3">
+                                                <label for="jenis_kelamin">Jenis Kelamin</label>
+                                                <select name="jenis_kelamin" class="form-select" required>
+                                                    <option value="laki-laki">Laki-laki</option>
+                                                    <option value="perempuan">Perempuan</option>
+                                                </select>
+                                            </div>
+                                            <div class="form-group mt-3">
+                                                <label for="nama_kelas">Nama Kelas</label>
+                                                <select name="id_kelas_tahun_ajar" class="tom-select w-full"
+                                                    id="nama_kelas" data-placeholder="Pilih Kelas" required>
+                                                    @foreach ($kelas_tahun_ajar as $kelas)
+                                                        @if (
+                                                            $kelas->pegawai->tpa->id_users == Auth::user()->id &&
+                                                                ($kelas->pegawai->jabatan === 'ustadz' || $kelas->pegawai->jabatan === 'ustadzah'))
+                                                            <option value="{{ $kelas->id_kelas_tahun_ajar }}">
+                                                                {{ $kelas->kelas->nama_kelas }} -
+                                                                {{ $kelas->pegawai->nama_pegawai }} -
+                                                                {{ $kelas->tahunAjar->tahun_ajar }}
+                                                            </option>
+                                                        @endif
+                                                    @endforeach
+                                                </select>
+                                                <input type="text" name="kelas_lainnya" id="kelas_lainnya"
+                                                    class="form-control mt-2" style="display: none;"
+                                                    placeholder="Nama Kelas Lainnya">
+                                            </div>
+                                        </div>
+                                        <div class="px-5 pb-8 text-center">
+                                            <button type="button" data-tw-dismiss="modal"
+                                                class="btn btn-outline-secondary w-24 mr-1">Kembali</button>
+                                            <button type="submit" class="btn btn-outline-primary w-24">Ubah</button>
+                                        </div>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                @endforeach
+
                 {{-- TODO ALERT UNTUK DELETE --}}
                 <div id="delete-confirmation-modal" class="modal" tabindex="-1" aria-hidden="true">
                     <div class="modal-dialog">
@@ -393,68 +459,6 @@
                                         <button type="button" data-tw-dismiss="modal"
                                             class="btn btn-outline-secondary w-24 mr-1">Kembali</button>
                                         <button type="submit" class="btn btn-danger w-24">Hapus</button>
-                                    </div>
-                                </div>
-                            </form>
-                        </div>
-                    </div>
-                </div>
-
-                {{-- TODO ALERT UNTUK EDIT --}}
-                <div id="edit-confirmation-modal-{{ $siswa->id_siswa }}" class="modal" tabindex="-1" aria-hidden="true">
-                    <div class="modal-dialog">
-                        <div class="modal-content">
-                            <form id="edit-form" action="{{ route('edit-siswa', $siswa->id_siswa) }}" method="POST">
-                                @csrf
-                                <div class="modal-body p-0">
-                                    <div class="p-5 text-center">
-                                        <i data-lucide="edit" class="w-16 h-16 text-warning mx-auto mt-3"></i>
-                                        <div class="text-3xl mt-5">Edit Data Siswa</div>
-                                        <div class="text-slate-500 mt-2">Ubah data sesuai dengan informasi</div>
-                                    </div>
-                                    <div class="px-5 pb-8">
-                                        <div class="form-group">
-                                            <label for="nama_pegawai">Nama Siswa</label>
-                                            <input type="text" name="nama_siswa" class="form-control"
-                                                placeholder="Masukkan Nama" required>
-                                        </div>
-                                        <div class="form-group mt-3">
-                                            <label for="nomor_identitas">Nomor Identitas</label>
-                                            <input type="text" name="nomor_identitas" class="form-control"
-                                                maxlength="8" placeholder="Masukkan Nomor" required>
-                                        </div>
-                                        <div class="form-group mt-3">
-                                            <label for="jenis_kelamin">Jenis Kelamin</label>
-                                            <select name="jenis_kelamin" class="form-select" required>
-                                                <option value="laki-laki">Laki-laki</option>
-                                                <option value="perempuan">Perempuan</option>
-                                            </select>
-                                        </div>
-                                        <div class="form-group mt-3">
-                                            <label for="nama_kelas">Nama Kelas</label>
-                                            <select name="id_kelas_tahun_ajar" class="tom-select w-full" id="nama_kelas"
-                                                data-placeholder="Pilih Kelas" required>
-                                                @foreach ($kelas_tahun_ajar as $kelas)
-                                                    @if (
-                                                        $kelas->pegawai->tpa->id_users == Auth::user()->id &&
-                                                            ($kelas->pegawai->jabatan === 'Ustadz' || $kelas->pegawai->jabatan === 'Ustadzah'))
-                                                        <option value="{{ $kelas->id_kelas_tahun_ajar }}">
-                                                            {{ $kelas->kelas->nama_kelas }} -
-                                                            {{ $kelas->pegawai->nama_pegawai }} -
-                                                            {{ $kelas->tahunAjar->tahun_ajar }}
-                                                        </option>
-                                                    @endif
-                                                @endforeach
-                                            </select>
-                                            <input type="text" name="kelas_lainnya" id="kelas_lainnya"
-                                                class="form-control mt-2" style="display: none;"
-                                                placeholder="Nama Kelas Lainnya">
-                                        </div>
-                                    </div>
-                                    <div class="px-5 pb-8 text-center">
-                                        <button type="button" data-tw-dismiss="modal"
-                                            class="btn btn-outline-secondary w-24 mr-1">Kembali</button>
-                                        <button type="submit" class="btn btn-outline-primary w-24">Ubah</button>
                                     </div>
                                 </div>
                             </form>
@@ -500,7 +504,7 @@
                                                 @foreach ($kelas_tahun_ajar as $kelas)
                                                     @if (
                                                         $kelas->pegawai->tpa->id_users == Auth::user()->id &&
-                                                            ($kelas->pegawai->jabatan === 'Ustadz' || $kelas->pegawai->jabatan === 'Ustadzah'))
+                                                            ($kelas->pegawai->jabatan === 'ustadz' || $kelas->pegawai->jabatan === 'ustadzah'))
                                                         <option value="{{ $kelas->id_kelas_tahun_ajar }}">
                                                             {{ $kelas->kelas->nama_kelas }} -
                                                             {{ $kelas->pegawai->nama_pegawai }} -

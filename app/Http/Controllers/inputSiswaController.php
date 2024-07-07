@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\siswa;
 use App\Models\kelasTahunAjar;
 use Illuminate\Http\Request;
+use Illuminate\Database\Eloquent\ModelNotFoundException;
 use Illuminate\Support\Facades\Auth;
 
 class inputSiswaController extends Controller
@@ -48,17 +49,6 @@ class inputSiswaController extends Controller
             'jenis_kelamin' => 'required|string',
             'id_kelas_tahun_ajar' => 'required|exists:kelas_tahun_ajar,id_kelas_tahun_ajar',
         ]);
-
-        // $siswa::where('id_siswa', $siswa)
-
-        // siswa::where('id_siswa', $siswas->id_siswa)->delete();
-
-        // siswa::create([
-        //     'nama_siswa' => $request->nama_siswa,
-        //     'nomor_identitas' => $request->nomor_identitas,
-        //     'jenis_kelamin' => $request->jenis_kelamin,
-        //     'id_kelas_tahun_ajar' => $request->id_kelas_tahun_ajar
-        // ]);
 
         $siswas->nama_siswa = $request->input('nama_siswa');
         $siswas->nomor_identitas = $request->input('nomor_identitas');

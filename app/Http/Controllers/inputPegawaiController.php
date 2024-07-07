@@ -135,28 +135,26 @@ class inputPegawaiController extends Controller
 
         $kelas = kelas::firstOrCreate(['nama_kelas' => $nama_kelas]);
 
-        // Cari data kelas_tahun_ajar berdasarkan id_pegawai dan tahun ajar yang sesuai
-        // $tahun_ajar = tahunAjar::where('tahun_ajar', $request->tahun_ajar)->first();
-        // if (!$tahun_ajar) {
-        //     return redirect()->route('input-pegawai')->with('error', 'Tahun ajar tidak ditemukan');
-        // }
+        $tahun_ajar = tahunAjar::where('tahun_ajar', $request->tahun_ajar)->first();
+        if (!$tahun_ajar) {
+            return redirect()->route('input-pegawai')->with('error', 'Tahun ajar tidak ditemukan');
+        }
 
-        // $kelas_tahun_ajar = kelasTahunAjar::where('id_pegawai', $id)
-        //     ->where('id_tahun_ajar', $tahun_ajar->id_tahun_ajar)
-        //     ->first();
+        $kelas_tahun_ajar = kelasTahunAjar::where('id_pegawai', $id)
+            ->where('id_tahun_ajar', $tahun_ajar->id_tahun_ajar)
+            ->first();
 
-        // if ($kelas_tahun_ajar) {
-        //     $kelas_tahun_ajar->update([
-        //         'id_kelas' => $kelas->id_kelas,
-        //     ]);
-        // } else {
-        //     // Jika tidak ada, buat data kelas_tahun_ajar baru
-        //     kelasTahunAjar::create([
-        //         'id_kelas' => $kelas->id_kelas,
-        //         'id_pegawai' => $pegawai->id_pegawai,
-        //         'id_tahun_ajar' => $tahun_ajar->id_tahun_ajar,
-        //     ]);
-        // }
+        if ($kelas_tahun_ajar) {
+            $kelas_tahun_ajar->update([
+                'id_kelas' => $kelas->id_kelas,
+            ]);
+        } else {
+            kelasTahunAjar::create([
+                'id_kelas' => $kelas->id_kelas,
+                'id_pegawai' => $pegawai->id_pegawai,
+                'id_tahun_ajar' => $tahun_ajar->id_tahun_ajar,
+            ]);
+        }
 
         return redirect()->route('input-pegawai')->with('success', 'Data pegawai dan kelas berhasil diupdate');
     }
