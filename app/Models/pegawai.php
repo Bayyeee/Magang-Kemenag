@@ -28,12 +28,16 @@ class pegawai extends Model
     public function kelas(): BelongsToMany
     {
         return $this->belongsToMany(kelas::class, 'kelas_tahun_ajar', 'id_pegawai', 'id_kelas')
-            ->withPivot('tahun_ajar')
+            ->withPivot('id_tahun_ajar')
             ->withTimestamps();
     }
-    
+
     public function kelasTahunAjar()
     {
         return $this->hasMany(kelasTahunAjar::class, 'id_pegawai', 'id_pegawai');
+    }
+
+    public function tahun_ajar() : BelongsToMany{
+        return $this->belongsToMany(tahunAjar::class, 'kelas_tahun_ajar', 'id_pegawai', 'id_kelas', 'id_tahun_ajar');
     }
 }

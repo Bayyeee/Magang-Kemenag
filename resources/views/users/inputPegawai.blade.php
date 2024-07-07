@@ -190,7 +190,7 @@
                             </a>
                         </li>
                         <li>
-                            <a href="" class="side-menu">
+                            <a href="{{ route('cetak-pegawai') }}" class="side-menu">
                                 <div class="side-menu__icon"> <i data-lucide="printer"></i> </div>
                                 <div class="side-menu__title"> Cetak Data Pegawai </div>
                             </a>
@@ -323,7 +323,9 @@
                                         <a href=""
                                             class="font-medium whitespace-nowrap">{{ $pegawai->nama_pegawai }}</a>
                                         <div class="text-slate-500 text-xs whitespace-nowrap mt-0.5">
-                                            {{ $pegawai->kelasTahunAjar->first()->kelas->nama_kelas }}
+                                            @foreach ($pegawai->kelasTahunAjar as $kta)
+                                                {{ $kta->kelas->nama_kelas }}
+                                            @endforeach
                                         </div>
                                     </td>
                                     <td>

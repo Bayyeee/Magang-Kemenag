@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <x-head-Home></x-head-Home>
 
 <body>
@@ -19,7 +20,7 @@
                     class="w-8 h-8 text-white transform -rotate-90"></i> </a>
             <ul class="scrollable__content py-2">
                 <li>
-                    <a href="/" class="menu menu--active">
+                    <a href="/" class="menu">
                         <div class="menu__icon"><i data-lucide="home"></i> </div>
                         <div class="menu__title"> Dashboard </div>
                     </a>
@@ -77,7 +78,7 @@
                             </a>
                         </li>
                         <li>
-                            <a href="{{ route('cetak-pegawai') }}" class="menu">
+                            <a href="{{ route('cetak-pegawai') }}" class="menu menu--active">
                                 <div class="menu__icon"> <i data-lucide="printer"></i> </div>
                                 <div class="menu__title"> Cetak Data Pegawai </div>
                             </a>
@@ -131,7 +132,7 @@
             <div class="side-nav__devider my-6"></div>
             <ul>
                 <li>
-                    <a href="" class="side-menu side-menu--active">
+                    <a href="" class="side-menu">
                         <div class="side-menu__icon"> <i data-lucide="home"></i> </div>
                         <div class="side-menu__title"> Dashboard </div>
                     </a>
@@ -174,7 +175,7 @@
                 </li>
                 {{-- TODO DATA PEGAWAI --}}
                 <li>
-                    <a href="javascript:;" class="side-menu">
+                    <a href="javascript:;" class="side-menu side-menu--active">
                         <div class="side-menu__icon"> <i data-lucide="folder"></i> </div>
                         <div class="side-menu__title">
                             Data Pegawai
@@ -189,7 +190,7 @@
                             </a>
                         </li>
                         <li>
-                            <a href="" class="side-menu">
+                            <a href="{{ route('cetak-pegawai') }}" class="side-menu side-menu--active">
                                 <div class="side-menu__icon"> <i data-lucide="printer"></i> </div>
                                 <div class="side-menu__title"> Cetak Data Pegawai </div>
                             </a>
@@ -286,134 +287,86 @@
                 <!-- END: Account Menu -->
             </div>
             {{-- TODO ISI CONTENT --}}
-            <div
-                class="col-span-12 md:col-span-6 xl:col-span-12 xl:col-start-1 xl:row-start-1 2xl:col-start-auto 2xl:row-start-auto mt-3">
-                <div class="mt-5 intro-x">
-                    <div class="box zoom">
-                        <div class="tiny-slider" id="important-notes">
-                            <div class="h-64 px-2 p-2">
-                                <div class="h-full image-fit rounded-md overflow-hidden"><img
-                                        src="{{ asset('images/Kantor.png') }}" alt=""></div>
-                            </div>
-                            <div class="h-64 px-2 p-2">
-                                <div class="h-full image-fit rounded-md overflow-hidden"><img
-                                        src="{{ asset('images/Kantor.png') }}" alt=""></div>
-                            </div>
-                            <div class="h-64 px-2 p-2">
-                                <div class="h-full image-fit rounded-md overflow-hidden"><img
-                                        src="{{ asset('images/Kantor.png') }}" alt=""></div>
-                            </div>
+            <div class="intro-y flex flex-col sm:flex-row items-center mt-8">
+                <h2 class="text-lg font-medium mr-auto">
+                    Data Tabel Pegawai
+                </h2>
+                <div class="w-full sm:w-auto flex sm:mt-0">
+                </div>
+            </div>
+            <!-- BEGIN: HTML Table Data -->
+            <div class="intro-y box p-5 mt-5" id="printable-area">
+                <div class="flex flex-col sm:flex-row sm:items-end xl:items-start">
+                    <form id="tabulator-html-filter-form" class="xl:flex sm:mr-auto">
+                        <div class="sm:flex items-center sm:mr-4">
                         </div>
+                        <div class="sm:flex items-center sm:mr-4 mt-2 xl:mt-0">
+                        </div>
+                        <div class="sm:flex items-center sm:mr-4 mt-2 xl:mt-0">
+                        </div>
+                        <div class="mt-2 xl:mt-0">
+                        </div>
+                    </form>
+                    <div class="flex mt-5 sm:mt-0">
+                        <button id="tabulator-print" class="btn btn-outline-secondary w-1/2 sm:w-auto mr-2">
+                            <i data-lucide="printer" class="w-4 h-4 mr-2"></i> Print
+                        </button>
+                    </div>
+                </div>
+                <div class="overflow-x-auto scrollbar-hidden mt-5">
+                    <div class="overflow-x-auto">
+                        <table class="table table-bordered table-hover">
+                            <thead>
+                                <tr>
+                                    <th class="whitespace-nowrap">Nama Pegawai</th>
+                                    <th class="whitespace-nowrap">Jabatan</th>
+                                    <th class="whitespace-nowrap">Jenis Kelamin</th>
+                                    <th class="whitespace-nowrap">Wali Kelas</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @foreach ($pegawai as $pegawai)
+                                    @foreach ($pegawai->kelasTahunAjar as $kta)
+                                        <tr>
+                                            <td>{{ $pegawai->nama_pegawai }}</td>
+                                            <td>{{ $pegawai->jabatan }}</td>
+                                            <td>{{ $pegawai->jenis_kelamin }}</td>
+                                            <td>{{ $kta->kelas->nama_kelas }}</td>
+                                        </tr>
+                                    @endforeach
+                                @endforeach
+                            </tbody>
+                        </table>
                     </div>
                 </div>
             </div>
-            <div class="grid grid-cols-12 gap-6 mt-5">
-                <!-- BEGIN: FAQ Menu -->
-                <a href="" class="intro-y col-span-12 lg:col-span-4 box py-10">
-                    <i data-lucide="graduation-cap" class="block w-12 h-12 text-primary mx-auto"></i>
-                    <div class="font-medium text-center text-base mt-3">Sekolah TPA Terdaftar</div>
-                    <div class="text-slate-500 mt-2 w-3/4 text-center mx-auto">
-                        <h3 class="text-2xl font-bold text-primary counter" data-target-value="100">0</h3>
-                    </div>
-                </a>
-                <a href="" class="intro-y col-span-12 lg:col-span-4 box py-10">
-                    <i data-lucide="send" class="block w-12 h-12 text-primary mx-auto"></i>
-                    <div class="font-medium text-center text-base mt-3">Data Ustadz/Ustadzah</div>
-                    <div class="text-slate-500 mt-2 w-3/4 text-center mx-auto">
-                        <h3 class="text-2xl font-bold text-primary counter" data-target-value="100">0</h3>
-                    </div>
-                </a>
-                <a href="" class="intro-y col-span-12 lg:col-span-4 box py-10">
-                    <i data-lucide="trending-up" class="block w-12 h-12 text-primary mx-auto"></i>
-                    <div class="font-medium text-center text-base mt-3">Data Santri</div>
-                    <div class="text-slate-500 mt-2 w-3/4 text-center mx-auto">
-                        <h3 class="text-2xl font-bold text-primary counter" data-target-value="100">0</h3>
-                    </div>
-                </a>
-                {{-- TODO UNTUTK BERITA --}}
-                @foreach ($berita as $item)
-                    <div class="intro-y col-span-12 md:col-span-6 xl:col-span-4 box">
-                        <div class="p-5">
-                            <div class="h-40 2xl:h-56 image-fit">
-                                <img alt="" data-action="zoom" class="rounded-md zoom-in"
-                                    src="{{ $item->fotoBerita->path }}">
-                            </div>
-                            <h2 class="block font-medium text-base mt-5">{{ $item->judul_berita }}</h2>
-                            <div class="text-slate-600 dark:text-slate-500 mt-2">
-                                @if (strlen($item->isi_berita) > 50)
-                                    <span id="isi-berita-short-{{ $item->id_berita }}"
-                                        class="isi-berita-short">{{ substr($item->isi_berita, 0, 50) }}...</span>
-                                    <span id="isi-berita-full-{{ $item->id_berita }}" class="isi-berita-full"
-                                        style="display: none;">{{ $item->isi_berita }}</span>
-                                    <a href="#" class="toggle-isi-berita text-primary"
-                                        data-id="{{ $item->id_berita }}">Baca Selengkapnya</a>
-                                @else
-                                    {{ $item->isi_berita }}
-                                @endif
-                            </div>
-                        </div>
-                        <div class="flex items-center px-5 py-3 border-t border-slate-200/60 dark:border-darkmode-400">
-                            <a href="#"
-                                class="intro-x w-8 h-8 flex items-center justify-center rounded-full border border-slate-300 dark:border-darkmode-400 dark:bg-darkmode-300 dark:text-slate-300 text-slate-500 mr-2 tooltip"
-                                title="{{ $item->user->nama }}"> <i data-lucide="users" class="w-3 h-3"></i>
-                            </a>
-                            <a href="#"
-                                class="intro-x w-8 h-8 flex items-center justify-center rounded-full border border-slate-300 dark:border-darkmode-400 dark:bg-darkmode-300 dark:text-slate-300 text-slate-500 mr-2 tooltip"
-                                title="{{ date('d M Y ', strtotime($item->waktu_upload)) }}">
-                                <i data-lucide="calendar" class="w-3 h-3"></i>
-                            </a>
-                            <a href=""
-                                class="intro-x w-8 h-8 flex items-center justify-center rounded-full text-primary bg-primary/10 dark:bg-darkmode-300 dark:text-slate-300 ml-auto tooltip"
-                                title="Share"><i data-lucide="share-2" class="w-3 h-3"></i></a>
-                        </div>
-                    </div>
-                @endforeach
-            </div>
+
         </div>
     </div>
-
-    <script>
-        document.addEventListener("DOMContentLoaded", function() {
-            const counters = document.querySelectorAll(".counter");
-
-            counters.forEach((counter) => {
-                const updateCount = () => {
-                    const target = +counter.getAttribute("data-target-value");
-                    const count = +counter.innerText;
-                    const increment = target / 200;
-
-                    if (count < target) {
-                        counter.innerText = Math.ceil(count + increment);
-                        setTimeout(updateCount, 50);
-                    } else {
-                        counter.innerText = target;
-                    }
-                };
-
-                updateCount();
-            });
-        });
-    </script>
 
     {{-- TODO Script --}}
     <x-script-Home></x-script-Home>
 
     <script>
-        document.addEventListener('DOMContentLoaded', function() {
-            document.querySelectorAll('.toggle-isi-berita').forEach(item => {
-                item.addEventListener('click', function(e) {
-                    e.preventDefault();
-                    let beritaId = this.getAttribute('data-id');
-                    let shortContent = document.getElementById('isi-berita-short-' + beritaId);
-                    let fullContent = document.getElementById('isi-berita-full-' + beritaId);
-                    if (shortContent && fullContent) {
-                        shortContent.style.display = 'none';
-                        fullContent.style.display = 'inline';
-                        this.style.display = 'none';
-                    }
-                });
-            });
+        document.getElementById('tabulator-print').addEventListener('click', function() {
+            printTable();
         });
+
+        function printTable() {
+            const printContents = document.getElementById('printable-area').innerHTML;
+            const originalContents = document.body.innerHTML;
+
+            document.body.innerHTML = printContents;
+
+            window.print();
+
+            document.body.innerHTML = originalContents;
+
+            // Reattach the event listener after printing
+            document.getElementById('tabulator-print').addEventListener('click', function() {
+                printTable();
+            });
+        }
     </script>
 </body>
 

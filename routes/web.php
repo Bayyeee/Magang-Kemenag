@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\cekverifikasiController;
+use App\Http\Controllers\cetakPegawaiController;
 use App\Http\Controllers\editBeritaController;
 use App\Http\Controllers\homeadminController;
 use App\Http\Controllers\homeuserController;
@@ -15,12 +16,6 @@ use App\Http\Controllers\pendaftaranController;
 use App\Http\Controllers\riwayatcetakController;
 use Illuminate\Support\Facades\Route;
 
-
-
-// Route::get('/profile', function () {
-//     Alert::success('Success Title', 'Success Message');
-//     return view('profile.userProfile');
-// });
 
 Route::get("/", [landingController::class, 'checkLanding'])->name('landingPage');
 
@@ -52,8 +47,6 @@ Route::group(['middleware' => ['auth']], function () {
 
         Route::get('/edit-pengajuan', [editpengajuanController::class, 'editpengajuan'])->name('edit-pengajuan');
 
-        // Route::delete('/pendaftaran/delete/{id}', [pendaftaranController::class, 'deleteBerkas'])->name('pendaftaran-delete');
-
         Route::delete('/delete-pengajuan/{id}', [editpengajuanController::class, 'deleteBerkas'])->name('delete-pengajuan');
 
         Route::get('/cek-verifikasi', [cekverifikasiController::class, 'cekverifikasi'])->name('cek-verifikasi');
@@ -81,6 +74,12 @@ Route::group(['middleware' => ['auth']], function () {
         Route::get('/input-siswa', [inputSiswaController::class, 'showSiswa'])->name('show-Siswa');
 
         Route::post('/simpan-siswa', [inputSiswaController::class, 'simpanSiswa'])->name('simpan-siswa');
+
+        Route::post('/edit-siswa/{id}', [inputSiswaController::class, 'editSiswa'])->name('edit-siswa');
+
+        Route::delete('/delete-siswa/{id}', [inputSiswaController::class, 'deleteSiswa'])->name('delete-siswa');
+
+        Route::get('/cetak-pegawai', [cetakPegawaiController::class, 'cetakPegawaiTabel'])->name('cetak-pegawai');
     });
 
     Route::middleware('checkRoles:admin,humas')->group(function () {

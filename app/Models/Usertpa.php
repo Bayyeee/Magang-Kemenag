@@ -39,4 +39,9 @@ class Usertpa extends Model
     public function getpendaftaran() {
         return $this->belongsTo(pendaftaranTpa::class);
     }
+
+    public function pegawai()
+    {
+        return $this->hasMany(Pegawai::class, 'id_tpa', 'id');
+    }
 }

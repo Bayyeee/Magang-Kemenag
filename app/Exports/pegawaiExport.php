@@ -38,7 +38,7 @@ class pegawaiExport implements FromCollection, WithHeadings, WithMapping
     public function map($pegawai): array
     {
         $kelas = $pegawai->kelasTahunAjar->first()->kelas->nama_kelas ?? '';
-        $tahun_ajar = $pegawai->kelasTahunAjar->first()->tahun_ajar ?? '';
+        $tahun_ajar = $pegawai->kelasTahunAjar->first()->tahunAjar->tahun_ajar ?? '';
 
         return [
             $pegawai->id_pegawai,

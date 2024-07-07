@@ -1,6 +1,5 @@
 <?php
 
-// inputPegawaiController.php
 namespace App\Http\Controllers;
 
 use App\Exports\pegawaiExport;
@@ -8,6 +7,7 @@ use App\Imports\pegawaiImport;
 use App\Models\kelas;
 use App\Models\kelasTahunAjar;
 use App\Models\pegawai;
+use App\Models\tahunAjar;
 use App\Models\Usertpa;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -74,12 +74,14 @@ class inputPegawaiController extends Controller
             'jenis_kelamin' => $request->jenis_kelamin,
         ]);
 
+        $tahun_ajar = tahunAjar::firstOrCreate(['tahun_ajar' => $request->tahun_ajar]);
+
         $kelas = kelas::firstOrCreate(['nama_kelas' => $nama_kelas]);
 
         kelasTahunAjar::create([
             'id_kelas' => $kelas->id_kelas,
             'id_pegawai' => $pegawai->id_pegawai,
-            'tahun_ajar' => $request->tahun_ajar,
+            'id_tahun_ajar' => $tahun_ajar->id_tahun_ajar,
         ]);
 
         return redirect()->route('input-pegawai')->with('success', 'Data pegawai dan kelas berhasil disimpan');
@@ -95,7 +97,7 @@ class inputPegawaiController extends Controller
 
     public function editPegawai($id)
     {
-        $pegawai = pegawai::with('kelasTahunAjar.kelas')->findOrFail($id);
+        $pegawai = pegawai::with('kelasTahunAjar.kelas', 'kelasTahunAjar.tahunAjar')->findOrFail($id);
         $kelas = kelas::all();
 
         return view('users.inputPegawai', compact('pegawai', 'kelas'));
@@ -133,13 +135,28 @@ class inputPegawaiController extends Controller
 
         $kelas = kelas::firstOrCreate(['nama_kelas' => $nama_kelas]);
 
-        kelasTahunAjar::where('id_pegawai', $pegawai->id_pegawai)->delete();
+        // Cari data kelas_tahun_ajar berdasarkan id_pegawai dan tahun ajar yang sesuai
+        // $tahun_ajar = tahunAjar::where('tahun_ajar', $request->tahun_ajar)->first();
+        // if (!$tahun_ajar) {
+        //     return redirect()->route('input-pegawai')->with('error', 'Tahun ajar tidak ditemukan');
+        // }
 
-        kelasTahunAjar::create([
-            'id_kelas' => $kelas->id_kelas,
-            'id_pegawai' => $pegawai->id_pegawai,
-            'tahun_ajar' => $request->tahun_ajar,
-        ]);
+        // $kelas_tahun_ajar = kelasTahunAjar::where('id_pegawai', $id)
+        //     ->where('id_tahun_ajar', $tahun_ajar->id_tahun_ajar)
+        //     ->first();
+
+        // if ($kelas_tahun_ajar) {
+        //     $kelas_tahun_ajar->update([
+        //         'id_kelas' => $kelas->id_kelas,
+        //     ]);
+        // } else {
+        //     // Jika tidak ada, buat data kelas_tahun_ajar baru
+        //     kelasTahunAjar::create([
+        //         'id_kelas' => $kelas->id_kelas,
+        //         'id_pegawai' => $pegawai->id_pegawai,
+        //         'id_tahun_ajar' => $tahun_ajar->id_tahun_ajar,
+        //     ]);
+        // }
 
         return redirect()->route('input-pegawai')->with('success', 'Data pegawai dan kelas berhasil diupdate');
     }
@@ -170,9 +187,9 @@ class inputPegawaiController extends Controller
         return redirect()->route('input-pegawai')->with('success', 'Data pegawai berhasil diimport');
     }
 
-    public function pegawaiExport() {
+    public function pegawaiExport()
+    {
 
         return Excel::download(new pegawaiExport, 'pegawai.xlsx');
-
     }
 }

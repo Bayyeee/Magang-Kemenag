@@ -17,7 +17,7 @@ class kelas extends Model
     public function pegawai(): BelongsToMany
     {
         return $this->belongsToMany(pegawai::class, 'kelas_tahun_ajar', 'id_kelas', 'id_pegawai')
-            ->withPivot('tahun_ajar')
+            ->withPivot('id_tahun_ajar')
             ->withTimestamps();
     }
 

@@ -14,16 +14,25 @@ class kelasTahunAjar extends Model
     protected $fillable = [
         'id_kelas',
         'id_pegawai',
-        'tahun_ajar',
+        'id_tahun_ajar',
     ];
 
     public function kelas()
     {
-        return $this->belongsTo(kelas::class, 'id_kelas');
+        return $this->belongsTo(kelas::class, 'id_kelas', 'id_kelas');
+    }
+
+    public function tahunAjar()
+    {
+        return $this->belongsTo(tahunAjar::class, 'id_tahun_ajar', 'id_tahun_ajar');
     }
 
     public function pegawai()
     {
         return $this->belongsTo(pegawai::class, 'id_pegawai', 'id_pegawai');
+    }
+
+    public function siswa() {
+        return $this->hasMany(siswa::class, 'id_kelas_tahun_ajar', 'id_kelas_tahun_ajar');
     }
 }
