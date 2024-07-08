@@ -215,12 +215,6 @@
                         <li>
                             <a href="" class="side-menu">
                                 <div class="side-menu__icon"> <i data-lucide="printer"></i> </div>
-                                <div class="side-menu__title"> Kelas </div>
-                            </a>
-                        </li>
-                        <li>
-                            <a href="" class="side-menu">
-                                <div class="side-menu__icon"> <i data-lucide="printer"></i> </div>
                                 <div class="side-menu__title"> Cetak Data Siswa </div>
                             </a>
                         </li>
@@ -383,6 +377,46 @@
                                 @endforeach
                             </tbody>
                         </table>
+                    </div>
+                </div>
+            </div>
+            <div class="intro-y tab-content mt-5">
+                <div id="dashboard" class="tab-pane active" role="tabpanel" aria-labelledby="dashboard-tab">
+                    <div class="grid grid-cols-12 gap-6">
+                        <div class="intro-y box col-span-12 lg:col-span-12">
+                            <div
+                                class="flex items-center px-5 py-5 sm:py-3 border-b border-slate-200/60 dark:border-darkmode-400">
+                                <h2 class="font-medium text-base text-danger mr-auto">
+                                    *Persyaratan Dan Langkah
+                                </h2>
+                            </div>
+                            <div class="p-5">
+                                <div class="tab-content">
+                                    <div id="work-in-progress-new" class="tab-pane active" role="tabpanel"
+                                        aria-labelledby="work-in-progress-new-tab">
+                                        <div>
+                                            <div class="flex">
+                                                <div class="mr-auto">Lorem ipsum dolor sit amet consectetur adipisicing
+                                                    elit. Vel eaque officiis autem sequi, beatae inventore, culpa magnam
+                                                    laboriosam repellendus ab velit iste expedita rerum, ea commodi
+                                                    ducimus quasi minus illum?Lorem, ipsum dolor sit amet consectetur
+                                                    adipisicing elit. Nulla libero exercitationem iure quaerat nesciunt
+                                                    temporibus consequatur optio excepturi repellendus ut, veniam
+                                                    laborum vel aperiam vitae enim autem magnam voluptatum eveniet
+                                                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Magnam eos
+                                                    laborum veritatis, dolore odio illum eum ducimus dolorem quam
+                                                    dolores debitis hic quaerat culpa sequi. Nulla deserunt cumque
+                                                    necessitatibus doloribus.
+                                                    Lorem ipsum dolor, sit amet consectetur adipisicing elit. Nemo
+                                                    soluta quaerat cumque vitae quo quis earum, dicta eum? Provident
+                                                    quasi quod reprehenderit accusantium iusto ullam quo consequatur,
+                                                    optio qui facilis.</div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>

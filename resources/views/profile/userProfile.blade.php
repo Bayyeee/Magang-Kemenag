@@ -5,6 +5,115 @@
 
 
 <body class="py-5">
+
+    <div class="mobile-menu md:hidden">
+        <div class="mobile-menu-bar">
+            <a href="#" class="flex mr-auto">
+                <img alt="Kementerian Agama Kota Banjarmasin" class="w-10 rounded-lg"
+                    src="{{ asset('images/kemenag_icon.png') }}">
+            </a>
+            <a href="javascript:;" class="mobile-menu-toggler"> <i data-lucide="bar-chart-2"
+                    class="w-8 h-8 text-white transform -rotate-90"></i> </a>
+        </div>
+        <div class="scrollable">
+            <a href="javascript:;" class="mobile-menu-toggler"> <i data-lucide="x-circle"
+                    class="w-8 h-8 text-white transform -rotate-90"></i> </a>
+            <ul class="scrollable__content py-2">
+                <li>
+                    <a href="/" class="menu menu--active">
+                        <div class="menu__icon"><i data-lucide="home"></i> </div>
+                        <div class="menu__title"> Dashboard </div>
+                    </a>
+                </li>
+                {{-- TODO PENDAFTARAN --}}
+                <li>
+                    <a href="javascript:;" class="menu">
+                        <div class="menu__icon"> <i data-lucide="hard-drive"></i> </div>
+                        <div class="menu__title">
+                            Pengajuan
+                            <div class="menu__sub-icon "> <i data-lucide="chevron-down"></i> </div>
+                        </div>
+                    </a>
+                    <ul class="">
+                        <li>
+                            <a href="{{ route('pendaftaran-users') }}" class="menu">
+                                <div class="menu__icon"> <i data-lucide="book"></i> </div>
+                                <div class="menu__title"> Pendaftaran </div>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="{{ route('edit-pengajuan') }}" class="menu">
+                                <div class="menu__icon"> <i data-lucide="edit-3"></i> </div>
+                                <div class="menu__title"> Edit Pengajuan </div>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="{{ route('cek-verifikasi') }}" class="menu">
+                                <div class="menu__icon"> <i data-lucide="file"></i> </div>
+                                <div class="menu__title"> Cek Verifikasi </div>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="{{ route('cetak') }}" class="menu">
+                                <div class="menu__icon"> <i data-lucide="printer"></i> </div>
+                                <div class="menu__title"> Cetak Berkas </div>
+                            </a>
+                        </li>
+                    </ul>
+                </li>
+                {{-- TODO DATA PEGAWAI --}}
+                <li>
+                    <a href="javascript:;" class="menu">
+                        <div class="menu__icon"> <i data-lucide="folder"></i> </div>
+                        <div class="menu__title">
+                            Data Pegawai
+                            <div class="menu__sub-icon "> <i data-lucide="chevron-down"></i> </div>
+                        </div>
+                    </a>
+                    <ul class="">
+                        <li>
+                            <a href="{{ route('input-pegawai') }}" class="menu">
+                                <div class="menu__icon"> <i data-lucide="upload"></i> </div>
+                                <div class="menu__title"> Input Data Pegawai </div>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="{{ route('cetak-pegawai') }}" class="menu">
+                                <div class="menu__icon"> <i data-lucide="printer"></i> </div>
+                                <div class="menu__title"> Cetak Data Pegawai </div>
+                            </a>
+                        </li>
+                    </ul>
+                </li>
+                {{-- TODO DATA SISWA --}}
+                <li>
+                    <a href="javascript:;" class="menu">
+                        <div class="menu__icon"> <i data-lucide="folder"></i> </div>
+                        <div class="menu__title">
+                            Data Siswa
+                            <div class="menu__sub-icon "> <i data-lucide="chevron-down"></i> </div>
+                        </div>
+                    </a>
+                    <ul class="">
+                        <li>
+                            <a href="" class="menu">
+                                <div class="menu__icon"> <i data-lucide="upload"></i> </div>
+                                <div class="menu__title"> Input Data Siswa </div>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="" class="menu">
+                                <div class="menu__icon"> <i data-lucide="printer"></i> </div>
+                                <div class="menu__title"> Cetak Data Siswa </div>
+                            </a>
+                        </li>
+                    </ul>
+                </li>
+            </ul>
+        </div>
+    </div>
+
+    {{-- TODO DESKTOP USER --}}
     <div class="flex mt-[4.7rem] md:mt-0">
         <nav class="side-nav">
             {{-- TODO NAV USERS --}}
@@ -28,6 +137,7 @@
                         <div class="side-menu__title"> Profile </div>
                     </a>
                 </li>
+                {{-- TODO PENDAFTARAN --}}
                 <li>
                     <a href="javascript:;" class="side-menu">
                         <div class="side-menu__icon"> <i data-lucide="hard-drive"></i> </div>
@@ -51,45 +161,65 @@
                         </li>
                         <li>
                             <a href="{{ route('cek-verifikasi') }}" class="side-menu">
-                                <div class="side-menu__icon"> <i data-lucide="book"></i> </div>
+                                <div class="side-menu__icon"> <i data-lucide="file"></i> </div>
                                 <div class="side-menu__title"> Cek Verifikasi </div>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="{{ route('cetak') }}" class="side-menu">
+                                <div class="side-menu__icon"> <i data-lucide="printer"></i> </div>
+                                <div class="side-menu__title"> Cetak Berkas </div>
                             </a>
                         </li>
                     </ul>
                 </li>
+                {{-- TODO DATA PEGAWAI --}}
                 <li>
-                    <a href="side-menu-light-file-manager.html" class="side-menu">
-                        <div class="side-menu__icon"> <i data-lucide="hard-drive"></i> </div>
-                        <div class="side-menu__title"> File Manager </div>
+                    <a href="javascript:;" class="side-menu">
+                        <div class="side-menu__icon"> <i data-lucide="folder"></i> </div>
+                        <div class="side-menu__title">
+                            Data Pegawai
+                            <div class="side-menu__sub-icon "> <i data-lucide="chevron-down"></i> </div>
+                        </div>
                     </a>
+                    <ul class="">
+                        <li>
+                            <a href="{{ route('input-pegawai') }}" class="side-menu">
+                                <div class="side-menu__icon"> <i data-lucide="upload"></i> </div>
+                                <div class="side-menu__title"> Input Data Pegawai </div>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="" class="side-menu">
+                                <div class="side-menu__icon"> <i data-lucide="printer"></i> </div>
+                                <div class="side-menu__title"> Cetak Data Pegawai </div>
+                            </a>
+                        </li>
+                    </ul>
                 </li>
-
+                {{-- TODO DATA SISWA --}}
                 <li>
-                    <a href="side-menu-light-point-of-sale.html" class="side-menu">
-                        <div class="side-menu__icon"> <i data-lucide="credit-card"></i> </div>
-                        <div class="side-menu__title"> Point of Sale </div>
+                    <a href="javascript:;" class="side-menu">
+                        <div class="side-menu__icon"> <i data-lucide="folder"></i> </div>
+                        <div class="side-menu__title">
+                            Data Siswa
+                            <div class="side-menu__sub-icon "> <i data-lucide="chevron-down"></i> </div>
+                        </div>
                     </a>
-                </li>
-
-                <li>
-                    <a href="side-menu-light-chat.html" class="side-menu">
-                        <div class="side-menu__icon"> <i data-lucide="message-square"></i> </div>
-                        <div class="side-menu__title"> Chat </div>
-                    </a>
-                </li>
-
-                <li>
-                    <a href="side-menu-light-post.html" class="side-menu">
-                        <div class="side-menu__icon"> <i data-lucide="file-text"></i> </div>
-                        <div class="side-menu__title"> Post </div>
-                    </a>
-                </li>
-
-                <li>
-                    <a href="side-menu-light-calendar.html" class="side-menu">
-                        <div class="side-menu__icon"> <i data-lucide="calendar"></i> </div>
-                        <div class="side-menu__title"> Calendar </div>
-                    </a>
+                    <ul class="">
+                        <li>
+                            <a href="{{ route('show-Siswa') }}" class="side-menu">
+                                <div class="side-menu__icon"> <i data-lucide="upload"></i> </div>
+                                <div class="side-menu__title"> Input Data Siswa </div>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="" class="side-menu">
+                                <div class="side-menu__icon"> <i data-lucide="printer"></i> </div>
+                                <div class="side-menu__title"> Cetak Data Siswa </div>
+                            </a>
+                        </li>
+                    </ul>
                 </li>
 
             </ul>
@@ -137,8 +267,8 @@
                                         class="w-4 h-4 mr-2"></i> Reset Password </a>
                             </li>
                             <li>
-                                <a href="" class="dropdown-item hover:bg-white/5"> <i data-lucide="help-circle"
-                                        class="w-4 h-4 mr-2"></i> Help </a>
+                                <a href="" class="dropdown-item hover:bg-white/5"> <i
+                                        data-lucide="help-circle" class="w-4 h-4 mr-2"></i> Help </a>
                             </li>
                             <li>
                                 <hr class="dropdown-divider border-white/[0.08]">
@@ -153,45 +283,6 @@
                 <!-- END: Account Menu -->
             </div>
             <div class="intro-y box p-4">
-                {{-- <div class="intro-y flex items-center">
-                    <h2 class="text-lg font-medium mr-auto">
-                        Edit Profile
-                    </h2>
-                </div> --}}
-                {{-- ?? BEGIN: Form Layout --}}
-                {{-- <form action="{{ route('simpan-profile') }}" method="POST" enctype="multipart/form-data">
-                    {{ csrf_field() }}
-                    <div class="intro-y box p-5 mt-3">
-                        <div>
-                            <label for="crud-form-1" class="form-label">Nama TPA</label>
-                            <input id="nama_tpa" type="text" class="form-control w-full"
-                                placeholder="Nama Sekolah" name="name">
-                        </div>
-
-                        <div class="mt-3">
-                            <label for="crud-form-3" class="form-label">Alamat</label>
-                            <div class="input-group">
-                                <input id="alamat" type="text" class="form-control" placeholder="Jln. ...."
-                                    aria-describedby="input-group-1" name="alamat">
-                            </div>
-                        </div>
-
-                        <div class="mt-3">
-                            <label for="crud-form-3" class="form-label" for="file_input">Upload logo</label>
-                            <div class="input-group rounded-lg">
-                                <input
-                                    class="form-control block w-full text-sm text-gray-dark border border-gray-dark rounded-lg cursor-pointer bg-gray-dark dark:text-gray-light focus:outline-none dark:bg-gray-lighter dark:border-gray-txt dark:placeholder-gray-light"
-                                    id="logo" type="file" accept=".jpeg, .jpg, .png, .svg"
-                                    onchange="validateFile(this)" name="logo">
-                                <p id="error_message" class="text-red-500 text-sm mt-1"></p>
-                            </div>
-                        </div>
-                        <div class="text-right mt-5">
-                            <button onclick="window.location.href = '/'" type="button"
-                                class="btn btn-outline-secondary w-24 mr-1">Kembali</button>
-                            <button type="submit" class="btn btn-primary w-24">Save</button>
-                        </div>
-                </form> --}}
                 <div class="intro-y flex items-center">
                     <h2 class="text-lg font-medium mr-auto">
                         Profile Layout
@@ -290,29 +381,108 @@
                         <button onclick="window.location.href = '{{ route('editProfile') }}'" type="button"
                             class="btn btn-primary w-24 mr-2"> <i data-lucide="edit" class="w-4 h-4 mr-2"></i> Edit
                         </button>
-                        <button onclick="window.location.href = '/'" type="button"
-                            class="btn btn-secondary w-24"><i data-lucide="corner-up-left" class="w-4 h-4 mr-2"></i>
+                        <button onclick="window.location.href = '/'" type="button" class="btn btn-secondary w-24"><i
+                                data-lucide="corner-up-left" class="w-4 h-4 mr-2"></i>
                             Kembali </button>
                     </div>
                 </div>
             </div>
             {{-- ?? END: Top Bar  --}}
-            <div class="grid grid-cols-12 gap-6">
-                <div class="col-span-12 2xl:col-span-9">
+            <div class="intro-y tab-content mt-5">
+                <div id="dashboard" class="tab-pane active" role="tabpanel" aria-labelledby="dashboard-tab">
                     <div class="grid grid-cols-12 gap-6">
-                        {{-- ? CONTENT UTAMA --}}
-                    </div>
-                </div>
-                <div class="col-span-12 2xl:col-span-3">
-                    <div class="2xl:border-l -mb-10">
-                        <div class="2xl:pl-6 grid grid-cols-12 gap-x-6 2xl:gap-x-0 gap-y-6">
-                            {{-- ? CONTENT BEBAS BERGARIS --}}
+                        <!-- BEGIN: Top Categories -->
+                        <div class="intro-y box col-span-12 lg:col-span-6">
+                            <div class="flex items-center p-5 border-b border-slate-200/60 dark:border-darkmode-400">
+                                <h2 class="font-medium text-base mr-auto">
+                                    Jumlah Siswa
+                                </h2>
+                            </div>
+                            <div class="p-5">
+                                <div class="flex flex-col sm:flex-row">
+                                    <div class="mr-auto">
+                                        <a href="" class="font-medium">angka jumlah</a>
+                                        <div class="text-slate-500 mt-1"></div>
+                                    </div>
+                                    <div class="flex">
+                                        <div class="text-center">
+                                            <div class="font-medium"></div>
+                                            <div class="bg-success/20 text-success rounded px-2 mt-1.5"></div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="intro-y box col-span-12 lg:col-span-6">
+                            <div class="flex items-center p-5 border-b border-slate-200/60 dark:border-darkmode-400">
+                                <h2 class="font-medium text-base mr-auto">
+                                    Jumlah Pegawai
+                                </h2>
+                            </div>
+                            <div class="p-5">
+                                <div class="tab-content">
+                                    <div id="work-in-progress-new" class="tab-pane active" role="tabpanel"
+                                        aria-labelledby="work-in-progress-new-tab">
+                                        <div>
+                                            <div class="flex">
+                                                <div class="mr-auto"></div>
+                                            </div>
+                                        </div>
+                                        <div class="">
+                                            <div class="flex">
+                                                <div class="mr-auto"></div>
+                                            </div>
+                                        </div>
+                                        <div class="mt-5">
+                                            <div class="flex">
+                                                <div class="mr-auto"></div>
+                                                <div></div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="intro-y box col-span-12">
+                            <div
+                                class="flex items-center px-5 py-5 sm:py-3 border-b border-slate-200/60 dark:border-darkmode-400">
+                                <h2 class="font-medium text-base text-danger mr-auto">
+                                    *Persyaratan Dan Langkah
+                                </h2>
+                            </div>
+                            <div class="p-5">
+                                <div class="tab-content">
+                                    <div id="work-in-progress-new" class="tab-pane active" role="tabpanel"
+                                        aria-labelledby="work-in-progress-new-tab">
+                                        <div>
+                                            <div class="flex">
+                                                <div class="mr-auto">Lorem ipsum dolor sit amet consectetur adipisicing
+                                                    elit. Vel eaque officiis autem sequi, beatae inventore, culpa magnam
+                                                    laboriosam repellendus ab velit iste expedita rerum, ea commodi
+                                                    ducimus quasi minus illum?Lorem, ipsum dolor sit amet consectetur
+                                                    adipisicing elit. Nulla libero exercitationem iure quaerat nesciunt
+                                                    temporibus consequatur optio excepturi repellendus ut, veniam
+                                                    laborum vel aperiam vitae enim autem magnam voluptatum eveniet
+                                                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Magnam eos
+                                                    laborum veritatis, dolore odio illum eum ducimus dolorem quam
+                                                    dolores debitis hic quaerat culpa sequi. Nulla deserunt cumque
+                                                    necessitatibus doloribus.
+                                                    Lorem ipsum dolor, sit amet consectetur adipisicing elit. Nemo
+                                                    soluta quaerat cumque vitae quo quis earum, dicta eum? Provident
+                                                    quasi quod reprehenderit accusantium iusto ullam quo consequatur,
+                                                    optio qui facilis.</div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
     </div>
+
     <x-script-Home></x-script-Home>
 
 </body>

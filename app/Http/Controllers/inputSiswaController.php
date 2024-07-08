@@ -2,11 +2,13 @@
 
 namespace App\Http\Controllers;
 
+use App\Imports\siswaImport;
 use App\Models\siswa;
 use App\Models\kelasTahunAjar;
 use Illuminate\Http\Request;
 use Illuminate\Database\Eloquent\ModelNotFoundException;
 use Illuminate\Support\Facades\Auth;
+use Maatwebsite\Excel\Facades\Excel;
 
 class inputSiswaController extends Controller
 {
@@ -39,7 +41,8 @@ class inputSiswaController extends Controller
         return redirect()->route('show-Siswa')->with('success', 'Data siswa berhasil disimpan');
     }
 
-    public function editSiswa(Request $request, $id_siswa){
+    public function editSiswa(Request $request, $id_siswa)
+    {
 
         $siswas = siswa::findOrFail($id_siswa);
 
@@ -60,11 +63,23 @@ class inputSiswaController extends Controller
         return redirect()->route('show-Siswa');
     }
 
-    public function deleteSiswa($id) {
+    public function deleteSiswa($id)
+    {
         $siswa = siswa::findOrFail($id);
 
         $siswa->delete();
 
         return redirect()->route('show-Siswa');
+    }
+
+    public function importSiswa(Request $request)
+    {
+        $request->validate([
+            'file' => 'required|mimes:xlsx',
+        ]);
+
+        Excel::import(new siswaImport, $request->file('file'));
+
+        return redirect()->route('input-pegawai')->with('success', 'Data siswa berhasil diimport');
     }
 }

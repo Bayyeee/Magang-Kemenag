@@ -49,7 +49,7 @@
                             </a>
                         </li>
                         <li>
-                            <a href="{{ route('cek-verifikasi') }}" class="menu">
+                            <a href="{{ route('cek-verifikasi') }}" class="menu menu--active">
                                 <div class="menu__icon"> <i data-lucide="file"></i> </div>
                                 <div class="menu__title"> Cek Verifikasi </div>
                             </a>
@@ -211,12 +211,6 @@
                             <a href="" class="side-menu">
                                 <div class="side-menu__icon"> <i data-lucide="upload"></i> </div>
                                 <div class="side-menu__title"> Input Data Siswa </div>
-                            </a>
-                        </li>
-                        <li>
-                            <a href="" class="side-menu">
-                                <div class="side-menu__icon"> <i data-lucide="printer"></i> </div>
-                                <div class="side-menu__title"> Kelas </div>
                             </a>
                         </li>
                         <li>

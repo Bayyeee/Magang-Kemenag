@@ -80,6 +80,8 @@ Route::group(['middleware' => ['auth']], function () {
         Route::delete('/delete-siswa/{id}', [inputSiswaController::class, 'deleteSiswa'])->name('delete-siswa');
 
         Route::get('/cetak-pegawai', [cetakPegawaiController::class, 'cetakPegawaiTabel'])->name('cetak-pegawai');
+
+        Route::post('/import-siswa', [inputSiswaController::class, 'importSiswa'])->name('import-siswa');
     });
 
     Route::middleware('checkRoles:admin,humas')->group(function () {

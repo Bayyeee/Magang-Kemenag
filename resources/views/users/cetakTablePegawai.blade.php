@@ -96,15 +96,9 @@
                     </a>
                     <ul class="">
                         <li>
-                            <a href="" class="menu">
+                            <a href="{{ route('show-Siswa') }}" class="menu">
                                 <div class="menu__icon"> <i data-lucide="upload"></i> </div>
                                 <div class="menu__title"> Input Data Siswa </div>
-                            </a>
-                        </li>
-                        <li>
-                            <a href="" class="menu">
-                                <div class="menu__icon"> <i data-lucide="printer"></i> </div>
-                                <div class="menu__title"> Kelas </div>
                             </a>
                         </li>
                         <li>
@@ -211,12 +205,6 @@
                             <a href="{{ route('show-Siswa') }}" class="side-menu">
                                 <div class="side-menu__icon"> <i data-lucide="upload"></i> </div>
                                 <div class="side-menu__title"> Input Data Siswa </div>
-                            </a>
-                        </li>
-                        <li>
-                            <a href="" class="side-menu">
-                                <div class="side-menu__icon"> <i data-lucide="printer"></i> </div>
-                                <div class="side-menu__title"> Kelas </div>
                             </a>
                         </li>
                         <li>

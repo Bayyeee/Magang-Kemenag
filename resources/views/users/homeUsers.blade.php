@@ -103,12 +103,6 @@
                         <li>
                             <a href="" class="menu">
                                 <div class="menu__icon"> <i data-lucide="printer"></i> </div>
-                                <div class="menu__title"> Kelas </div>
-                            </a>
-                        </li>
-                        <li>
-                            <a href="" class="menu">
-                                <div class="menu__icon"> <i data-lucide="printer"></i> </div>
                                 <div class="menu__title"> Cetak Data Siswa </div>
                             </a>
                         </li>
@@ -215,12 +209,6 @@
                         <li>
                             <a href="" class="side-menu">
                                 <div class="side-menu__icon"> <i data-lucide="printer"></i> </div>
-                                <div class="side-menu__title"> Kelas </div>
-                            </a>
-                        </li>
-                        <li>
-                            <a href="" class="side-menu">
-                                <div class="side-menu__icon"> <i data-lucide="printer"></i> </div>
                                 <div class="side-menu__title"> Cetak Data Siswa </div>
                             </a>
                         </li>
@@ -286,27 +274,33 @@
                 <!-- END: Account Menu -->
             </div>
             {{-- TODO ISI CONTENT --}}
-            <div
-                class="col-span-12 md:col-span-6 xl:col-span-12 xl:col-start-1 xl:row-start-1 2xl:col-start-auto 2xl:row-start-auto mt-3">
-                <div class="mt-5 intro-x">
-                    <div class="box zoom">
-                        <div class="tiny-slider" id="important-notes">
-                            <div class="h-64 px-2 p-2">
-                                <div class="h-full image-fit rounded-md overflow-hidden"><img
-                                        src="{{ asset('images/Kantor.png') }}" alt=""></div>
-                            </div>
-                            <div class="h-64 px-2 p-2">
-                                <div class="h-full image-fit rounded-md overflow-hidden"><img
-                                        src="{{ asset('images/Kantor.png') }}" alt=""></div>
-                            </div>
-                            <div class="h-64 px-2 p-2">
-                                <div class="h-full image-fit rounded-md overflow-hidden"><img
-                                        src="{{ asset('images/Kantor.png') }}" alt=""></div>
-                            </div>
+
+            <div class="mx-6 relative-full mt-3 rounded-lg">
+                <div class="single-item rounded-lg">
+                    <div class="h-full w-full px-52 rounded-lg">
+                        <div class="h-full bg-slate-100 dark:bg-darkmode-400 rounded-md">
+                            <h3 class="h-full font-medium flex items-center justify-center text-2xl">
+                                <img class="rounded-lg" src="{{ asset('images/SIP-LPQ1.png') }}" alt="">
+                            </h3>
+                        </div>
+                    </div>
+                    <div class="h-full w-full px-52 rounded-lg">
+                        <div class="h-full bg-slate-100 dark:bg-darkmode-400 rounded-md">
+                            <h3 class="h-full font-medium flex items-center justify-center text-2xl">
+                                <img class="rounded-lg" src="{{ asset('images/sip-tpq2.png') }}" alt="">
+                            </h3>
+                        </div>
+                    </div>
+                    <div class="h-full w-full px-52 rounded-lg">
+                        <div class="h-full bg-slate-100 dark:bg-darkmode-400 rounded-md">
+                            <h3 class="h-full font-medium flex items-center justify-center text-2xl">
+                                <img class="rounded-lg" src="{{ asset('images/sip-tpq3.png') }}" alt="">
+                            </h3>
                         </div>
                     </div>
                 </div>
             </div>
+
             <div class="grid grid-cols-12 gap-6 mt-5">
                 <!-- BEGIN: FAQ Menu -->
                 <a href="" class="intro-y col-span-12 lg:col-span-4 box py-10">

@@ -109,12 +109,6 @@
                             <li>
                                 <a href="" class="menu">
                                     <div class="menu__icon"> <i data-lucide="printer"></i> </div>
-                                    <div class="menu__title"> Kelas </div>
-                                </a>
-                            </li>
-                            <li>
-                                <a href="" class="menu">
-                                    <div class="menu__icon"> <i data-lucide="printer"></i> </div>
                                     <div class="menu__title"> Cetak Data Siswa </div>
                                 </a>
                             </li>
@@ -217,12 +211,6 @@
                                 <a href="{{ route('show-Siswa') }}" class="side-menu side-menu--active">
                                     <div class="side-menu__icon"> <i data-lucide="upload"></i> </div>
                                     <div class="side-menu__title"> Input Data Siswa </div>
-                                </a>
-                            </li>
-                            <li>
-                                <a href="" class="side-menu">
-                                    <div class="side-menu__icon"> <i data-lucide="printer"></i> </div>
-                                    <div class="side-menu__title"> Kelas </div>
                                 </a>
                             </li>
                             <li>
@@ -530,7 +518,7 @@
                 <div id="uploadexcel-confirmation-modal" class="modal" tabindex="-1" aria-hidden="true">
                     <div class="modal-dialog">
                         <div class="modal-content">
-                            <form id="upload-form" action="{{ route('impor-pegawai') }}" method="POST"
+                            <form id="upload-form" action="{{ route('import-siswa') }}" method="POST"
                                 enctype="multipart/form-data">
                                 @csrf
                                 <div class="modal-body p-0">

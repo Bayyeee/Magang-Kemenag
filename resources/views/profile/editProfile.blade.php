@@ -14,6 +14,117 @@
 
 
 <body class="py-5">
+
+    {{-- TODO MOBILE USERS --}}
+    <div class="mobile-menu md:hidden">
+        <div class="mobile-menu-bar">
+            <a href="#" class="flex mr-auto">
+                <img alt="Kementerian Agama Kota Banjarmasin" class="w-10 rounded-lg"
+                    src="{{ asset('images/kemenag_icon.png') }}">
+            </a>
+            <a href="javascript:;" class="mobile-menu-toggler"> <i data-lucide="bar-chart-2"
+                    class="w-8 h-8 text-white transform -rotate-90"></i> </a>
+        </div>
+        <div class="scrollable">
+            <a href="javascript:;" class="mobile-menu-toggler"> <i data-lucide="x-circle"
+                    class="w-8 h-8 text-white transform -rotate-90"></i> </a>
+            <ul class="scrollable__content py-2">
+                <li>
+                    <a href="/" class="menu menu--active">
+                        <div class="menu__icon"><i data-lucide="home"></i> </div>
+                        <div class="menu__title"> Dashboard </div>
+                    </a>
+                </li>
+                {{-- TODO PENDAFTARAN --}}
+                <li>
+                    <a href="javascript:;" class="menu">
+                        <div class="menu__icon"> <i data-lucide="hard-drive"></i> </div>
+                        <div class="menu__title">
+                            Pengajuan
+                            <div class="menu__sub-icon "> <i data-lucide="chevron-down"></i> </div>
+                        </div>
+                    </a>
+                    <ul class="">
+                        <li>
+                            <a href="{{ route('pendaftaran-users') }}" class="menu">
+                                <div class="menu__icon"> <i data-lucide="book"></i> </div>
+                                <div class="menu__title"> Pendaftaran </div>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="{{ route('edit-pengajuan') }}" class="menu">
+                                <div class="menu__icon"> <i data-lucide="edit-3"></i> </div>
+                                <div class="menu__title"> Edit Pengajuan </div>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="{{ route('cek-verifikasi') }}" class="menu">
+                                <div class="menu__icon"> <i data-lucide="file"></i> </div>
+                                <div class="menu__title"> Cek Verifikasi </div>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="{{ route('cetak') }}" class="menu">
+                                <div class="menu__icon"> <i data-lucide="printer"></i> </div>
+                                <div class="menu__title"> Cetak Berkas </div>
+                            </a>
+                        </li>
+                    </ul>
+                </li>
+                {{-- TODO DATA PEGAWAI --}}
+                <li>
+                    <a href="javascript:;" class="menu">
+                        <div class="menu__icon"> <i data-lucide="folder"></i> </div>
+                        <div class="menu__title">
+                            Data Pegawai
+                            <div class="menu__sub-icon "> <i data-lucide="chevron-down"></i> </div>
+                        </div>
+                    </a>
+                    <ul class="">
+                        <li>
+                            <a href="{{ route('input-pegawai') }}" class="menu">
+                                <div class="menu__icon"> <i data-lucide="upload"></i> </div>
+                                <div class="menu__title"> Input Data Pegawai </div>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="{{ route('cetak-pegawai') }}" class="menu">
+                                <div class="menu__icon"> <i data-lucide="printer"></i> </div>
+                                <div class="menu__title"> Cetak Data Pegawai </div>
+                            </a>
+                        </li>
+                    </ul>
+                </li>
+                {{-- TODO DATA SISWA --}}
+                <li>
+                    <a href="javascript:;" class="menu">
+                        <div class="menu__icon"> <i data-lucide="folder"></i> </div>
+                        <div class="menu__title">
+                            Data Siswa
+                            <div class="menu__sub-icon "> <i data-lucide="chevron-down"></i> </div>
+                        </div>
+                    </a>
+                    <ul class="">
+                        <li>
+                            <a href="" class="menu">
+                                <div class="menu__icon"> <i data-lucide="upload"></i> </div>
+                                <div class="menu__title"> Input Data Siswa </div>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="" class="menu">
+                                <div class="menu__icon"> <i data-lucide="printer"></i> </div>
+                                <div class="menu__title"> Cetak Data Siswa </div>
+                            </a>
+                        </li>
+                    </ul>
+                </li>
+            </ul>
+        </div>
+    </div>
+
+
+    {{-- TODO DESKTOP USERS --}}
     <div class="flex mt-[4.7rem] md:mt-0">
         <nav class="side-nav">
             {{-- TODO NAV USERS --}}
@@ -37,6 +148,7 @@
                         <div class="side-menu__title"> Profile </div>
                     </a>
                 </li>
+                {{-- TODO PENDAFTARAN --}}
                 <li>
                     <a href="javascript:;" class="side-menu">
                         <div class="side-menu__icon"> <i data-lucide="hard-drive"></i> </div>
@@ -60,45 +172,65 @@
                         </li>
                         <li>
                             <a href="{{ route('cek-verifikasi') }}" class="side-menu">
-                                <div class="side-menu__icon"> <i data-lucide="book"></i> </div>
+                                <div class="side-menu__icon"> <i data-lucide="file"></i> </div>
                                 <div class="side-menu__title"> Cek Verifikasi </div>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="{{ route('cetak') }}" class="side-menu">
+                                <div class="side-menu__icon"> <i data-lucide="printer"></i> </div>
+                                <div class="side-menu__title"> Cetak Berkas </div>
                             </a>
                         </li>
                     </ul>
                 </li>
+                {{-- TODO DATA PEGAWAI --}}
                 <li>
-                    <a href="side-menu-light-file-manager.html" class="side-menu">
-                        <div class="side-menu__icon"> <i data-lucide="hard-drive"></i> </div>
-                        <div class="side-menu__title"> File Manager </div>
+                    <a href="javascript:;" class="side-menu">
+                        <div class="side-menu__icon"> <i data-lucide="folder"></i> </div>
+                        <div class="side-menu__title">
+                            Data Pegawai
+                            <div class="side-menu__sub-icon "> <i data-lucide="chevron-down"></i> </div>
+                        </div>
                     </a>
+                    <ul class="">
+                        <li>
+                            <a href="{{ route('input-pegawai') }}" class="side-menu">
+                                <div class="side-menu__icon"> <i data-lucide="upload"></i> </div>
+                                <div class="side-menu__title"> Input Data Pegawai </div>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="" class="side-menu">
+                                <div class="side-menu__icon"> <i data-lucide="printer"></i> </div>
+                                <div class="side-menu__title"> Cetak Data Pegawai </div>
+                            </a>
+                        </li>
+                    </ul>
                 </li>
-
+                {{-- TODO DATA SISWA --}}
                 <li>
-                    <a href="side-menu-light-point-of-sale.html" class="side-menu">
-                        <div class="side-menu__icon"> <i data-lucide="credit-card"></i> </div>
-                        <div class="side-menu__title"> Point of Sale </div>
+                    <a href="javascript:;" class="side-menu">
+                        <div class="side-menu__icon"> <i data-lucide="folder"></i> </div>
+                        <div class="side-menu__title">
+                            Data Siswa
+                            <div class="side-menu__sub-icon "> <i data-lucide="chevron-down"></i> </div>
+                        </div>
                     </a>
-                </li>
-
-                <li>
-                    <a href="side-menu-light-chat.html" class="side-menu">
-                        <div class="side-menu__icon"> <i data-lucide="message-square"></i> </div>
-                        <div class="side-menu__title"> Chat </div>
-                    </a>
-                </li>
-
-                <li>
-                    <a href="side-menu-light-post.html" class="side-menu">
-                        <div class="side-menu__icon"> <i data-lucide="file-text"></i> </div>
-                        <div class="side-menu__title"> Post </div>
-                    </a>
-                </li>
-
-                <li>
-                    <a href="side-menu-light-calendar.html" class="side-menu">
-                        <div class="side-menu__icon"> <i data-lucide="calendar"></i> </div>
-                        <div class="side-menu__title"> Calendar </div>
-                    </a>
+                    <ul class="">
+                        <li>
+                            <a href="{{ route('show-Siswa') }}" class="side-menu">
+                                <div class="side-menu__icon"> <i data-lucide="upload"></i> </div>
+                                <div class="side-menu__title"> Input Data Siswa </div>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="" class="side-menu">
+                                <div class="side-menu__icon"> <i data-lucide="printer"></i> </div>
+                                <div class="side-menu__title"> Cetak Data Siswa </div>
+                            </a>
+                        </li>
+                    </ul>
                 </li>
 
             </ul>
@@ -146,8 +278,8 @@
                                         class="w-4 h-4 mr-2"></i> Reset Password </a>
                             </li>
                             <li>
-                                <a href="" class="dropdown-item hover:bg-white/5"> <i data-lucide="help-circle"
-                                        class="w-4 h-4 mr-2"></i> Help </a>
+                                <a href="" class="dropdown-item hover:bg-white/5"> <i
+                                        data-lucide="help-circle" class="w-4 h-4 mr-2"></i> Help </a>
                             </li>
                             <li>
                                 <hr class="dropdown-divider border-white/[0.08]">
@@ -198,19 +330,16 @@
                             <label for="nip" class="block mb-1 text-sm text-gray-900 dark:text-dark">NIP</label>
                             <input type="text" name="nip" id="nip"
                                 class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-black disabled"
-                                placeholder="{{ Auth::user()->nip }}"
-                                disabled maxlength="18" />
+                                placeholder="{{ Auth::user()->nip }}" disabled maxlength="18" />
                             <div>
                                 <label class="block text-sm text-gray-900 dark:text-dark">Apakah Anda
                                     memiliki NIP?</label>
                                 <input type="radio" id="has_nip_yes" name="has_nip" value="yes"
                                     class="mr-2">
-                                <label for="has_nip_yes"
-                                    class="text-sm text-gray-900 dark:text-black">Ya</label>
+                                <label for="has_nip_yes" class="text-sm text-gray-900 dark:text-black">Ya</label>
                                 <input type="radio" id="has_nip_no" name="has_nip" value="no"
                                     class="ml-4 mr-2">
-                                <label for="has_nip_no"
-                                    class="text-sm text-gray-900 dark:text-dark">Tidak</label>
+                                <label for="has_nip_no" class="text-sm text-gray-900 dark:text-dark">Tidak</label>
                             </div>
                         </div>
 
@@ -335,6 +464,8 @@
             </div>
         </div>
     </div>
+
+
     <x-script-Home></x-script-Home>
 
     <script>
