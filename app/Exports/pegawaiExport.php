@@ -9,12 +9,21 @@ use Maatwebsite\Excel\Concerns\WithMapping;
 
 class pegawaiExport implements FromCollection, WithHeadings, WithMapping
 {
+    protected $userId;
+
+    public function __construct($userId)
+    {
+        $this->userId = $userId;
+    }
+
     /**
      * @return \Illuminate\Support\Collection
      */
     public function collection()
     {
-        return pegawai::with('kelasTahunAjar.kelas')->get();
+        return pegawai::with('kelasTahunAjar.kelas', 'kelasTahunAjar.tahunAjar')
+            ->where('id_tpa', $this->userId)
+            ->get();
     }
 
     /**

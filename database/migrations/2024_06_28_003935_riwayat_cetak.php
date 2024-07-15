@@ -16,6 +16,7 @@ return new class extends Migration
             $table->unsignedBigInteger('id_pendaftaran');
             $table->string('document_type');
             $table->timestamp('printed_at')->useCurrent();
+            $table->string('print_by', 11);
             $table->timestamps();
 
             $table->foreign('id_pendaftaran')->references('id_pendaftaran')->on('pendaftaran')->onDelete('cascade');

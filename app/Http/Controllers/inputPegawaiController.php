@@ -46,7 +46,10 @@ class inputPegawaiController extends Controller
     }
 
     public function simpanPegawai(Request $request)
+
+
     {
+
         $request->validate([
             'nama_pegawai' => 'required|string|max:100',
             'jabatan' => 'required|string|max:100',
@@ -187,7 +190,13 @@ class inputPegawaiController extends Controller
 
     public function pegawaiExport()
     {
+        $user = Auth::user();
+        $tpa = $user->usertpa;
 
-        return Excel::download(new pegawaiExport, 'pegawai.xlsx');
+        if (!$tpa) {
+            return redirect()->route('input-pegawai')->with('error', 'Anda tidak memiliki TPA terkait');
+        }
+
+        return Excel::download(new pegawaiExport($tpa->id), 'pegawai.xlsx');
     }
 }

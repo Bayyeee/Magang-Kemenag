@@ -174,7 +174,7 @@
                     </ul>
                 </li>
                 {{-- TODO DATA PEGAWAI --}}
-                <li>
+                {{-- <li>
                     <a href="javascript:;" class="side-menu">
                         <div class="side-menu__icon"> <i data-lucide="folder"></i> </div>
                         <div class="side-menu__title">
@@ -196,9 +196,9 @@
                             </a>
                         </li>
                     </ul>
-                </li>
+                </li> --}}
                 {{-- TODO DATA SISWA --}}
-                <li>
+                {{-- <li>
                     <a href="javascript:;" class="side-menu">
                         <div class="side-menu__icon"> <i data-lucide="folder"></i> </div>
                         <div class="side-menu__title">
@@ -220,7 +220,7 @@
                             </a>
                         </li>
                     </ul>
-                </li>
+                </li> --}}
 
             </ul>
         </nav>
@@ -392,57 +392,6 @@
                 <div id="dashboard" class="tab-pane active" role="tabpanel" aria-labelledby="dashboard-tab">
                     <div class="grid grid-cols-12 gap-6">
                         <!-- BEGIN: Top Categories -->
-                        <div class="intro-y box col-span-12 lg:col-span-6">
-                            <div class="flex items-center p-5 border-b border-slate-200/60 dark:border-darkmode-400">
-                                <h2 class="font-medium text-base mr-auto">
-                                    Jumlah Siswa
-                                </h2>
-                            </div>
-                            <div class="p-5">
-                                <div class="flex flex-col sm:flex-row">
-                                    <div class="mr-auto">
-                                        <a href="" class="font-medium">angka jumlah</a>
-                                        <div class="text-slate-500 mt-1"></div>
-                                    </div>
-                                    <div class="flex">
-                                        <div class="text-center">
-                                            <div class="font-medium"></div>
-                                            <div class="bg-success/20 text-success rounded px-2 mt-1.5"></div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="intro-y box col-span-12 lg:col-span-6">
-                            <div class="flex items-center p-5 border-b border-slate-200/60 dark:border-darkmode-400">
-                                <h2 class="font-medium text-base mr-auto">
-                                    Jumlah Pegawai
-                                </h2>
-                            </div>
-                            <div class="p-5">
-                                <div class="tab-content">
-                                    <div id="work-in-progress-new" class="tab-pane active" role="tabpanel"
-                                        aria-labelledby="work-in-progress-new-tab">
-                                        <div>
-                                            <div class="flex">
-                                                <div class="mr-auto"></div>
-                                            </div>
-                                        </div>
-                                        <div class="">
-                                            <div class="flex">
-                                                <div class="mr-auto"></div>
-                                            </div>
-                                        </div>
-                                        <div class="mt-5">
-                                            <div class="flex">
-                                                <div class="mr-auto"></div>
-                                                <div></div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
                         <div class="intro-y box col-span-12">
                             <div
                                 class="flex items-center px-5 py-5 sm:py-3 border-b border-slate-200/60 dark:border-darkmode-400">
@@ -456,21 +405,9 @@
                                         aria-labelledby="work-in-progress-new-tab">
                                         <div>
                                             <div class="flex">
-                                                <div class="mr-auto">Lorem ipsum dolor sit amet consectetur adipisicing
-                                                    elit. Vel eaque officiis autem sequi, beatae inventore, culpa magnam
-                                                    laboriosam repellendus ab velit iste expedita rerum, ea commodi
-                                                    ducimus quasi minus illum?Lorem, ipsum dolor sit amet consectetur
-                                                    adipisicing elit. Nulla libero exercitationem iure quaerat nesciunt
-                                                    temporibus consequatur optio excepturi repellendus ut, veniam
-                                                    laborum vel aperiam vitae enim autem magnam voluptatum eveniet
-                                                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Magnam eos
-                                                    laborum veritatis, dolore odio illum eum ducimus dolorem quam
-                                                    dolores debitis hic quaerat culpa sequi. Nulla deserunt cumque
-                                                    necessitatibus doloribus.
-                                                    Lorem ipsum dolor, sit amet consectetur adipisicing elit. Nemo
-                                                    soluta quaerat cumque vitae quo quis earum, dicta eum? Provident
-                                                    quasi quod reprehenderit accusantium iusto ullam quo consequatur,
-                                                    optio qui facilis.</div>
+                                                <div class="mr-auto">
+                                                    Sebelum melakukan pendaftaran silahkan perbarui profile Sekolah TPA yang akan diajukan.
+                                                </div>
                                             </div>
                                         </div>
                                     </div>

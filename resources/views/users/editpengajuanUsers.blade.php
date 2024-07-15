@@ -2,6 +2,8 @@
 <html lang="en">
 
 <x-head-Home></x-head-Home>
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
 <title>Edit Pengajuan</title>
 
 <body>
@@ -65,7 +67,7 @@
                     </ul>
                 </li>
                 {{-- TODO DATA PEGAWAI --}}
-                <li>
+                {{-- <li>
                     <a href="javascript:;" class="menu">
                         <div class="menu__icon"> <i data-lucide="folder"></i> </div>
                         <div class="menu__title">
@@ -87,9 +89,9 @@
                             </a>
                         </li>
                     </ul>
-                </li>
+                </li> --}}
                 {{-- TODO DATA SISWA --}}
-                <li>
+                {{-- <li>
                     <a href="javascript:;" class="menu">
                         <div class="menu__icon"> <i data-lucide="folder"></i> </div>
                         <div class="menu__title">
@@ -111,7 +113,7 @@
                             </a>
                         </li>
                     </ul>
-                </li>
+                </li> --}}
             </ul>
         </div>
     </div>
@@ -170,7 +172,7 @@
                     </ul>
                 </li>
                 {{-- TODO DATA PEGAWAI --}}
-                <li>
+                {{-- <li>
                     <a href="javascript:;" class="side-menu">
                         <div class="side-menu__icon"> <i data-lucide="folder"></i> </div>
                         <div class="side-menu__title">
@@ -192,31 +194,31 @@
                             </a>
                         </li>
                     </ul>
-                </li>
+                </li> --}}
                 {{-- TODO DATA SISWA --}}
-                <li>
-                    <a href="javascript:;" class="side-menu">
-                        <div class="side-menu__icon"> <i data-lucide="folder"></i> </div>
-                        <div class="side-menu__title">
-                            Data Siswa
-                            <div class="side-menu__sub-icon "> <i data-lucide="chevron-down"></i> </div>
-                        </div>
-                    </a>
-                    <ul class="">
-                        <li>
-                            <a href="" class="side-menu">
-                                <div class="side-menu__icon"> <i data-lucide="upload"></i> </div>
-                                <div class="side-menu__title"> Input Data Siswa </div>
-                            </a>
-                        </li>
-                        <li>
-                            <a href="" class="side-menu">
-                                <div class="side-menu__icon"> <i data-lucide="printer"></i> </div>
-                                <div class="side-menu__title"> Cetak Data Siswa </div>
-                            </a>
-                        </li>
-                    </ul>
-                </li>
+                {{-- <li> --}}
+                {{-- <a href="javascript:;" class="side-menu"> --}}
+                {{-- <div class="side-menu__icon"> <i data-lucide="folder"></i> </div> --}}
+                {{-- <div class="side-menu__title"> --}}
+                {{-- Data Siswa --}}
+                {{-- <div class="side-menu__sub-icon "> <i data-lucide="chevron-down"></i> </div> --}}
+                {{-- </div> --}}
+                {{-- </a> --}}
+                {{-- <ul class=""> --}}
+                {{-- <li> --}}
+                {{-- <a href="" class="side-menu"> --}}
+                {{-- <div class="side-menu__icon"> <i data-lucide="upload"></i> </div> --}}
+                {{-- <div class="side-menu__title"> Input Data Siswa </div> --}}
+                {{-- </a> --}}
+                {{-- </li> --}}
+                {{-- <li> --}}
+                {{-- <a href="" class="side-menu"> --}}
+                {{-- <div class="side-menu__icon"> <i data-lucide="printer"></i> </div> --}}
+                {{-- <div class="side-menu__title"> Cetak Data Siswa </div> --}}
+                {{-- </a> --}}
+                {{-- </li> --}}
+                {{-- </ul> --}}
+                {{-- </li> --}}
             </ul>
         </nav>
         <div class="content">
@@ -276,24 +278,25 @@
             <div class="grid grid-cols-12 gap-6 mt-5">
                 <div class="intro-y col-span-12 overflow-auto lg:overflow-visible">
                     <div class="flex w-full sm:w-auto">
-                        <select class="w-20 form-select box mt-3 sm:mt-0">
+                        {{-- <select class="w-20 form-select box mt-3 sm:mt-0">
                             <option>10</option>
                             <option>25</option>
                             <option>35</option>
                             <option>50</option>
                             <option>100</option>
-                        </select>
-                        <select class="w-48 xl:w-auto form-select box ml-2">
+                        </select> --}}
+                        {{-- <select class="w-48 xl:w-auto form-select box ml-2">
                             <option>Status</option>
                             <option>Active</option>
                             <option>Proses</option>
-                        </select>
+                        </select> --}}
                     </div>
                     <table class="table table-report -mt-2">
                         <thead>
                             <tr>
                                 <th class="whitespace-nowrap">NAMA BERKAS</th>
                                 <th class="text-center whitespace-nowrap">JUMLAH</th>
+                                <th class="text-center whitespace-nowrap">Lihat Berkas</th>
                                 <th class="text-center whitespace-nowrap">STATUS</th>
                                 <th class="text-center whitespace-nowrap">ACTIONS</th>
                             </tr>
@@ -302,12 +305,19 @@
                             @forelse ($berkas as $berkasItem)
                                 <tr class="intro-x">
                                     <td>
-                                        <a href="{{ asset($berkasItem->path) }}"
-                                            class="font-medium whitespace-nowrap">{{ $berkasItem->tipeBerkas->tipe_berkas }}</a>
-                                        <div class="text-slate-500 text-xs whitespace-nowrap mt-0.5">
+                                        <div class="font-medium whitespace-nowrap">
                                             {{ $berkasItem->tipeBerkas->tipe_berkas }}</div>
+                                        <div class="text-slate-500 text-xs whitespace-nowrap mt-0.5">
+                                            {{ $berkasItem->tipeBerkas->tipe_berkas }}
+                                        </div>
                                     </td>
                                     <td class="text-center">1</td>
+                                    <td class="text-center">
+                                        <a href="{{ asset($berkasItem->path) }}" target="_blank"
+                                            class="font-medium whitespace-nowrap hover:text-primary">
+                                            {{ $berkasItem->tipeBerkas->tipe_berkas }}
+                                        </a>
+                                    </td>
                                     <td class="w-40">
                                         @if ($berkasItem->status_verifikasi == 'diverifikasi')
                                             <div class="flex items-center justify-center text-success">
@@ -332,16 +342,16 @@
                                                     href="{{ route('pendaftaran-users') }}">
                                                     <i data-lucide="edit" class="w-4 h-4 mr-1"></i> Edit
                                                 </a>
-                                                <form
+                                                <form id="delete-form-{{ $berkasItem->id_berkaspendaftaran }}"
                                                     action="{{ route('delete-pengajuan', ['id' => $berkasItem->id_berkaspendaftaran]) }}"
-                                                    method="POST">
+                                                    method="POST" style="display: none;">
                                                     @csrf
                                                     @method('DELETE')
-                                                    <button type="submit" class="flex items-center text-danger"
-                                                        onclick="return confirm('Apakah Anda yakin ingin menghapus file ini?')">
-                                                        <i data-lucide="trash-2" class="w-4 h-4 mr-1"></i> Delete
-                                                    </button>
                                                 </form>
+                                                <button type="button" class="flex items-center text-danger"
+                                                    onclick="confirmDelete('{{ $berkasItem->id_berkaspendaftaran }}')">
+                                                    <i data-lucide="trash-2" class="w-4 h-4 mr-1"></i> Delete
+                                                </button>
                                             @else
                                                 <div class="flex items-center justify-center text-gray-400">
                                                     <i data-lucide="edit" class="w-4 h-4 mr-1"></i> Edit
@@ -360,6 +370,47 @@
                     </table>
                 </div>
             </div>
+            <div class="intro-y tab-content mt-5">
+                <div id="dashboard" class="tab-pane active" role="tabpanel" aria-labelledby="dashboard-tab">
+                    <div class="grid grid-cols-12 gap-6">
+                        <div class="intro-y box col-span-12 lg:col-span-12">
+                            <div
+                                class="flex items-center px-5 py-5 sm:py-3 border-b border-slate-200/60 dark:border-darkmode-400">
+                                <h2 class="font-medium text-base text-danger mr-auto">
+                                    *Persyaratan Dan Langkah
+                                </h2>
+                            </div>
+                            <div class="p-5">
+                                <div class="tab-content">
+                                    <div id="work-in-progress-new" class="tab-pane active" role="tabpanel"
+                                        aria-labelledby="work-in-progress-new-tab">
+                                        <div>
+                                            <div class="flex">
+                                                <div class="mr-auto text-xl">1. Silahkan cek berkas lagi apakah sudah
+                                                    benar, untuk mencek berkas silahkan click di <span
+                                                        class="text-primary">Lihat Berkas</span> </div>
+                                            </div>
+                                            <div class="flex">
+                                                <div class="mr-auto text-xl">2. Jika terjadi salah upload file
+                                                    silahakan edit berkas dan ikuti langkah sesuai instruksi selanjutnya
+                                                    berdasarkan page halaman</div>
+                                            </div>
+                                            <div class="flex">
+                                                <div class="mr-auto text-xl">3. Jika berkas ditolak silahkan edit
+                                                    berkas, ikuti instruksi langkah ke 2</div>
+                                            </div>
+                                            <div class="flex">
+                                                <div class="mr-auto text-xl">4. Jika delete berkas, silahkan upload
+                                                    berkas ke fitur pengajuan</div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
     </div>
@@ -367,6 +418,28 @@
 
     {{-- TODO script --}}
     <x-script-Home></x-script-Home>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+    <script>
+        function confirmDelete(id) {
+            Swal.fire({
+                title: 'Apakah Anda yakin?',
+                text: "Anda tidak dapat mengembalikan file yang sudah dihapus!",
+                icon: 'warning',
+                showCancelButton: true,
+                confirmButtonColor: '#3085d6',
+                cancelButtonColor: '#d33',
+                confirmButtonText: 'Ya, hapus!',
+                cancelButtonText: 'Batal'
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    document.getElementById('delete-form-' + id).submit();
+                }
+            })
+        }
+    </script>
+
+
 </body>
 
 </html>

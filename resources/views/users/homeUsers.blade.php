@@ -61,7 +61,7 @@
                     </ul>
                 </li>
                 {{-- TODO DATA PEGAWAI --}}
-                <li>
+                {{-- <li>
                     <a href="javascript:;" class="menu">
                         <div class="menu__icon"> <i data-lucide="folder"></i> </div>
                         <div class="menu__title">
@@ -83,9 +83,9 @@
                             </a>
                         </li>
                     </ul>
-                </li>
+                </li> --}}
                 {{-- TODO DATA SISWA --}}
-                <li>
+                {{-- <li>
                     <a href="javascript:;" class="menu">
                         <div class="menu__icon"> <i data-lucide="folder"></i> </div>
                         <div class="menu__title">
@@ -107,7 +107,7 @@
                             </a>
                         </li>
                     </ul>
-                </li>
+                </li> --}}
             </ul>
         </div>
     </div>
@@ -167,7 +167,7 @@
                     </ul>
                 </li>
                 {{-- TODO DATA PEGAWAI --}}
-                <li>
+                {{-- <li>
                     <a href="javascript:;" class="side-menu">
                         <div class="side-menu__icon"> <i data-lucide="folder"></i> </div>
                         <div class="side-menu__title">
@@ -189,9 +189,9 @@
                             </a>
                         </li>
                     </ul>
-                </li>
+                </li> --}}
                 {{-- TODO DATA SISWA --}}
-                <li>
+                {{-- <li>
                     <a href="javascript:;" class="side-menu">
                         <div class="side-menu__icon"> <i data-lucide="folder"></i> </div>
                         <div class="side-menu__title">
@@ -213,7 +213,7 @@
                             </a>
                         </li>
                     </ul>
-                </li>
+                </li> --}}
             </ul>
         </nav>
         <!-- BEGIN: Content -->
@@ -274,56 +274,24 @@
                 <!-- END: Account Menu -->
             </div>
             {{-- TODO ISI CONTENT --}}
-
-            <div class="mx-6 relative-full mt-3 rounded-lg">
-                <div class="single-item rounded-lg">
-                    <div class="h-full w-full px-52 rounded-lg">
-                        <div class="h-full bg-slate-100 dark:bg-darkmode-400 rounded-md">
-                            <h3 class="h-full font-medium flex items-center justify-center text-2xl">
-                                <img class="rounded-lg" src="{{ asset('images/SIP-LPQ1.png') }}" alt="">
-                            </h3>
-                        </div>
+            <div class="mx-2 pb-8 mt-5">
+                <div class="fade-mode">
+                    <div class="h-96  px-2">
+                        <div class="h-full image-fit rounded-md overflow-hidden"> <img
+                                alt="Midone - HTML Admin Template" src="{{ asset('images/SIP-LPQ1.png') }}" /> </div>
                     </div>
-                    <div class="h-full w-full px-52 rounded-lg">
-                        <div class="h-full bg-slate-100 dark:bg-darkmode-400 rounded-md">
-                            <h3 class="h-full font-medium flex items-center justify-center text-2xl">
-                                <img class="rounded-lg" src="{{ asset('images/sip-tpq2.png') }}" alt="">
-                            </h3>
-                        </div>
+                    <div class="h-96 px-2">
+                        <div class="h-full image-fit rounded-md overflow-hidden"> <img
+                                alt="Midone - HTML Admin Template" src="{{ asset('images/sip-tpq2.png') }}" /> </div>
                     </div>
-                    <div class="h-full w-full px-52 rounded-lg">
-                        <div class="h-full bg-slate-100 dark:bg-darkmode-400 rounded-md">
-                            <h3 class="h-full font-medium flex items-center justify-center text-2xl">
-                                <img class="rounded-lg" src="{{ asset('images/sip-tpq3.png') }}" alt="">
-                            </h3>
-                        </div>
+                    <div class="h-96 px-2">
+                        <div class="h-full image-fit rounded-md overflow-hidden"> <img
+                                alt="Midone - HTML Admin Template" src="{{ asset('images/sip-tpq3.png') }}" /> </div>
                     </div>
                 </div>
             </div>
 
             <div class="grid grid-cols-12 gap-6 mt-5">
-                <!-- BEGIN: FAQ Menu -->
-                <a href="" class="intro-y col-span-12 lg:col-span-4 box py-10">
-                    <i data-lucide="graduation-cap" class="block w-12 h-12 text-primary mx-auto"></i>
-                    <div class="font-medium text-center text-base mt-3">Sekolah TPA Terdaftar</div>
-                    <div class="text-slate-500 mt-2 w-3/4 text-center mx-auto">
-                        <h3 class="text-2xl font-bold text-primary counter" data-target-value="100">0</h3>
-                    </div>
-                </a>
-                <a href="" class="intro-y col-span-12 lg:col-span-4 box py-10">
-                    <i data-lucide="send" class="block w-12 h-12 text-primary mx-auto"></i>
-                    <div class="font-medium text-center text-base mt-3">Data Ustadz/Ustadzah</div>
-                    <div class="text-slate-500 mt-2 w-3/4 text-center mx-auto">
-                        <h3 class="text-2xl font-bold text-primary counter" data-target-value="100">0</h3>
-                    </div>
-                </a>
-                <a href="" class="intro-y col-span-12 lg:col-span-4 box py-10">
-                    <i data-lucide="trending-up" class="block w-12 h-12 text-primary mx-auto"></i>
-                    <div class="font-medium text-center text-base mt-3">Data Santri</div>
-                    <div class="text-slate-500 mt-2 w-3/4 text-center mx-auto">
-                        <h3 class="text-2xl font-bold text-primary counter" data-target-value="100">0</h3>
-                    </div>
-                </a>
                 {{-- TODO UNTUTK BERITA --}}
                 @foreach ($berita as $item)
                     <div class="intro-y col-span-12 md:col-span-6 xl:col-span-4 box">
@@ -347,16 +315,17 @@
                             </div>
                         </div>
                         <div class="flex items-center px-5 py-3 border-t border-slate-200/60 dark:border-darkmode-400">
-                            <a href="#"
+                            <button href="#"
                                 class="intro-x w-8 h-8 flex items-center justify-center rounded-full border border-slate-300 dark:border-darkmode-400 dark:bg-darkmode-300 dark:text-slate-300 text-slate-500 mr-2 tooltip"
                                 title="{{ $item->user->nama }}"> <i data-lucide="users" class="w-3 h-3"></i>
-                            </a>
-                            <a href="#"
+                            </button>
+                            <button href="#"
                                 class="intro-x w-8 h-8 flex items-center justify-center rounded-full border border-slate-300 dark:border-darkmode-400 dark:bg-darkmode-300 dark:text-slate-300 text-slate-500 mr-2 tooltip"
                                 title="{{ date('d M Y ', strtotime($item->waktu_upload)) }}">
                                 <i data-lucide="calendar" class="w-3 h-3"></i>
-                            </a>
-                            <a href=""
+                            </button>
+                            <a href="https://wa.me/?text={{ urlencode($item->judul_berita) }}%0A{{ urlencode($item->isi_berita) }}"
+                                target="_blank"
                                 class="intro-x w-8 h-8 flex items-center justify-center rounded-full text-primary bg-primary/10 dark:bg-darkmode-300 dark:text-slate-300 ml-auto tooltip"
                                 title="Share"><i data-lucide="share-2" class="w-3 h-3"></i></a>
                         </div>
@@ -365,7 +334,6 @@
             </div>
         </div>
     </div>
-
     <script>
         document.addEventListener("DOMContentLoaded", function() {
             const counters = document.querySelectorAll(".counter");
@@ -383,7 +351,6 @@
                         counter.innerText = target;
                     }
                 };
-
                 updateCount();
             });
         });

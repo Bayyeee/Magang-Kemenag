@@ -63,7 +63,7 @@
                     </ul>
                 </li>
                 {{-- TODO DATA PEGAWAI --}}
-                <li>
+                {{-- <li>
                     <a href="javascript:;" class="menu">
                         <div class="menu__icon"> <i data-lucide="folder"></i> </div>
                         <div class="menu__title">
@@ -85,9 +85,9 @@
                             </a>
                         </li>
                     </ul>
-                </li>
+                </li> --}}
                 {{-- TODO DATA SISWA --}}
-                <li>
+                {{-- <li>
                     <a href="javascript:;" class="menu">
                         <div class="menu__icon"> <i data-lucide="folder"></i> </div>
                         <div class="menu__title">
@@ -115,7 +115,7 @@
                             </a>
                         </li>
                     </ul>
-                </li>
+                </li> --}}
             </ul>
         </div>
     </div>
@@ -174,7 +174,7 @@
                     </ul>
                 </li>
                 {{-- TODO DATA PEGAWAI --}}
-                <li>
+                {{-- <li>
                     <a href="javascript:;" class="side-menu">
                         <div class="side-menu__icon"> <i data-lucide="folder"></i> </div>
                         <div class="side-menu__title">
@@ -196,9 +196,9 @@
                             </a>
                         </li>
                     </ul>
-                </li>
+                </li> --}}
                 {{-- TODO DATA SISWA --}}
-                <li>
+                {{-- <li>
                     <a href="javascript:;" class="side-menu">
                         <div class="side-menu__icon"> <i data-lucide="folder"></i> </div>
                         <div class="side-menu__title">
@@ -220,7 +220,7 @@
                             </a>
                         </li>
                     </ul>
-                </li>
+                </li> --}}
 
             </ul>
         </nav>
@@ -284,20 +284,6 @@
             <div class="grid grid-cols-12 gap-6 mt-5">
                 {{-- TODO TOP CONTENT --}}
                 <div class="intro-y col-span-12 overflow-auto lg:overflow-visible">
-                    <div class="flex w-full sm:w-auto">
-                        <select class="w-20 form-select box mt-3 sm:mt-0">
-                            <option>10</option>
-                            <option>25</option>
-                            <option>35</option>
-                            <option>50</option>
-                            <option>100</option>
-                        </select>
-                        <select class="w-48 xl:w-auto form-select box ml-2">
-                            <option>Proses</option>
-                            <option>Diverifikasi</option>
-                            <option>Ditolak</option>
-                        </select>
-                    </div>
                     <table class="table table-report -mt-2">
                         <thead>
                             <tr>

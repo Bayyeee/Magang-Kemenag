@@ -2,6 +2,8 @@
 <html lang="en">
 
 <x-head-Home></x-head-Home>
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
 <title>Pengajuan Pendaftaran</title>
 
 <body>
@@ -62,7 +64,7 @@
                     </ul>
                 </li>
                 {{-- TODO DATA PEGAWAI --}}
-                <li>
+                {{-- <li>
                     <a href="javascript:;" class="menu">
                         <div class="menu__icon"> <i data-lucide="folder"></i> </div>
                         <div class="menu__title">
@@ -84,9 +86,9 @@
                             </a>
                         </li>
                     </ul>
-                </li>
+                </li> --}}
                 {{-- TODO DATA SISWA --}}
-                <li>
+                {{-- <li>
                     <a href="javascript:;" class="menu">
                         <div class="menu__icon"> <i data-lucide="folder"></i> </div>
                         <div class="menu__title">
@@ -114,7 +116,7 @@
                             </a>
                         </li>
                     </ul>
-                </li>
+                </li> --}}
             </ul>
         </div>
     </div>
@@ -173,7 +175,7 @@
                     </ul>
                 </li>
                 {{-- TODO DATA PEGAWAI --}}
-                <li>
+                {{-- <li>
                     <a href="javascript:;" class="side-menu">
                         <div class="side-menu__icon"> <i data-lucide="folder"></i> </div>
                         <div class="side-menu__title">
@@ -195,9 +197,9 @@
                             </a>
                         </li>
                     </ul>
-                </li>
+                </li> --}}
                 {{-- TODO DATA SISWA --}}
-                <li>
+                {{-- <li>
                     <a href="javascript:;" class="side-menu">
                         <div class="side-menu__icon"> <i data-lucide="folder"></i> </div>
                         <div class="side-menu__title">
@@ -219,9 +221,7 @@
                             </a>
                         </li>
                     </ul>
-                </li>
-
-
+                </li> --}}
             </ul>
         </nav>
         <!-- BEGIN: Content -->
@@ -291,7 +291,7 @@
                 @if (!$verifikasiBerkas)
                     <div class="intro-y col-span-12 lg:col-span-5">
                         <div class="card box p-5">
-                            <form action="{{ route('post-pendaftaran') }}" method="POST"
+                            <form id="pendaftaran-form" action="{{ route('post-pendaftaran') }}" method="POST"
                                 enctype="multipart/form-data">
                                 {{ csrf_field() }}
                                 <div class="mt-3">
@@ -316,7 +316,8 @@
                                         menerima berkas PDF) maksimal 2Mb.</label>
                                 </div>
                                 <div class="text-left mt-3">
-                                    <button type="submit" class="btn btn-success text-white font-semibold">
+                                    <button type="button" onclick="confirmSubmit()"
+                                        class="btn btn-success text-white font-semibold">
                                         <i class="mr-1" data-lucide="save"></i>
                                         Simpan Berkas
                                     </button>
@@ -396,21 +397,26 @@
                                         aria-labelledby="work-in-progress-new-tab">
                                         <div>
                                             <div class="flex">
-                                                <div class="mr-auto">Lorem ipsum dolor sit amet consectetur adipisicing
-                                                    elit. Vel eaque officiis autem sequi, beatae inventore, culpa magnam
-                                                    laboriosam repellendus ab velit iste expedita rerum, ea commodi
-                                                    ducimus quasi minus illum?Lorem, ipsum dolor sit amet consectetur
-                                                    adipisicing elit. Nulla libero exercitationem iure quaerat nesciunt
-                                                    temporibus consequatur optio excepturi repellendus ut, veniam
-                                                    laborum vel aperiam vitae enim autem magnam voluptatum eveniet
-                                                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Magnam eos
-                                                    laborum veritatis, dolore odio illum eum ducimus dolorem quam
-                                                    dolores debitis hic quaerat culpa sequi. Nulla deserunt cumque
-                                                    necessitatibus doloribus.
-                                                    Lorem ipsum dolor, sit amet consectetur adipisicing elit. Nemo
-                                                    soluta quaerat cumque vitae quo quis earum, dicta eum? Provident
-                                                    quasi quod reprehenderit accusantium iusto ullam quo consequatur,
-                                                    optio qui facilis.</div>
+                                                <div class="mr-auto text-xl">1. Silahkan Upload berkas sesuai dengan
+                                                    pilihan
+                                                    jenis berkas</div>
+                                            </div>
+                                            <div class="flex">
+                                                <div class="mr-auto text-xl">2. Jika terjadi salah upload file silahkan
+                                                    timpa
+                                                    file sesuai dengan jenis berkas</div>
+                                            </div>
+                                            <div class="flex">
+                                                <div class="mr-auto text-xl">3. Berkas yang diupload harus berformat
+                                                    PDF</div>
+                                            </div>
+                                            <div class="flex">
+                                                <div class="mr-auto text-xl">4. Maximal ukuran berkas 2MB</div>
+                                            </div>
+                                            <div class="flex">
+                                                <div class="mr-auto text-xl">5. Template Berkas Bisa Didownload Difitur
+                                                    Cetak
+                                                </div>
                                             </div>
                                         </div>
                                     </div>
@@ -420,11 +426,69 @@
                     </div>
                 </div>
             </div>
+            {{-- <div class="intro-y tab-content mt-5">
+                <div id="dashboard" class="tab-pane active" role="tabpanel" aria-labelledby="dashboard-tab">
+                    <div class="grid grid-cols-12 gap-6">
+                        <div class="intro-y box col-span-12 lg:col-span-12">
+                            <div
+                                class="flex items-center px-5 py-5 sm:py-3 border-b border-slate-200/60 dark:border-darkmode-400">
+                                <h2 class="font-medium text-base text-danger mr-auto">
+                                    *Persyaratan Dan Langkah
+                                </h2>
+                            </div>
+                            <div class="p-5">
+                                <div class="tab-content">
+                                    <div id="work-in-progress-new" class="tab-pane active" role="tabpanel"
+                                        aria-labelledby="work-in-progress-new-tab">
+                                        <div>
+                                            <div class="flex">
+                                                <div class="mr-auto">1. Silahkan Upload berkas sesuai dengan pilihan
+                                                    jenis berkas</div>
+                                            </div>
+                                            <div class="flex">
+                                                <div class="mr-auto">2. Jika terjadi salah upload file silahkan timpa
+                                                    file sesuai dengan jenis berkas</div>
+                                            </div>
+                                            <div class="flex">
+                                                <div class="mr-auto">3. Berkas yang diupload harus berformat PDF</div>
+                                            </div>
+                                            <div class="flex">
+                                                <div class="mr-auto">4. Maximal ukuran berkas 2MB</div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div> --}}
         </div>
     </div>
 
     {{-- TODO script Home --}}
     <x-script-Home></x-script-Home>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+    <script>
+        function confirmSubmit() {
+            Swal.fire({
+                title: 'Apakah Anda yakin?',
+                text: "Pastikan data yang Anda masukkan sudah benar.",
+                icon: 'warning',
+                showCancelButton: true,
+                confirmButtonColor: '#3085d6',
+                cancelButtonColor: '#d33',
+                confirmButtonText: 'Ya, simpan!',
+                cancelButtonText: 'Batal'
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    document.getElementById('pendaftaran-form').submit();
+                }
+            })
+        }
+    </script>
+
 </body>
 
 </html>

@@ -72,7 +72,7 @@
                     </ul>
                 </li>
                 {{-- TODO DATA PEGAWAI --}}
-                <li>
+                {{-- <li>
                     <a href="javascript:;" class="menu">
                         <div class="menu__icon"> <i data-lucide="folder"></i> </div>
                         <div class="menu__title">
@@ -94,9 +94,9 @@
                             </a>
                         </li>
                     </ul>
-                </li>
+                </li> --}}
                 {{-- TODO DATA SISWA --}}
-                <li>
+                {{-- <li>
                     <a href="javascript:;" class="menu">
                         <div class="menu__icon"> <i data-lucide="folder"></i> </div>
                         <div class="menu__title">
@@ -118,7 +118,7 @@
                             </a>
                         </li>
                     </ul>
-                </li>
+                </li> --}}
             </ul>
         </div>
     </div>
@@ -185,7 +185,7 @@
                     </ul>
                 </li>
                 {{-- TODO DATA PEGAWAI --}}
-                <li>
+                {{-- <li>
                     <a href="javascript:;" class="side-menu">
                         <div class="side-menu__icon"> <i data-lucide="folder"></i> </div>
                         <div class="side-menu__title">
@@ -207,9 +207,9 @@
                             </a>
                         </li>
                     </ul>
-                </li>
+                </li> --}}
                 {{-- TODO DATA SISWA --}}
-                <li>
+                {{-- <li>
                     <a href="javascript:;" class="side-menu">
                         <div class="side-menu__icon"> <i data-lucide="folder"></i> </div>
                         <div class="side-menu__title">
@@ -231,8 +231,7 @@
                             </a>
                         </li>
                     </ul>
-                </li>
-
+                </li> --}}
             </ul>
         </nav>
         <!-- BEGIN: Content -->
@@ -327,11 +326,7 @@
                         </div>
 
                         <div class="mt-3">
-                            <label for="nip" class="block mb-1 text-sm text-gray-900 dark:text-dark">NIP</label>
-                            <input type="text" name="nip" id="nip"
-                                class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-black disabled"
-                                placeholder="{{ Auth::user()->nip }}" disabled maxlength="18" />
-                            <div>
+                            <div class="mb-2">
                                 <label class="block text-sm text-gray-900 dark:text-dark">Apakah Anda
                                     memiliki NIP?</label>
                                 <input type="radio" id="has_nip_yes" name="has_nip" value="yes"
@@ -341,6 +336,10 @@
                                     class="ml-4 mr-2">
                                 <label for="has_nip_no" class="text-sm text-gray-900 dark:text-dark">Tidak</label>
                             </div>
+                            <label for="nip" class="block mb-1 text-sm text-gray-900 dark:text-dark">NIP</label>
+                            <input type="text" name="nip" id="nip"
+                                class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-black disabled"
+                                placeholder="{{ Auth::user()->nip }}" disabled maxlength="18" />
                         </div>
 
                         <div>

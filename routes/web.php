@@ -82,6 +82,8 @@ Route::group(['middleware' => ['auth']], function () {
         Route::get('/cetak-pegawai', [cetakPegawaiController::class, 'cetakPegawaiTabel'])->name('cetak-pegawai');
 
         Route::post('/import-siswa', [inputSiswaController::class, 'importSiswa'])->name('import-siswa');
+
+        Route::get('/export-siswa', [inputSiswaController::class, 'exportSiswa'])->name('export-siswa');
     });
 
     Route::middleware('checkRoles:admin,humas')->group(function () {

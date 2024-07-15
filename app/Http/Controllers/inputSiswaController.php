@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Exports\siswaExport;
 use App\Imports\siswaImport;
 use App\Models\siswa;
 use App\Models\kelasTahunAjar;
@@ -80,6 +81,11 @@ class inputSiswaController extends Controller
 
         Excel::import(new siswaImport, $request->file('file'));
 
-        return redirect()->route('input-pegawai')->with('success', 'Data siswa berhasil diimport');
+        return redirect()->route('show-Siswa')->with('success', 'Data siswa berhasil diimport');
+    }
+
+    public function exportSiswa()
+    {
+        return Excel::download(new siswaExport, 'siswa.xlsx');
     }
 }

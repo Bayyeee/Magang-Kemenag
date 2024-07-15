@@ -2,6 +2,7 @@
 <html lang="en">
 
 <x-head-Home></x-head-Home>
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
 <body>
 
@@ -665,7 +666,7 @@
                 </li>
                 <li class="side-nav__devider"></li>
                 <li>
-                    <a href="javascript:;" class="side-menu">
+                    <a href="javascript:;" class="side-menu side-menu--active">
                         <div class="side-menu__icon"> <i data-lucide="edit"></i> </div>
                         <div class="side-menu__title">
                             Berkas
@@ -782,7 +783,9 @@
                                                 <div class="flex items-center justify-center text-primary">
                                                     <i data-lucide="loader" class="w-4 h-4 mr-2"></i>Proses
                                                 </div>
-                                                <div class="text-slate-500 text-xs text-center whitespace-nowrap mt-0.5">{{ $berkas->tipeBerkas->pesan }}</div>
+                                                <div
+                                                    class="text-slate-500 text-xs text-center whitespace-nowrap mt-0.5">
+                                                    {{ $berkas->tipeBerkas->pesan }}</div>
                                             @else
                                                 <div class="flex items-center justify-center text-danger">
                                                     <i data-lucide="x-square" class="w-4 h-4 mr-2"></i>Ditolak
@@ -791,8 +794,11 @@
                                         </td>
                                         <td class="text-center">
                                             @if ($berkas->status_verifikasi == 'proses')
-                                                <a href="{{ route('verifikasi', [$berkas->id_berkaspendaftaran, $berkas->pendaftaran->id_pendaftaran]) }}"
-                                                    class="btn btn-success text-white mr-3">Verifikasi</a>
+                                                {{-- <a href="{{ route('verifikasi', [$berkas->id_berkaspendaftaran, $berkas->pendaftaran->id_pendaftaran]) }}"
+                                                    class="btn btn-success text-white mr-3">Verifikasi</a> --}}
+                                                <button
+                                                    onclick="confirmVerification('{{ route('verifikasi', [$berkas->id_berkaspendaftaran, $berkas->pendaftaran->id_pendaftaran]) }}')"
+                                                    class="btn btn-success text-white mr-3">Verifikasi</button>
                                                 {{-- <a href="{{ route('tolak', [$berkas->id_berkaspendaftaran, $berkas->pendaftaran->id_pendaftaran]) }}"
                                                     class="btn btn-danger">Tolak</a> --}}
                                                 <a href="javascript:;" data-tw-toggle="modal"
@@ -910,6 +916,7 @@
     </div>
 
     <x-script-Home></x-script-Home>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
     <script>
         document.addEventListener('DOMContentLoaded', function() {
@@ -924,6 +931,25 @@
                 }
             });
         });
+    </script>
+
+    <script>
+        function confirmVerification(url) {
+            Swal.fire({
+                title: 'Apakah Anda yakin?',
+                text: "Anda akan memverifikasi berkas ini!",
+                icon: 'warning',
+                showCancelButton: true,
+                confirmButtonColor: '#3085d6',
+                cancelButtonColor: '#d33',
+                confirmButtonText: 'Ya, verifikasi!',
+                cancelButtonText: 'Batal'
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    window.location.href = url;
+                }
+            })
+        }
     </script>
 
 

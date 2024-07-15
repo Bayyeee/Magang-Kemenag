@@ -294,7 +294,7 @@
                             </a>
                         </div>
                         <div class="w-full sm:w-auto mt-3 sm:mt-0 sm:ml-auto md:ml-0">
-                            <a href="{{ route('export-pegawai') }}" class="btn btn-primary shadow-md mr-2">
+                            <a href="{{ route('export-siswa') }}" class="btn btn-primary shadow-md mr-2">
                                 <i class="w-4 h-4 mr-2" data-lucide="download"></i> Download Data Excel
                             </a>
                         </div>
