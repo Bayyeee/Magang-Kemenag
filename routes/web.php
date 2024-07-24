@@ -1,5 +1,9 @@
 <?php
 
+use Illuminate\Foundation\Auth\EmailVerificationRequest;
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\cekverifikasiController;
 use App\Http\Controllers\cetakPegawaiController;
 use App\Http\Controllers\editBeritaController;
@@ -14,8 +18,7 @@ use App\Http\Controllers\inputPegawaiController;
 use App\Http\Controllers\inputSiswaController;
 use App\Http\Controllers\pendaftaranController;
 use App\Http\Controllers\riwayatcetakController;
-use Illuminate\Support\Facades\Route;
-
+use RealRashid\SweetAlert\Facades\Alert;
 
 Route::get("/", [landingController::class, 'checkLanding'])->name('landingPage');
 
@@ -28,6 +31,24 @@ Route::get('/registrasi', [registrasiController::class, 'checkRegister'])->name(
 Route::post('/postregistrasi', [registrasiController::class, 'simpanregistrasi'])->name('postregistrasi');
 
 Route::get('/logout', [loginController::class, 'logout'])->name('logout');
+
+// Route::get('/email/verify', function () {
+//     return view('auth.verify-email');
+// })->middleware('auth')->name('verification.notice');
+
+// Route::get('/email/verify/{id}/{hash}', function (EmailVerificationRequest $request) {
+//     $request->fulfill();
+
+//     Auth::login($request->user());
+
+//     return redirect('/home')->with('verified', true);
+// })->middleware(['auth', 'signed'])->name('verification.verify');
+
+// Route::post('/email/verification-notification', function (Request $request) {
+//     $request->user()->sendEmailVerificationNotification();
+//     toast('Link verifikasi email telah dikirim!', 'success');
+//     return back();
+// })->middleware(['auth', 'throttle:6,1'])->name('verification.send');
 
 Route::group(['middleware' => ['auth']], function () {
 

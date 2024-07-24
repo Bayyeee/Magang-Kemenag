@@ -791,7 +791,7 @@
                         <div class="flex items-center px-5 py-3 border-t border-slate-200/60 dark:border-darkmode-400">
                             <button
                                 class="intro-x w-8 h-8 flex items-center justify-center rounded-full border border-slate-300 dark:border-darkmode-400 dark:bg-darkmode-300 dark:text-slate-300 text-slate-500 mr-2 tooltip"
-                                title="{{ $item->user->nama }}"> <i data-lucide="users" class="w-3 h-3"></i>
+                                title="{{ $item->user->role }}"> <i data-lucide="users" class="w-3 h-3"></i>
                             </button>
                             <button
                                 class="intro-x w-8 h-8 flex items-center justify-center rounded-full border border-slate-300 dark:border-darkmode-400 dark:bg-darkmode-300 dark:text-slate-300 text-slate-500 mr-2 tooltip"

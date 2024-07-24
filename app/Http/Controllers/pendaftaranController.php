@@ -18,26 +18,27 @@ class pendaftaranController extends Controller
         $tpa = Usertpa::where('id_users', $user->id)->first();
 
         if (!$tpa) {
-            Alert::error('error', 'Silahkan perbarui halaman profile dulu untuk melakukan pendaftaran tindak lanjut!!');
+            // Alert::error('error', 'Silahkan perbarui halaman profile dulu untuk melakukan pendaftaran tindak lanjut!!');
+            toast('Warning Toast', 'Silahkan perbarui Profile!!!');
             return redirect()->back();
         }
 
-        // Periksa apakah sudah ada pendaftaran untuk TPA ini
+        // ** Periksa apakah sudah ada pendaftaran untuk TPA ini
         $pendaftaran = pendaftaranTpa::where('id_tpa', $tpa->id)->first();
 
-        // Jika belum ada pendaftaran, buat pendaftaran baru
+        // ** Jika belum ada pendaftaran, buat pendaftaran baru
         if (!$pendaftaran) {
             $pendaftaran = new pendaftaranTpa();
             $pendaftaran->id_tpa = $tpa->id;
             $pendaftaran->save();
         }
 
-        // Ambil berkas-berkas yang terkait dengan pendaftaran ini
+        // ** Ambil berkas-berkas yang terkait dengan pendaftaran ini
         $berkas = berkasPendaftaran::with('tipeBerkas')
             ->where('id_pendaftaran', $pendaftaran->id_pendaftaran)
             ->get();
 
-        // Periksa status verifikasi berkas
+        // ** Periksa status verifikasi berkas
         $verifikasiBerkas = $berkas->isEmpty() ? false : $berkas->every(function ($berkasItem) {
             return $berkasItem->status_verifikasi == 'diverifikasi';
         });
