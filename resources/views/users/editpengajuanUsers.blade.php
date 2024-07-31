@@ -295,7 +295,7 @@
                         <thead>
                             <tr>
                                 <th class="whitespace-nowrap">NAMA BERKAS</th>
-                                <th class="text-center whitespace-nowrap">JUMLAH</th>
+                                {{-- <th class="text-center whitespace-nowrap">JUMLAH</th> --}}
                                 <th class="text-center whitespace-nowrap">Lihat Berkas</th>
                                 <th class="text-center whitespace-nowrap">STATUS</th>
                                 <th class="text-center whitespace-nowrap">ACTIONS</th>
@@ -311,7 +311,7 @@
                                             {{ $berkasItem->tipeBerkas->tipe_berkas }}
                                         </div>
                                     </td>
-                                    <td class="text-center">1</td>
+                                    {{-- <td class="text-center">1</td> --}}
                                     <td class="text-center">
                                         <a href="{{ asset($berkasItem->path) }}" target="_blank"
                                             class="font-medium whitespace-nowrap hover:text-primary">

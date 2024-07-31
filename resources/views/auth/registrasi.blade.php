@@ -7,6 +7,7 @@
     <title>Registrasi</title>
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <style>
         .disabled {
             background-color: #e9ecef;
@@ -85,6 +86,28 @@
                 opacity: 0;
             }
         }
+
+        .password-container {
+            position: relative;
+        }
+
+        .toggle-password {
+            position: absolute;
+            right: 10px;
+            top: 50%;
+            transform: translateY(-50%);
+            cursor: pointer;
+            font-size: 1.2em;
+            transition: transform 0.3s ease;
+        }
+
+        .toggle-password.open {
+            transform: translateY(-50%) rotate(0deg);
+        }
+
+        .toggle-password.closed {
+            transform: translateY(-50%) rotate(180deg);
+        }
     </style>
 </head>
 
@@ -108,7 +131,7 @@
                             class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-black"
                             placeholder="email@company.com" required />
                     </div>
-                    <div>
+                    <div class="password-container">
                         <label for="password" class="block mb-1 text-sm font-medium text-gray-900 dark:text-white">
                             Masukkan Password
                         </label>
@@ -117,8 +140,9 @@
                             pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,16}"
                             title="Password harus terdiri dari 8-16 karakter, mengandung minimal 1 huruf besar, 1 angka, dan 1 simbol unik."
                             required />
+                        <span class="toggle-password closed mt-3" onclick="togglePassword('password')"><i class="fas fa-eye opacity-50"></i></span>
                     </div>
-                    <div>
+                    <div class="password-container">
                         <label for="confirm_password"
                             class="block mb-1 text-sm font-medium text-gray-900 dark:text-white">
                             Konfirmasi Password
@@ -128,6 +152,7 @@
                             pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,16}"
                             title="Password harus terdiri dari 8-16 karakter, mengandung minimal 1 huruf besar, 1 angka, dan 1 simbol unik."
                             required />
+                        <span class="toggle-password closed mt-3" onclick="togglePassword('confirm_password')"><i class="fas fa-eye opacity-50"></i></span>
                     </div>
 
                     <div id="toast">Password harus terdiri dari 8-16 karakter, mengandung minimal 1 huruf besar, 1
@@ -144,11 +169,23 @@
                 </form>
             </div>
         </div>
-
-
     </section>
 
-
+    <script>
+        function togglePassword(fieldId) {
+            const passwordField = document.getElementById(fieldId);
+            const toggleButton = passwordField.nextElementSibling.querySelector('i');
+            if (passwordField.type === "password") {
+                passwordField.type = "text";
+                toggleButton.classList.remove('fa-eye');
+                toggleButton.classList.add('fa-eye-slash');
+            } else {
+                passwordField.type = "password";
+                toggleButton.classList.remove('fa-eye-slash');
+                toggleButton.classList.add('fa-eye');
+            }
+        }
+    </script>
 
     <script>
         document.getElementById('password').addEventListener('focus', function() {
@@ -176,46 +213,13 @@
                     toast: true,
                     position: 'top-end',
                     showConfirmButton: false,
-                    timer: 3000,
-                    timerProgressBar: true,
-                    didOpen: (toast) => {
-                        toast.addEventListener('mouseenter', Swal.stopTimer)
-                        toast.addEventListener('mouseleave', Swal.resumeTimer)
-                    }
                 });
                 return false;
             }
             return true;
         }
-
-        $(document).ready(function() {
-            $('#registrationForm').on('submit', function(e) {
-                if (!validatePasswords()) {
-                    e.preventDefault();
-                    return;
-                }
-            });
-        });
-    </script>
-
-    <script>
-        document.querySelectorAll('input[name="has_nip"]').forEach(function(radio) {
-            radio.addEventListener('change', function() {
-                var nipInput = document.getElementById('nip');
-                if (document.getElementById('has_nip_yes').checked) {
-                    nipInput.disabled = false;
-                    nipInput.classList.remove('disabled');
-                } else {
-                    nipInput.disabled = true;
-                    nipInput.value = ''; // Clear the input field if disabled
-                    nipInput.classList.add('disabled');
-                }
-            });
-        });
-        document.getElementById('nip').addEventListener('input', function() {
-            this.value = this.value.replace(/[^0-9]/g, '');
-        });
     </script>
 </body>
+
 
 </html>
