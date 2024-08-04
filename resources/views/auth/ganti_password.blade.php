@@ -154,7 +154,8 @@
                         <div class="side-menu__icon"> <i data-lucide="hard-drive"></i> </div>
                         <div class="side-menu__title">
                             Pengajuan
-                            <div class="side-menu__sub-icon transform rotate-180"> <i data-lucide="chevron-down"></i> </div>
+                            <div class="side-menu__sub-icon transform rotate-180"> <i data-lucide="chevron-down"></i>
+                            </div>
                         </div>
                     </a>
                     <ul class="side-menu__sub-open">
@@ -292,160 +293,45 @@
                 </div>
                 <!-- END: Account Menu -->
             </div>
+
             <div class="intro-y box p-4">
                 <div class="intro-y flex items-center">
                     <h2 class="text-lg font-medium mr-auto">
-                        Edit Profile
+                        Ganti Password
                     </h2>
                 </div>
                 {{-- ?? BEGIN: Form Layout --}}
-                <form action="{{ route('simpan-profile') }}" method="POST" enctype="multipart/form-data">
+                <form action="{{ route('changePassword') }}" method="POST" enctype="multipart/form-data">
                     {{ csrf_field() }}
                     <div class="intro-y box p-5 mt-3">
                         <div>
-                            <label for="crud-form-1" class="form-label">Nama TPA</label>
-                            <input id="nama_tpa" type="text" class="form-control w-full"
-                                placeholder="Nama Sekolah" name="name">
+                            <label for="old_password" class="form-label">Old Password</label>
+                            <input id="old_password" type="password" class="form-control w-full" placeholder="Masukkan Password Lama" name="old_password" required>
                         </div>
 
                         <div class="mt-3">
-                            <label for="crud-form-3" class="form-label">Alamat</label>
+                            <label for="new_password" class="form-label">New Password</label>
                             <div class="input-group">
-                                <input id="alamat" type="text" class="form-control" placeholder="Jln. ...."
-                                    aria-describedby="input-group-1" name="alamat">
+                                <input id="new_password" type="password" class="form-control" placeholder="Masukkan Password Baru" name="new_password" required>
                             </div>
                         </div>
 
                         <div class="mt-3">
-                            <label for="crud-form-3" class="form-label">Nama Admin Operator</label>
+                            <label for="new_password_confirmation" class="form-label">Konfirmasi Password</label>
                             <div class="input-group">
-                                <input id="nama" type="text" class="form-control"
-                                    placeholder="{{ Auth::user()->nama }}" aria-describedby="input-group-1"
-                                    name="nama" maxlength="30">
+                                <input id="new_password_confirmation" type="password" class="form-control" placeholder="Masukkan Password Baru Lagi" name="new_password_confirmation" required>
                             </div>
                         </div>
 
-                        <div class="mt-3">
-                            <div class="mb-2">
-                                <label class="block text-sm text-gray-900 dark:text-dark">Apakah Anda
-                                    memiliki NIP?</label>
-                                <input type="radio" id="has_nip_yes" name="has_nip" value="yes"
-                                    class="mr-2">
-                                <label for="has_nip_yes" class="text-sm text-gray-900 dark:text-black">Ya</label>
-                                <input type="radio" id="has_nip_no" name="has_nip" value="no"
-                                    class="ml-4 mr-2">
-                                <label for="has_nip_no" class="text-sm text-gray-900 dark:text-dark">Tidak</label>
-                            </div>
-                            <label for="nip" class="block mb-1 text-sm text-gray-900 dark:text-dark">NIP</label>
-                            <input type="text" name="nip" id="nip"
-                                class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-black disabled"
-                                placeholder="{{ Auth::user()->nip }}" disabled maxlength="18" />
-                        </div>
-
-                        <div>
-                            <label for="jenis_kelamin"
-                                class="block mb-1 text-sm font-medium text-gray-900 dark:text-white">Jenis
-                                Kelamin</label>
-                            <select name="jenis_kelamin" id="jenis_kelamin"
-                                class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-black">
-                                <option value="">Pilih jenis kelamin</option>
-                                <option value="laki-laki">Laki-laki</option>
-                                <option value="perempuan">Perempuan</option>
-                            </select>
-                        </div>
-
-                        <div class="mt-3">
-                            <label for="crud-form-3" class="form-label" for="file_input">Upload logo</label>
-                            <div class="input-group rounded-lg">
-                                <input
-                                    class="form-control block w-full text-sm text-gray-dark border border-gray-dark rounded-lg cursor-pointer bg-gray-dark dark:text-gray-light focus:outline-none dark:bg-gray-lighter dark:border-gray-txt dark:placeholder-gray-light"
-                                    id="logo" type="file" accept=".jpeg, .jpg, .png, .svg"
-                                    onchange="validateFile(this)" name="logo">
-                                <p id="error_message" class="text-red-500 text-sm mt-1"></p>
-                            </div>
-                        </div>
                         <div class="text-right mt-5">
-                            <button onclick="window.location.href = '/'" type="button"
-                                class="btn btn-outline-secondary w-24 mr-1">Kembali</button>
+                            <button onclick="window.location.href = '/'" type="button" class="btn btn-outline-secondary w-24 mr-1">Kembali</button>
                             <button type="submit" class="btn btn-primary w-24">Save</button>
                         </div>
+                    </div>
                 </form>
-                {{-- <div class="intro-y flex items-center">
-                    <h2 class="text-lg font-medium mr-auto">
-                        Profile Layout
-                    </h2>
-                </div>
-                <!-- BEGIN: Profile Info -->
-                <div class="intro-y box px-5 pt-5 mt-5">
-                    <div
-                        class="flex flex-col lg:flex-row border-b border-slate-200/60 dark:border-darkmode-400 pb-5 -mx-5">
-                        <div class="flex flex-1 px-5 items-center justify-center lg:justify-start">
-                            <div class="w-20 h-20 sm:w-24 sm:h-24 flex-none lg:w-32 lg:h-32 image-fit relative">
-                                @if (auth()->user()->usertpa && auth()->user()->usertpa->logo)
-                                    <img alt="User Photo" class="rounded-full"
-                                        src="{{ asset('images/' . auth()->user()->usertpa->logo) }}">
-                                @else
-                                    <img alt="Default Photo" src="{{ asset('images/user.png') }}"
-                                        class="rounded-full">
-                                @endif
-                                <div
-                                    class="absolute mb-1 mr-1 flex items-center justify-center bottom-0 right-0 bg-primary rounded-full p-2">
-                                    <i class="w-4 h-4 text-white" data-lucide="camera"></i>
-                                </div>
-                            </div>
-                            <div class="ml-5">
-                                <div class="w-24 sm:w-40 truncate sm:whitespace-normal font-medium text-lg">
-                                    @if (auth()->user()->usertpa)
-                                        {{ auth()->user()->usertpa->nama_tpa }}
-                                    @else
-                                        {{ auth()->user()->email }}
-                                    @endif
-                                </div>
-                                <div class="text-slate-500">User</div>
-                            </div>
-                        </div>
-                        <div
-                            class="mt-6 lg:mt-0 flex-1 px-5 border-l border-r border-slate-200/60 dark:border-darkmode-400 border-t lg:border-t-0 pt-5 lg:pt-0">
-                            <div class="font-medium text-center lg:text-left lg:mt-3">Alamat</div>
-                            <div class="flex flex-col justify-center items-center lg:items-start mt-4">
-                                <div class="truncate sm:whitespace-normal flex items-center"> <i data-lucide="map"
-                                        class="w-4 h-4 mr-2"></i>
-                                    @if (auth()->user()->usertpa)
-                                        {{ auth()->user()->usertpa->alamat }}
-                                    @else
-                                        <div>Silahkan Perbarui Profile</div>
-                                    @endif
-                                </div>
-                            </div>
-                        </div>
-                        <div class="">
-                            <div class=""></div>
-                            <div class="">
-                                <div class=""><span class=""></span> </div>
-                                <div class="">
-                                    <div class="h-[55px]">
-                                        <canvas></canvas>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="">
-                                <div class=""><span class=""></span> </div>
-                                <div class="">
-                                    <div class="h-[55px]">
-                                        <canvas></canvas>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="mt-3">
-                        <button onclick="window.location.href = '{{ route('editProfile') }}'" type="button" class="btn btn-primary w-24 mr-2"> <i data-lucide="edit"
-                                class="w-4 h-4 mr-2"></i> Edit </button>
-                        <button onclick="window.location.href = '/'" type="button" class="btn btn-secondary w-24"><i data-lucide="corner-up-left"
-                            class="w-4 h-4 mr-2"></i> Kembali </button>
-                    </div>
-                </div> --}}
+
             </div>
+
             {{-- ?? END: Top Bar  --}}
             <div class="grid grid-cols-12 gap-6">
                 <div class="col-span-12 2xl:col-span-9">

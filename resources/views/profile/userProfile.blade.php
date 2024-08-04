@@ -62,7 +62,7 @@
                     </ul>
                 </li>
                 {{-- TODO DATA PEGAWAI --}}
-                <li>
+                {{-- <li>
                     <a href="javascript:;" class="menu">
                         <div class="menu__icon"> <i data-lucide="folder"></i> </div>
                         <div class="menu__title">
@@ -84,9 +84,9 @@
                             </a>
                         </li>
                     </ul>
-                </li>
+                </li> --}}
                 {{-- TODO DATA SISWA --}}
-                <li>
+                {{-- <li>
                     <a href="javascript:;" class="menu">
                         <div class="menu__icon"> <i data-lucide="folder"></i> </div>
                         <div class="menu__title">
@@ -108,7 +108,7 @@
                             </a>
                         </li>
                     </ul>
-                </li>
+                </li> --}}
             </ul>
         </div>
     </div>
@@ -143,10 +143,10 @@
                         <div class="side-menu__icon"> <i data-lucide="hard-drive"></i> </div>
                         <div class="side-menu__title">
                             Pengajuan
-                            <div class="side-menu__sub-icon "> <i data-lucide="chevron-down"></i> </div>
+                            <div class="side-menu__sub-icon transform rotate-180"> <i data-lucide="chevron-down"></i> </div>
                         </div>
                     </a>
-                    <ul class="">
+                    <ul class="side-menu__sub-open">
                         <li>
                             <a href="{{ route('pendaftaran-users') }}" class="side-menu">
                                 <div class="side-menu__icon"> <i data-lucide="book"></i> </div>
@@ -379,7 +379,10 @@
                     </div>
                     <div class="mt-3">
                         <button onclick="window.location.href = '{{ route('editProfile') }}'" type="button"
-                            class="btn btn-primary w-24 mr-2"> <i data-lucide="edit" class="w-4 h-4 mr-2"></i> Edit
+                            class="btn btn-primary mr-2"> <i data-lucide="edit" class="w-4 h-4 mr-2"></i> Edit
+                        </button>
+                        <button onclick="window.location.href = '{{ route('ganti-password') }}'" type="button"
+                            class="btn btn-primary mr-2"> <i data-lucide="lock" class="w-4 h-4 mr-2"></i> Ganti Password
                         </button>
                         <button onclick="window.location.href = '/'" type="button" class="btn btn-secondary w-24"><i
                                 data-lucide="corner-up-left" class="w-4 h-4 mr-2"></i>
@@ -406,7 +409,8 @@
                                         <div>
                                             <div class="flex">
                                                 <div class="mr-auto">
-                                                    Sebelum melakukan pendaftaran silahkan perbarui profile Sekolah TPA yang akan diajukan.
+                                                    Sebelum melakukan pendaftaran silahkan perbarui profile Sekolah TPA
+                                                    yang akan diajukan.
                                                 </div>
                                             </div>
                                         </div>

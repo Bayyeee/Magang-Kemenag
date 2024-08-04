@@ -14,6 +14,7 @@ use App\Http\Controllers\loginController;
 use App\Http\Controllers\profileController;
 use App\Http\Controllers\registrasiController;
 use App\Http\Controllers\editpengajuanController;
+use App\Http\Controllers\gantiPasswordController;
 use App\Http\Controllers\inputPegawaiController;
 use App\Http\Controllers\inputSiswaController;
 use App\Http\Controllers\pendaftaranController;
@@ -95,6 +96,10 @@ Route::group(['middleware' => ['auth']], function () {
         Route::post('/import-siswa', [inputSiswaController::class, 'importSiswa'])->name('import-siswa');
 
         Route::get('/export-siswa', [inputSiswaController::class, 'exportSiswa'])->name('export-siswa');
+
+        Route::get('/ganti-password', [gantiPasswordController::class, 'showFormGantiPassword'])->name('ganti-password');
+
+        Route::post('/post-ganti', [gantiPasswordController::class, 'changePassword'])->name('changePassword');
     });
 
     Route::middleware('checkRoles:admin,humas')->group(function () {
