@@ -136,10 +136,10 @@
                         <div class="side-menu__icon"> <i data-lucide="hard-drive"></i> </div>
                         <div class="side-menu__title">
                             Pengajuan
-                            <div class="side-menu__sub-icon "> <i data-lucide="chevron-down"></i> </div>
+                            <div class="side-menu__sub-icon transform rotate-180"> <i data-lucide="chevron-down"></i> </div>
                         </div>
                     </a>
-                    <ul class="">
+                    <ul class="side-menu__sub-open">
                         <li>
                             <a href="{{ route('pendaftaran-users') }}" class="side-menu">
                                 <div class="side-menu__icon"> <i data-lucide="book"></i> </div>
@@ -317,7 +317,7 @@
                         <div class="flex items-center px-5 py-3 border-t border-slate-200/60 dark:border-darkmode-400">
                             <button href="#"
                                 class="intro-x w-8 h-8 flex items-center justify-center rounded-full border border-slate-300 dark:border-darkmode-400 dark:bg-darkmode-300 dark:text-slate-300 text-slate-500 mr-2 tooltip"
-                                title="{{ $item->user->nama }}"> <i data-lucide="users" class="w-3 h-3"></i>
+                                title="{{ $item->user->role }}"> <i data-lucide="users" class="w-3 h-3"></i>
                             </button>
                             <button href="#"
                                 class="intro-x w-8 h-8 flex items-center justify-center rounded-full border border-slate-300 dark:border-darkmode-400 dark:bg-darkmode-300 dark:text-slate-300 text-slate-500 mr-2 tooltip"

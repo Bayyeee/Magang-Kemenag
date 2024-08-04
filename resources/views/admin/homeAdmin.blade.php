@@ -704,14 +704,17 @@
                         @endforeach
                     </ul>
                 </li>
-                <li>
-                    <a href="{{ route('show-Berita') }}" class="side-menu">
-                        <div class="side-menu__icon"> <i data-lucide="tv"></i> </div>
-                        <div class="side-menu__title">
-                            Edit Berita
-                        </div>
-                    </a>
-                </li>
+                @if (auth()->user()->role === 'humas')
+                    <li>
+                        <a href="{{ route('show-Berita') }}" class="side-menu">
+                            <div class="side-menu__icon"> <i data-lucide="tv"></i> </div>
+                            <div class="side-menu__title">
+                                Edit Berita
+                            </div>
+                        </a>
+                    </li>
+                @endif
+
             </ul>
         </nav>
         <!-- BEGIN: Content -->
@@ -749,23 +752,69 @@
                     </div>
                 </div>
             </div>
-            <div class="mx-2 pb-8 mt-5 rounded-lg">
-                <div class="fade-mode rounded-lg" id="important-notes">
-                    <div class="h-96  px-2">
-                        <div class="h-full image-fit rounded-md overflow-hidden"> <img
-                                alt="Midone - HTML Admin Template" src="{{ asset('images/SIP-LPQ1.png') }}" /> </div>
+            <div class="grid grid-cols-12 gap-6 mt-5">
+                <div class="col-span-12 sm:col-span-6 xl:col-span-3 intro-y">
+                    <div class="report-box zoom-in">
+                        <div class="box p-5">
+                            <div class="flex">
+                                <i data-lucide="users" class="report-box__icon text-primary"></i>
+                                <div class="ml-auto">
+                                    <div class="report-box__indicator tooltip cursor-pointer"
+                                        title="33% Higher than last month"></div>
+                                </div>
+                            </div>
+                            <div class="text-3xl font-medium leading-8 mt-6">4.710</div>
+                            <div class="text-base text-slate-500 mt-1">Pengguna</div>
+                        </div>
                     </div>
-                    <div class="h-96 px-2">
-                        <div class="h-full image-fit rounded-md overflow-hidden"> <img
-                                alt="Midone - HTML Admin Template" src="{{ asset('images/sip-tpq2.png') }}" /> </div>
+                </div>
+                <div class="col-span-12 sm:col-span-6 xl:col-span-3 intro-y">
+                    <div class="report-box zoom-in">
+                        <div class="box p-5">
+                            <div class="flex">
+                                <i data-lucide="file" class="report-box__icon text-pending"></i>
+                                <div class="ml-auto">
+                                    <div class="report-box__indicator tooltip cursor-pointer"
+                                        title="2% Lower than last month"></div>
+                                </div>
+                            </div>
+                            <div class="text-3xl font-medium leading-8 mt-6">3.721</div>
+                            <div class="text-base text-slate-500 mt-1">Berkas Masuk</div>
+                        </div>
                     </div>
-                    <div class="h-96 px-2">
-                        <div class="h-full image-fit rounded-md overflow-hidden"> <img
-                                alt="Midone - HTML Admin Template" src="{{ asset('images/sip-tpq3.png') }}" /> </div>
+                </div>
+                <div class="col-span-12 sm:col-span-6 xl:col-span-3 intro-y">
+                    <div class="report-box zoom-in">
+                        <div class="box p-5">
+                            <div class="flex">
+                                <i data-lucide="check-circle" class="report-box__icon text-success"></i>
+                                <div class="ml-auto">
+                                    <div class="report-box__indicator tooltip cursor-pointer"
+                                        title="12% Higher than last month"> </div>
+                                </div>
+                            </div>
+                            <div class="text-3xl font-medium leading-8 mt-6">2.149</div>
+                            <div class="text-base text-slate-500 mt-1">Berkas Diverifikasi</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-span-12 sm:col-span-6 xl:col-span-3 intro-y">
+                    <div class="report-box zoom-in">
+                        <div class="box p-5">
+                            <div class="flex">
+                                <i data-lucide="x-circle" class="report-box__icon text-danger"></i>
+                                <div class="ml-auto">
+                                    <div class="report-box__indicator tooltip cursor-pointer"
+                                        title="22% Higher than last month"></div>
+                                </div>
+                            </div>
+                            <div class="text-3xl font-medium leading-8 mt-6">152.040</div>
+                            <div class="text-base text-slate-500 mt-1">Berkas Ditolak</div>
+                        </div>
                     </div>
                 </div>
             </div>
-            <div class="grid grid-cols-12 gap-6 mt-5">
+            <div class="grid grid-cols-12 gap-6 mt-10">
                 {{-- TODO BERITA --}}
                 @foreach ($berita as $item)
                     <div class="intro-y col-span-12 md:col-span-6 xl:col-span-4 box">

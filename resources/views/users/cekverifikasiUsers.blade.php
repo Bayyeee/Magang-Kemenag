@@ -143,10 +143,10 @@
                         <div class="side-menu__icon"> <i data-lucide="hard-drive"></i> </div>
                         <div class="side-menu__title">
                             Pengajuan
-                            <div class="side-menu__sub-icon "> <i data-lucide="chevron-down"></i> </div>
+                            <div class="side-menu__sub-icon transform rotate-180"> <i data-lucide="chevron-down"></i> </div>
                         </div>
                     </a>
-                    <ul>
+                    <ul class="side-menu__sub-open">
                         <li>
                             <a href="{{ route('pendaftaran-users') }}" class="side-menu">
                                 <div class="side-menu__icon"> <i data-lucide="book"></i> </div>
@@ -154,19 +154,19 @@
                             </a>
                         </li>
                         <li>
-                            <a href="{{ route('edit-pengajuan') }}" class="side-menu">
+                            <a href="{{ route('edit-pengajuan') }}" class="side-menu ">
                                 <div class="side-menu__icon"> <i data-lucide="edit-3"></i> </div>
                                 <div class="side-menu__title"> Edit Pengajuan </div>
                             </a>
                         </li>
                         <li>
-                            <a href="{{ route('cek-verifikasi') }}" class="side-menu side-menu--active ">
+                            <a href="{{ route('cek-verifikasi') }}" class="side-menu side-menu--active">
                                 <div class="side-menu__icon"> <i data-lucide="file"></i> </div>
                                 <div class="side-menu__title"> Cek Verifikasi </div>
                             </a>
                         </li>
                         <li>
-                            <a href="{{ route('cetak') }}" class="side-menu ">
+                            <a href="{{ route('cetak') }}" class="side-menu">
                                 <div class="side-menu__icon"> <i data-lucide="printer"></i> </div>
                                 <div class="side-menu__title"> Cetak Berkas </div>
                             </a>

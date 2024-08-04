@@ -136,10 +136,11 @@
                         <div class="side-menu__icon"> <i data-lucide="hard-drive"></i> </div>
                         <div class="side-menu__title">
                             Pengajuan
-                            <div class="side-menu__sub-icon "> <i data-lucide="chevron-down"></i> </div>
+                            <div class="side-menu__sub-icon transform rotate-180"> <i data-lucide="chevron-down"></i>
+                            </div>
                         </div>
                     </a>
-                    <ul class="">
+                    <ul class="side-menu__sub-open">
                         <li>
                             <a href="{{ route('pendaftaran-users') }}" class="side-menu">
                                 <div class="side-menu__icon"> <i data-lucide="book"></i> </div>
@@ -147,7 +148,7 @@
                             </a>
                         </li>
                         <li>
-                            <a href="{{ route('edit-pengajuan') }}" class="side-menu">
+                            <a href="{{ route('edit-pengajuan') }}" class="side-menu ">
                                 <div class="side-menu__icon"> <i data-lucide="edit-3"></i> </div>
                                 <div class="side-menu__title"> Edit Pengajuan </div>
                             </a>
@@ -550,8 +551,8 @@
                                                         admin IT</div>
                                                 </div>
                                                 <div class="flex">
-                                                    <div class="mr-auto text-xl">2. Silahkan download template berkas pengajuan</div>
-                                                </div>
+                                                    <div class="mr-auto text-xl">2. Silahkan download template berkas
+                                                        pengajuan</div>
                                                 </div>
                                             </div>
                                         </div>
@@ -563,6 +564,7 @@
                 </div>
             </div>
         </div>
+    </div>
     </div>
 
     <x-script-Home></x-script-Home>

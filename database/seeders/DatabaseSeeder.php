@@ -20,7 +20,7 @@ class DatabaseSeeder extends Seeder
             'nama' => 'AbdulQodir',
             'jenis_kelamin' => 'laki-laki',
             'email' => 'admin@gmail.com',
-            'password' => Hash::make('12345'),
+            'password' => Hash::make('@Admin12345678'),
             'role' => 'admin',
         ]);
 
@@ -29,7 +29,7 @@ class DatabaseSeeder extends Seeder
             'nama' => 'Siti Markonah',
             'jenis_kelamin' => 'perempuan',
             'email' => 'humas@gmail.com',
-            'password' => Hash::make('12345'),
+            'password' => Hash::make('@Humas12345678'),
             'role' => 'humas',
         ]);
 

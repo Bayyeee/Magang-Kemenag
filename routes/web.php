@@ -28,27 +28,17 @@ Route::post('/postlogin', [loginController::class, 'postlogin'])->name('postlogi
 
 Route::get('/registrasi', [registrasiController::class, 'checkRegister'])->name('registrasi');
 
-Route::post('/postregistrasi', [registrasiController::class, 'simpanregistrasi'])->name('postregistrasi');
+Route::post('sendVerificationCode', [registrasiController::class, 'simpanregistrasi'])->name('sendVerificationCode');
+
+Route::get('showverifikasi', [registrasiController::class, 'showVerifikasi'])->name('showverifikasi');
+
+Route::post('verifikasi', [registrasiController::class, 'verifikasi'])->name('verifikasiRegistrasi');
+
+Route::post('kirim_ulang', [registrasiController::class, 'kirimUlangKode'])->name('kirim_ulang');
 
 Route::get('/logout', [loginController::class, 'logout'])->name('logout');
 
-// Route::get('/email/verify', function () {
-//     return view('auth.verify-email');
-// })->middleware('auth')->name('verification.notice');
-
-// Route::get('/email/verify/{id}/{hash}', function (EmailVerificationRequest $request) {
-//     $request->fulfill();
-
-//     Auth::login($request->user());
-
-//     return redirect('/home')->with('verified', true);
-// })->middleware(['auth', 'signed'])->name('verification.verify');
-
-// Route::post('/email/verification-notification', function (Request $request) {
-//     $request->user()->sendEmailVerificationNotification();
-//     toast('Link verifikasi email telah dikirim!', 'success');
-//     return back();
-// })->middleware(['auth', 'throttle:6,1'])->name('verification.send');
+// Route::get('/verifikasi', [registrasiController::class, 'showVerifikasi'])->name('showVerifikasi');
 
 Route::group(['middleware' => ['auth']], function () {
 

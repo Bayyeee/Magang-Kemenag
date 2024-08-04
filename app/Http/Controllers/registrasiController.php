@@ -2,40 +2,102 @@
 
 namespace App\Http\Controllers;
 
-
+use App\Mail\VerificationMail;
 use Illuminate\Http\Request;
 use App\Models\User;
+use Carbon\Carbon;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Mail;
 use RealRashid\SweetAlert\Facades\Alert;
 
 class registrasiController extends Controller
 {
-    // * CREATE USER ATAU SIMPAN DATA REGISTRASI
     public function simpanregistrasi(Request $request)
     {
-        // ** Check Masuk Data
-        // dd($request->all());
+        $request->session()->put('email', $request->email);
+        $request->session()->put('password', $request->password);
 
-        // ** Menyimpan Data User Registrasi
-        $existingUser = User::where('email', $request->email)->first();
+        $verification_code = rand(100000, 999999);
+        $request->session()->put('verification_code', $verification_code);
 
-        if ($existingUser) {
-            toast('Warning Toast', 'Email sudah terdaftar!!!');
-            return redirect('/registrasi');
+        // Kirim kode verifikasi melalui email
+        $this->sendVerificationEmail($request->email, $verification_code);
+
+        return redirect('showverifikasi');
+    }
+
+    protected function sendVerificationEmail($email, $verification_code)
+    {
+        $subject = "Kode Verifikasi Anda";
+        $message = "Kode Verifikasi: " . $verification_code;
+
+        Mail::raw($message, function ($mail) use ($email, $subject) {
+            $mail->to($email)
+                ->subject($subject);
+        });
+    }
+
+    public function showVerifikasi()
+    {
+        return view('auth.verifikasi');
+    }
+
+    public function verifikasi(Request $request)
+    {
+        $verification_code = $request->session()->get('verification_code');
+
+        // Tentukan batas waktu kadaluarsa (misalnya, 10 menit)
+        // $expiry_time = 1; // menit
+        // if (now()->diffInMinutes($verification_code) > $expiry_time) {
+        //     toast('Kode verifikasi telah kedaluwarsa!', 'error');
+        //     return redirect('registrasi');
+        // }
+
+        if ($request->verification_code == $verification_code) {
+            $user = User::create([
+                'email' => $request->session()->get('email'),
+                'password' => Hash::make($request->session()->get('password')),
+                'role' => 'pengaju',
+                'is_verified' => true,
+                'email_verified_at' => Carbon::now(),
+            ]);
+
+            // Clear session
+            $request->session()->forget(['email', 'password', 'verification_code']);
+
+            toast('Berhasil membuat akun', 'success');
+            return redirect('login');
+        } else {
+            toast('Kode verifikasi salah!', 'error');
+            return back();
+        }
+    }
+
+    public function kirimUlangKode(Request $request)
+    {
+        $email = $request->session()->get('email'); // Ambil email dari sesi
+
+        if (!$email) {
+            toast('Email tidak ditemukan!', 'error');
+            return redirect('registrasi');
         }
 
-        // ** Jika email belum terdaftar, simpan data pengguna baru
-        $user = User::create([
-            'email' => $request->email,
-            'role' => 'pengaju',
-            'password' => Hash::make($request->password),
-        ]);
+        $request->session()->forget(['verification_code']);
 
-        // $user->sendEmailVerificationNotification();
+        $verification_code = rand(100000, 999999);
+        $request->session()->put('verification_code', $verification_code);
 
-        toast('Berhasil membuat akun', 'success');
-        return redirect('login');
+        $subject = "Kode Verifikasi Anda";
+        $message = "Kode Verifikasi: " . $verification_code;
+
+        Mail::raw($message, function ($mail) use ($email, $subject) {
+            $mail->to($email)
+                ->subject($subject);
+        });
+
+        toast('Kode verifikasi baru telah dikirim ke email Anda.', 'success');
+        return back();
     }
 
 
