@@ -352,12 +352,12 @@
                 <div class="intro-y grid grid-cols-12 gap-3 sm:gap-6 mt-5">
                     <div class="intro-y col-span-6 sm:col-span-4 md:col-span-3 2xl:col-span-2">
                         <div class="file box rounded-md pt-8 pb-5 px-3 sm:px-5 relative zoom-in">
-                            <a href="{{ asset('temp/permohonan_berkas.pdf') }}" target="_blank"
+                            <a href="{{ asset('temp/Surat_Permohonan TPA.pdf') }}" target="_blank"
                                 class="w-3/5 file__icon file__icon--file mx-auto">
                                 <div class="file__icon__file-name">Docx</div>
                             </a>
-                            <a href="{{ asset('temp/permohonan_berkas.pdf') }}" target="_blank"
-                                class="block font-medium mt-4 text-center truncate">Surat Permohonan
+                            <a href="{{ asset('temp/Surat_Permohonan TPA.pdf') }}" target="_blank"
+                                class="block font-medium mt-4 text-center truncate">Surat Permohonan TPA
                                 TPA</a>
                             <div class="text-slate-500 text-xs text-center mt-0.5">13.6 KB</div>
                             <div class="absolute top-0 right-0 mr-2 mt-3 dropdown ml-auto">
@@ -367,7 +367,7 @@
                                 <div class="dropdown-menu w-40">
                                     <ul class="dropdown-content">
                                         <li>
-                                            <a href="{{ asset('temp/permohonan_berkas.docx') }}"
+                                            <a href="{{ asset('temp/Surat_Permohonan TPA.docx') }}" target="_blank"
                                                 class="dropdown-item"> <i data-lucide="download"
                                                     class="w-4 h-4 mr-2"></i> Download </a>
                                         </li>
@@ -378,11 +378,11 @@
                     </div>
                     <div class="intro-y col-span-6 sm:col-span-4 md:col-span-3 2xl:col-span-2">
                         <div class="file box rounded-md pt-8 pb-5 px-3 sm:px-5 relative zoom-in">
-                            <a href="{{ asset('temp/pendirian_berkas.pdf') }}" target="_blank"
+                            <a href="{{ asset('temp/Proposal_Pendirian TPA.pdf') }}" target="_blank"
                                 class="w-3/5 file__icon file__icon--file mx-auto">
                                 <div class="file__icon__file-name">Docx</div>
                             </a>
-                            <a href="{{ asset('temp/pendirian_berkas.pdf') }}" target="_blank"
+                            <a href="{{ asset('temp/Proposal_Pendirian TPA.pdf') }}" target="_blank"
                                 class="block font-medium mt-4 text-center truncate">Proposal Pendirian
                                 TPA</a>
                             <div class="text-slate-500 text-xs text-center mt-0.5">13.6 KB</div>
@@ -393,7 +393,7 @@
                                 <div class="dropdown-menu w-40">
                                     <ul class="dropdown-content">
                                         <li>
-                                            <a href="{{ asset('temp/pendirian_berkas.docx') }}"
+                                            <a href="{{ asset('temp/Proposal_Pendirian TPA.docx') }}"
                                                 class="dropdown-item"> <i data-lucide="download"
                                                     class="w-4 h-4 mr-2"></i> Download </a>
                                         </li>
@@ -404,11 +404,11 @@
                     </div>
                     <div class="intro-y col-span-6 sm:col-span-4 md:col-span-3 2xl:col-span-2">
                         <div class="file box rounded-md pt-8 pb-5 px-3 sm:px-5 relative zoom-in">
-                            <a href="{{ asset('temp/Susunan Kepengurusan.pdf') }}" target="_blank"
+                            <a href="{{ asset('temp/sk_kepengurusan.pdf') }}" target="_blank"
                                 class="w-3/5 file__icon file__icon--file mx-auto">
                                 <div class="file__icon__file-name">Docx</div>
                             </a>
-                            <a href="{{ asset('temp/Susunan Kepengurusan.pdf') }}" target="_blank"
+                            <a href="{{ asset('temp/sk_kepengurusan.pdf') }}" target="_blank"
                                 class="block font-medium mt-4 text-center truncate">Susunan
                                 Kepengurusan</a>
                             <div class="text-slate-500 text-xs text-center mt-0.5">13.6 KB</div>
@@ -419,7 +419,7 @@
                                 <div class="dropdown-menu w-40">
                                     <ul class="dropdown-content">
                                         <li>
-                                            <a href="{{ asset('temp/Susunan Kepengurusan.docx') }}"
+                                            <a href="{{ asset('temp/sk_kepengurusan.docx') }}"
                                                 class="dropdown-item"> <i data-lucide="download"
                                                     class="w-4 h-4 mr-2"></i> Download </a>
                                         </li>
@@ -430,11 +430,11 @@
                     </div>
                     <div class="intro-y col-span-6 sm:col-span-4 md:col-span-3 2xl:col-span-2">
                         <div class="file box rounded-md pt-8 pb-5 px-3 sm:px-5 relative zoom-in">
-                            <a href="{{ asset('temp/daftar_santri.pdf') }}" target="_blank"
+                            <a href="{{ asset('temp/Daftar_Santri.pdf') }}" target="_blank"
                                 class="w-3/5 file__icon file__icon--file mx-auto">
                                 <div class="file__icon__file-name">Docx</div>
                             </a>
-                            <a href="{{ asset('temp/daftar_santri.pdf') }}" target="_blank"
+                            <a href="{{ asset('temp/Daftar_Santri.pdf') }}" target="_blank"
                                 class="block font-medium mt-4 text-center truncate">Daftar Santri</a>
                             <div class="text-slate-500 text-xs text-center mt-0.5">13.6 KB</div>
                             <div class="absolute top-0 right-0 mr-2 mt-3 dropdown ml-auto">
@@ -444,7 +444,7 @@
                                 <div class="dropdown-menu w-40">
                                     <ul class="dropdown-content">
                                         <li>
-                                            <a href="{{ asset('temp/daftar_santri.docx') }}" class="dropdown-item">
+                                            <a href="{{ asset('temp/Daftar_Santri.docx') }}" class="dropdown-item">
                                                 <i data-lucide="download" class="w-4 h-4 mr-2"></i> Download </a>
                                         </li>
                                     </ul>
@@ -454,11 +454,11 @@
                     </div>
                     <div class="intro-y col-span-6 sm:col-span-4 md:col-span-3 2xl:col-span-2">
                         <div class="file box rounded-md pt-8 pb-5 px-3 sm:px-5 relative zoom-in">
-                            <a href="{{ asset('temp/daftar_ustad_ustadzah.pdf') }}" target="_blank"
+                            <a href="{{ asset('temp/Daftar_Ustadz_Ustadzah.pdf') }}" target="_blank"
                                 class="w-3/5 file__icon file__icon--file mx-auto">
                                 <div class="file__icon__file-name">Docx</div>
                             </a>
-                            <a href="{{ asset('temp/daftar_ustad_ustadzah.pdf') }}" target="_blank"
+                            <a href="{{ asset('temp/Daftar_Ustadz_Ustadzah.pdf') }}" target="_blank"
                                 class="block font-medium mt-4 text-center truncate">Daftar
                                 ustadz/ustadzah</a>
                             <div class="text-slate-500 text-xs text-center mt-0.5">13.6 KB</div>
@@ -469,7 +469,7 @@
                                 <div class="dropdown-menu w-40">
                                     <ul class="dropdown-content">
                                         <li>
-                                            <a href="{{ asset('temp/daftar_ustad_ustadzah.docx') }}"
+                                            <a href="{{ asset('temp/Daftar_Ustadz_Ustadzah.docx') }}"
                                                 class="dropdown-item"> <i data-lucide="download"
                                                     class="w-4 h-4 mr-2"></i> Download </a>
                                         </li>
@@ -480,11 +480,11 @@
                     </div>
                     <div class="intro-y col-span-6 sm:col-span-4 md:col-span-3 2xl:col-span-2">
                         <div class="file box rounded-md pt-8 pb-5 px-3 sm:px-5 relative zoom-in">
-                            <a href="{{ asset('temp/rekomendasi_kua.pdf') }}" target="_blank"
+                            <a href="{{ asset('temp/SURAT_REKOMENDASI_KUA.pdf') }}" target="_blank"
                                 class="w-3/5 file__icon file__icon--file mx-auto">
                                 <div class="file__icon__file-name">Docx</div>
                             </a>
-                            <a href="{{ asset('temp/rekomendasi_kua.pdf') }}" target="_blank"
+                            <a href="{{ asset('temp/SURAT_REKOMENDASI_KUA.pdf') }}" target="_blank"
                                 class="block font-medium mt-4 text-center truncate">Surat Rekomendasi
                                 Dari Kepala KUA Kecamatan</a>
                             <div class="text-slate-500 text-xs text-center mt-0.5">13.6 KB</div>
@@ -495,7 +495,7 @@
                                 <div class="dropdown-menu w-40">
                                     <ul class="dropdown-content">
                                         <li>
-                                            <a href="{{ asset('temp/rekomendasi_kua.docx') }}" class="dropdown-item">
+                                            <a href="{{ asset('temp/SURAT_REKOMENDASI_KUA.docx') }}" class="dropdown-item">
                                                 <i data-lucide="download" class="w-4 h-4 mr-2"></i> Download </a>
                                         </li>
                                     </ul>
@@ -505,11 +505,11 @@
                     </div>
                     <div class="intro-y col-span-6 sm:col-span-4 md:col-span-3 2xl:col-span-2">
                         <div class="file box rounded-md pt-8 pb-5 px-3 sm:px-5 relative zoom-in">
-                            <a href="{{ asset('temp/bukti_foto_kegiatan.pdf') }}" target="_blank"
+                            <a href="{{ asset('temp/Bukti_Kegiatan.pdf') }}" target="_blank"
                                 class="w-3/5 file__icon file__icon--file mx-auto">
                                 <div class="file__icon__file-name">Docx</div>
                             </a>
-                            <a href="{{ asset('temp/bukti_foto_kegiatan.pdf') }}" target="_blank"
+                            <a href="{{ asset('temp/Bukti_Kegiatan.pdf') }}" target="_blank"
                                 class="block font-medium mt-4 text-center truncate">Bukti Foto
                                 Kegiatan</a>
                             <div class="text-slate-500 text-xs text-center mt-0.5">13.6 KB</div>
@@ -520,7 +520,7 @@
                                 <div class="dropdown-menu w-40">
                                     <ul class="dropdown-content">
                                         <li>
-                                            <a href="{{ asset('temp/bukti_foto_kegiatan.docx') }}"
+                                            <a href="{{ asset('temp/Bukti_Kegiatan.docx') }}"
                                                 class="dropdown-item"> <i data-lucide="download"
                                                     class="w-4 h-4 mr-2"></i> Download </a>
                                         </li>

@@ -67,6 +67,8 @@ Route::group(['middleware' => ['auth']], function () {
 
         Route::get('/cetak-surat/{id_pendaftaran}/{action}', [riwayatcetakController::class, 'cetakSurat'])->name('cetak-surat');
 
+        Route::get('SK/{id_pendaftaran}', [riwayatcetakController::class])->name('sk');
+
         Route::get('/input-pegawai', [inputPegawaiController::class, 'showHalaman'])->name('input-pegawai');
 
         Route::post('/simpan-pegawai', [inputPegawaiController::class, 'simpanPegawai'])->name('simpan-pegawai');
